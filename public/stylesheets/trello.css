@@ -1,5 +1,5 @@
 @import url("whitespace-reset.css");
-@import url("vendor/trello-fonts.css");
+@import url("../vendor/trello-fonts.css");
 
 html {
   font: 14px "Helvetica";
@@ -50,30 +50,41 @@ nav > div {
   font-weight: bold;
   background-color: #4A93BE;
   margin: 2px;
+  position: relative;
 }
 
-nav div:hover {
+nav > div span{
+  vertical-align: top;
+}
+
+nav > div span:before {
+  color: white;
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  font-size: 16px;
+}
+
+nav div:hover,.header-btn:hover {
   background-color: #6EA2C0;
+  color: white;
 }
 
 div.boards {
   width: 90px;
 }
 
-div.mini_logo {
-  display: inline-block;
-  vertical-align: top;
-  width: 20px;
-  height: 18px;
-  background: #4A93BE url('../images/header-logo-2x.png') no-repeat center;
-  background-position: 0px;
-  background-size: 70px;
+div.boards span.btn-text {
+  position: absolute;
+  left: 30px
 }
 
 div.search {
   width: 170px;
-  background: #4A93BE url('../images/search-13-xl.png') no-repeat 95%;
-  background-size: 20px 20px
+}
+
+div.search span:before {
+  left: 150px
 }
 
 div.header_logo {
@@ -92,12 +103,6 @@ div.header_logo:hover {
   opacity: .75;
 }
 
-div.create {
-  background: #4A93BE url('../images/plus.png') no-repeat center;
-  background-size: 24px 24px;
-}
-
-
 div.user {
   width: 140px;
   background: #4A93BE url('../images/david.png') no-repeat center;
@@ -108,17 +113,7 @@ div.user {
 div.user span {
   display: inline-block;
   position: absolute;
-  right: 100px
-}
-
-div.info {
-  background: #4A93BE url('../images/info-2-xl.png') no-repeat center;
-  background-size: 20px 20px; 
-}
-
-div.notification {
-  background: #4A93BE url('../images/bell-2-xl.png') no-repeat center;
-  background-size: 20px 20px;
+  left: 40px
 }
 
 i.fa {
@@ -130,7 +125,6 @@ i.fa {
 /*MAIN NAV*/
 
 main {
-
   margin: 10px;
   position: absolute;
   top: 40px;
@@ -142,19 +136,26 @@ main {
 div.board_name {
   font-size: 18px;
   font-weight: bold;
-  padding: 6px;
+  padding: 4px 6px;
   border-radius: 4px;
   display: inline-block;
   vertical-align: top;
 }
 
 div.star {
-  background: url('../images/star-5-xl.png') no-repeat center;
+  position: relative;
   display: inline-block;
   width: 33px;
   height: 33px;
-  background-size: 15px 15px;
   border-radius: 3px;
+  margin: 0 2px;
+}
+
+div.star span:before {
+  color: white;
+  position: absolute;
+  top: 7px;
+  left: 11px;
 }
 
 div.board_name:hover, div.star:hover, div.private:hover, div.show_menu:hover{
@@ -166,9 +167,14 @@ div.lock {
   vertical-align: top;
   width: 18px;
   height: 18px;
-  background: url('../images/lock-4-xl.png') no-repeat center;
-  background-position: -2px 3px;
-  background-size: 15px;
+  position: relative;
+}
+
+div.lock span:before {
+  color: white;
+  position: absolute;
+  top: 1px;
+  left: 3px;
 }
 
 div.private span, div.show_menu span{
@@ -196,8 +202,12 @@ div.show_menu {
   padding: 6px;
 }
 
-div.show_menu span {
+div.show_menu span.btn-text {
   text-decoration: underline;
+}
+
+div.show_menu span.icon-sm:before {
+  color: white;
 }
 
 div.dots {
@@ -205,9 +215,6 @@ div.dots {
   vertical-align: top;
   width: 18px;
   height: 18px;
-  background: url('../images/dots-white.png') no-repeat center;
-  background-position: 0 3px;
-  background-size: 12px;
 }
 
 .board_list_container {
@@ -281,19 +288,22 @@ div.dots {
 }
 
 .list_actions {
-  background: url("../images/dots-grey.png") no-repeat center;
   border-radius: 3px;
   float: right;
   width: 24px;
   height: 24px;
-  background-position: 6px 6px;
-  background-size: 12px;
-  opacity: .5;
+  position: relative;
+}
+
+.list_actions:before {
+  position: absolute;
+  top: 3px;
+  left: 5px;
 }
 
 .list_actions:hover {
-  opacity: 1;
   background-color: #cdcdcd;
+  color: #666;
 }
 
 ul.cards {
@@ -316,17 +326,28 @@ li.card {
   font-weight: normal;
 }
 
+.card span.edit {
+  border-radius: 3px;
+  float: right;
+  width: 26px;
+  height: 26px;
+  display: none;
+  position: relative;
+}
+
+.card span.icon-edit:before {
+  position: absolute;
+  left: 7px;
+  top: 5px;
+}
+
 .card:hover {
   background: #eeeeee;
 }
 
 .card:hover span.edit {
-  background: url("../images/edit-3-xl.png") no-repeat center;
-  border-radius: 3px;
-  float: right;
-  width: 26px;
-  height: 26px;
-  background-size: 12px;
+  display: block;
+  background-color: inherit;
 }
 
 .card:hover span.edit:hover {
@@ -367,7 +388,6 @@ div.close:after{
 
 div.content {
   width: 75%;
-  height: 100%;
   float: left;
 }
 
@@ -443,6 +463,7 @@ div.content {
 
 #comment .tools {
   float: right;
+  margin: 0 5px 5px 5px;
 }
 
 #comment form button {
@@ -524,14 +545,17 @@ div.small_user_pic {
 
 .sidebar {
   width: 25%;
-  height: 100%;
   float: right;
+  padding-bottom: 20px;
 }
 
 .sidebar .add {
   margin-top: 60px;
 }
 
+.sidebar .edit_actions {
+  margin-top: 20px;
+}
 .sidebar h1 {
   font-weight: bold;
   font-size: 16px;
@@ -548,6 +572,7 @@ div.small_user_pic {
 .sidebar .btn {
   background-color: #FAFBFB;
   font-weight: bold;
+  font-size: 14px;
   box-shadow: 0px 0px 1px #888888;
   text-align: left;
 }
@@ -559,6 +584,10 @@ div.small_user_pic {
 
 .sidebar .btn:hover .icon-sm:before {
   color: white;
+}
+
+.sidebar footer {
+  margin-top: 20px;
 }
 
 .sidebar footer a{
@@ -577,31 +606,67 @@ div.small_user_pic {
 }
 
 @media (max-width: 750px) {
-  div.search {
+  div.user, div.boards, div.search{
     width: 30px;
-    background-position: center;
   }
 
-  div.user, div.boards {
-    width: 30px;
-    background-position: center;
-  }
-
-  div.user span, div.boards span {
+  nav div .btn-text {
     display: none;
   }
+
+  nav .search span:before {
+    left: 6px;
+    top: 6px;
+  }
+
+  div.card_detail {
+    width: 420px;
+    height: auto
+  }
+
+  div.content, div.sidebar {
+    width: 100%;
+    float: none;
+  }
+
+  div.cover_modal {
+    background: #00304C;
+    overflow: scroll;
+    padding-bottom: 30px;
+  }
+
+  .sidebar .add {
+    margin-top: 20px;
+  }
+
+  .sidebar {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .sidebar button {
+    width: 300px;
+  }
+
+  .sidebar footer {
+    width: 100%;
+  }
+
+  .sidebar footer a {
+    width: auto;
+  }
 }
 
-::-webkit-scrollbar {
+.board_list_container::-webkit-scrollbar {
  height: 20px;
 }
-::-webkit-scrollbar-track {
+.board_list_container::-webkit-scrollbar-track {
  background-color: #0067A3;
  background-clip: padding-box;
  border: solid transparent;
  border-radius: 10px;
 }
-::-webkit-scrollbar-thumb {
+.board_list_container::-webkit-scrollbar-thumb {
  background-color: #66A4C7;
  background-clip: padding-box;
  border: solid transparent;
