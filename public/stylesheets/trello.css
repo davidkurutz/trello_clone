@@ -1,0 +1,612 @@
+@import url("whitespace-reset.css");
+@import url("vendor/trello-fonts.css");
+
+html {
+  font: 14px "Helvetica";
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  position:relative;
+  width: 100%;
+  height: 100%;
+  color: white;
+  background: #0079BF;
+}
+
+/*HEADER NAV*/
+
+body > header {
+  background: #0067A3;
+  height: 40px;
+  color: white;
+  padding: 3px;
+}
+
+div.board_header {
+  height: 30px;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+}
+
+.left_header, .left {
+  float: left;
+}
+
+.right_header, .right {
+  float: right;
+}
+
+nav > div {
+  display: inline-block;
+  vertical-align: top;
+  width: 30px;
+  height: 30px;
+  padding: 4px;
+  border-radius: 3px;
+  font-weight: bold;
+  background-color: #4A93BE;
+  margin: 2px;
+}
+
+nav div:hover {
+  background-color: #6EA2C0;
+}
+
+div.boards {
+  width: 90px;
+}
+
+div.mini_logo {
+  display: inline-block;
+  vertical-align: top;
+  width: 20px;
+  height: 18px;
+  background: #4A93BE url('../images/header-logo-2x.png') no-repeat center;
+  background-position: 0px;
+  background-size: 70px;
+}
+
+div.search {
+  width: 170px;
+  background: #4A93BE url('../images/search-13-xl.png') no-repeat 95%;
+  background-size: 20px 20px
+}
+
+div.header_logo {
+  display: inline-block;
+  position: absolute;
+  height: 30px;
+  width: 80px;
+  left: 50%;
+  margin-left: -50px;
+  background: url('../images/header-logo-2x.png') no-repeat center;
+  background-size: 80px 30px;
+  opacity: .5;
+}
+
+div.header_logo:hover {
+  opacity: .75;
+}
+
+div.create {
+  background: #4A93BE url('../images/plus.png') no-repeat center;
+  background-size: 24px 24px;
+}
+
+
+div.user {
+  width: 140px;
+  background: #4A93BE url('../images/david.png') no-repeat center;
+  background-size: 30px;
+  background-position: 0;
+}
+
+div.user span {
+  display: inline-block;
+  position: absolute;
+  right: 100px
+}
+
+div.info {
+  background: #4A93BE url('../images/info-2-xl.png') no-repeat center;
+  background-size: 20px 20px; 
+}
+
+div.notification {
+  background: #4A93BE url('../images/bell-2-xl.png') no-repeat center;
+  background-size: 20px 20px;
+}
+
+i.fa {
+  margin-right: 12px;
+}
+
+
+/*END HEADER NAV*/
+/*MAIN NAV*/
+
+main {
+
+  margin: 10px;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+div.board_name {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 6px;
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+div.star {
+  background: url('../images/star-5-xl.png') no-repeat center;
+  display: inline-block;
+  width: 33px;
+  height: 33px;
+  background-size: 15px 15px;
+  border-radius: 3px;
+}
+
+div.board_name:hover, div.star:hover, div.private:hover, div.show_menu:hover{
+  background-color: #0067A3;
+}
+
+div.lock {
+  display: inline-block;
+  vertical-align: top;
+  width: 18px;
+  height: 18px;
+  background: url('../images/lock-4-xl.png') no-repeat center;
+  background-position: -2px 3px;
+  background-size: 15px;
+}
+
+div.private span, div.show_menu span{
+  display: inline-block;
+  vertical-align: -3px;
+}
+
+div.private {
+  display: inline-block;
+  vertical-align: top;
+  height: 33px;
+  border-radius: 3px;
+  font-size: 12px;
+  box-sizing: border-box;
+  padding: 6px;
+}
+
+div.show_menu {
+  display: inline-block;
+  vertical-align: top;
+  height: 33px;
+  border-radius: 3px;
+  font-size: 12px;
+  box-sizing: border-box;
+  padding: 6px;
+}
+
+div.show_menu span {
+  text-decoration: underline;
+}
+
+div.dots {
+  display: inline-block;
+  vertical-align: top;
+  width: 18px;
+  height: 18px;
+  background: url('../images/dots-white.png') no-repeat center;
+  background-position: 0 3px;
+  background-size: 12px;
+}
+
+.board_list_container {
+  overflow-x:auto;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width:100%;
+  padding: 6px;
+}
+
+.board_list, .add_list{
+  max-height: 575px;
+  width: 270px;
+  background: #E2E4E6;
+  border-radius: 3px;
+  padding-top: 5px;
+  color: #4D4D4D;
+  vertical-align: top;
+}
+
+.add_list {
+  background: #006AA8;
+  color: #B3D3E5;
+}
+
+.add_list:hover {
+  background: #155F9C;
+}
+
+.board_list > header, .add_list > header {
+  margin: 8px;
+}
+.board_list header h1 {
+  display: inline-block;
+  font-weight: bold;
+}
+
+.board_list + .board_list, .board_list + .add_list{
+  margin-left: 6px;
+}
+
+.board_list footer {
+  padding: 8px;
+}
+
+.board_list footer a {
+  text-decoration: none;
+  color: #8E8E8E;
+}
+
+.board_list footer:hover {
+  background: #ccc;;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.board_list footer:hover a {
+  text-decoration: underline;
+  color: #444;
+}
+
+.list-inline {
+  white-space:nowrap;
+}
+
+.list-inline > li {
+  padding: 0;
+}
+
+.list_actions {
+  background: url("../images/dots-grey.png") no-repeat center;
+  border-radius: 3px;
+  float: right;
+  width: 24px;
+  height: 24px;
+  background-position: 6px 6px;
+  background-size: 12px;
+  opacity: .5;
+}
+
+.list_actions:hover {
+  opacity: 1;
+  background-color: #cdcdcd;
+}
+
+ul.cards {
+  margin: 15px 5px 0 5px;
+}
+
+li.card {
+  display: block;
+  background: #ffffff;
+  min-height: 32px;
+  margin: 8px 4px;
+  border-radius: 3px;
+}
+
+.card {
+  padding: 3px;
+}
+.card > header h1 {
+  padding: 6px;
+  font-weight: normal;
+}
+
+.card:hover {
+  background: #eeeeee;
+}
+
+.card:hover span.edit {
+  background: url("../images/edit-3-xl.png") no-repeat center;
+  border-radius: 3px;
+  float: right;
+  width: 26px;
+  height: 26px;
+  background-size: 12px;
+}
+
+.card:hover span.edit:hover {
+  background-color: #ddd;
+}
+
+.cover_modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.card_detail {
+  color: #4D4D4D;
+  position: relative;
+  width: 732px;
+  height: 605px;
+  background: #EDEFF0;
+  margin: 40px auto auto auto;
+  border-radius: 4px;
+}
+
+div.close {
+  position: absolute;
+  top: 0;
+  right: 10px;
+}
+
+div.close:after{
+  display: inline-block;
+  font-size: 36px;
+  font-weight: lighter;
+  content: "\00d7";
+}
+
+div.content {
+  width: 75%;
+  height: 100%;
+  float: left;
+}
+
+.content section {
+  margin: 10px 20px 20px 50px;
+}
+
+.content section header .icon-lg {
+  margin-left: -40px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.content section header h1 {
+  display: inline-block;
+  vertical-align: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.content section header p {
+  margin-left: 6px;
+}
+
+.content section header p a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+#general a, #general p{
+  color: #8C8C8C;
+}
+
+#general a:hover {
+  color: #444;
+}
+
+#general a.edit-description {
+  display: block;
+  text-decoration: underline;
+  padding: 5px;
+  border-radius: 3px;
+  margin: 10px 0;
+}
+
+#general a.edit-description span {
+  margin-left: 10px;
+}
+#general a.edit-description:hover {
+  background-color: #ddd;
+}
+
+#comment form textarea {
+  resize: none;
+  border: none;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 3px;
+  outline: 0;
+}
+
+#comment .comment_toolbar {
+  height: 35px;
+  background: white;
+}
+
+#comment .comment_container {
+  display: inline-block;
+  box-shadow: -1px 1px 1px #aaa;
+}
+
+#comment .tools {
+  float: right;
+}
+
+#comment form button {
+  margin: 10px 0;
+  background-color: #ddd;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#comment div.user_pic {
+  width: 30px;
+  height: 30px;
+  background: url('../images/david.png') no-repeat center;
+  background-size: 30px;
+  display: inline-block;
+  position: absolute;
+  left: 10px;
+  border-radius: 3px;
+}
+
+#activity_feed {
+  display: block
+}
+
+#activity_feed li {
+  margin-left: 0 0 0 -30px;
+  padding: 10px 0 10px 0;
+}
+
+#activity_feed li + li {
+  border-top: 1px solid #ddd;
+}
+
+#activity_feed small {
+  color: #8C8C8C;
+}
+
+#activity_feed small:hover {
+  color: #444;
+  text-decoration: underline;
+}
+
+div.small_user_pic {
+  width: 20px;
+  height: 20px;
+  background: url('../images/david.png') no-repeat center;
+  background-size: 20px;
+  display: inline-block;
+  position: absolute;
+  border-radius: 3px;
+  left: 20px;
+}
+
+.tools span {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.tools span:hover {
+  background-color: #ddd;
+  border-radius: 3px;
+}
+
+#activity h1 {
+  float: left;
+}
+
+#activity a {
+  float: right;
+  color: #8C8C8C;
+  text-decoration: underline;
+}
+
+#activity a:hover {
+  color: #444;
+}
+
+
+.sidebar {
+  width: 25%;
+  height: 100%;
+  float: right;
+}
+
+.sidebar .add {
+  margin-top: 60px;
+}
+
+.sidebar h1 {
+  font-weight: bold;
+  font-size: 16px;
+}
+.sidebar ul {
+  width: 160px;
+}
+
+.sidebar li {
+  height: 32px;
+  margin: 10px 0;
+}
+
+.sidebar .btn {
+  background-color: #FAFBFB;
+  font-weight: bold;
+  box-shadow: 0px 0px 1px #888888;
+  text-align: left;
+}
+
+.sidebar .btn:hover {
+  background-color: #3879D9;
+  color: white;
+}
+
+.sidebar .btn:hover .icon-sm:before {
+  color: white;
+}
+
+.sidebar footer a{
+  display: block;
+  color: #8C8C8C;
+  text-decoration: underline;
+  width: 160px;
+  height: 30px;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.sidebar footer a:hover {
+  background-color: #ddd;
+  color: #444;
+}
+
+@media (max-width: 750px) {
+  div.search {
+    width: 30px;
+    background-position: center;
+  }
+
+  div.user, div.boards {
+    width: 30px;
+    background-position: center;
+  }
+
+  div.user span, div.boards span {
+    display: none;
+  }
+}
+
+::-webkit-scrollbar {
+ height: 20px;
+}
+::-webkit-scrollbar-track {
+ background-color: #0067A3;
+ background-clip: padding-box;
+ border: solid transparent;
+ border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+ background-color: #66A4C7;
+ background-clip: padding-box;
+ border: solid transparent;
+ border-radius: 10px;
+ min-height: 28px;
+}
+
+
