@@ -1,5 +1,8 @@
 @import url("whitespace-reset.css");
-@import url("../vendor/trello-fonts.css");
+@import url("vendor/trello-fonts.css");
+
+
+/*GLOBAL*/
 
 html {
   font: 14px "Helvetica";
@@ -12,7 +15,6 @@ body {
   width: 100%;
   height: 100%;
   color: white;
-  background: #0079BF;
 }
 
 /*HEADER NAV*/
@@ -22,14 +24,6 @@ body > header {
   height: 40px;
   color: white;
   padding: 3px;
-}
-
-div.board_header {
-  height: 30px;
-  position: absolute;
-  top: 0px;
-  left: 0;
-  right: 0;
 }
 
 .left_header, .left {
@@ -122,16 +116,120 @@ i.fa {
 
 
 /*END HEADER NAV*/
+
+
 /*MAIN NAV*/
 
 main {
-  margin: 10px;
   position: absolute;
   top: 40px;
   left: 0;
   bottom: 0;
   right: 0;
+  background: #0079BF;
 }
+
+div.margin_wrapper {
+  margin: 10px;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/*BOARDS VIEW*/
+main.boards_view {
+  background: white;
+}
+
+main.boards_view header {
+  margin: 22px 10px 5px 10px;
+}
+
+main.boards_view h1 {
+  color: #4D4D4D;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+main.boards_view .header_text {
+  vertical-align: 3px;
+}
+
+main.boards_view div.board_obj, 
+main.boards_view div.create_new_board{
+  width: auto;
+  height: 97px;
+  background: #0067A3;
+  border-radius: 3px;
+  padding: 10px;
+  position: relative;
+}
+
+main.boards_view div.create_new_board {
+  background: #E2E4E6;
+  color: #8C8C8C;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  padding-top: 40px;
+}
+
+main.boards_view div.create_new_board:hover {
+  background-color: #cdcdcd;
+  color: #666;
+}
+
+main.boards_view div.board_obj:hover {
+  background-color: #1D507A;
+}
+
+main.boards_view div.board_obj span:before {
+  color: white;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  right: -12px;
+  -webkit-transition: opacity .25s, top 0.25s, right 0.25s, -webkit-transform 0.25s; /* Safari */
+  transition: opacity .25s, top 0.25s, right 0.25s, transform 0.25s;
+}
+
+main.boards_view div.board_obj:hover span:before {
+  color: white;
+  opacity: .75;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: block;
+  -webkit-transition: top .25s, right .25s, opacity .25s, font-size .25s, -webkit-transform 0.25s; /* Safari */
+  transition: top .25s, right .25s, opacity .25s, font-size .25s, transform 0.25s;
+}
+
+main.boards_view div.board_obj:hover span:hover:before {
+  opacity: 1;
+  font-size: 14px;
+}
+
+div.boards_wrapper {
+  max-width: 1235px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+section.personal_boards > ul {
+  font-size: 0;
+}
+
+section.personal_boards li {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(25% - 14px);
+  margin: 6px 14px 6px 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 
 div.board_name {
   font-size: 18px;
@@ -140,6 +238,16 @@ div.board_name {
   border-radius: 4px;
   display: inline-block;
   vertical-align: top;
+}
+
+/*BOARD PAGE - LIST VIEW*/
+
+div.board_header {
+  height: 30px;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
 }
 
 div.star {
@@ -250,6 +358,7 @@ div.dots {
 .board_list > header, .add_list > header {
   margin: 8px;
 }
+
 .board_list header h1 {
   display: inline-block;
   font-weight: bold;
@@ -354,6 +463,8 @@ li.card {
   background-color: #ddd;
 }
 
+
+/*CARD DETAIL MODAL*/
 .cover_modal {
   position: absolute;
   top: 0;
@@ -605,9 +716,19 @@ div.small_user_pic {
   color: #444;
 }
 
+
+/*MEDIA QUERIES*/
+
+@media (max-width: 900px) {
+  section.personal_boards li {
+    width: calc(33% - 14px);
+  }
+}
+
 @media (max-width: 750px) {
   div.user, div.boards, div.search{
     width: 30px;
+
   }
 
   nav div .btn-text {
@@ -655,17 +776,33 @@ div.small_user_pic {
   .sidebar footer a {
     width: auto;
   }
+
+  section.personal_boards li {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  section.personal_boards li > .create_new_board {
+    width: 150px;
+  }
+
+  div.boards_wrapper {
+    padding: 0;
+  }
 }
 
+/*SCROLLBAR CUSTOMIZATION FOR BOARD_LIST*/
 .board_list_container::-webkit-scrollbar {
  height: 20px;
 }
+
 .board_list_container::-webkit-scrollbar-track {
  background-color: #0067A3;
  background-clip: padding-box;
  border: solid transparent;
  border-radius: 10px;
 }
+
 .board_list_container::-webkit-scrollbar-thumb {
  background-color: #66A4C7;
  background-clip: padding-box;
