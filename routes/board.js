@@ -4,10 +4,11 @@ var path = require('path');
 var Boards = require(path.resolve(path.dirname(__dirname), 'local_modules/boards_module'));
 
 module.exports = function(router) {
-  router.get('/', function(req, res, next) {
-    res.render('index', {
+  router.get('/b/:id*', function(req, res, next) {
+    res.render('board', {
       title: "Boards | Trello",
-      boards: Boards.get()
+      boards: Boards.get(),
+      board_id: +req.params.id
     });
   });
 };
