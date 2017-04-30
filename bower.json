@@ -1,0 +1,18 @@
+{
+  "name": "trello-clone299",
+  "description": "",
+  "main": "",
+  "authors": [
+    "David Kurutz <davidkurutz@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/davidkurutz/trello_clone",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
