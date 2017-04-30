@@ -1,0 +1,29 @@
+<div class="margin_wrapper">
+  <div class="boards_wrapper">
+    <header>
+      <h1>
+        <span class="icon-lg icon-member"></span>
+        <span class="header_text">Personal Boards</span>
+      </h1>
+    </header>
+    <section class="personal_boards">
+      <ul>
+        {{#each boards}}
+        <li>
+          <a href="/b/{{id}}">
+            <div class="board_obj">
+              {{name}}
+              <span class="icon-sm icon-star"></span>
+          </div>
+          </a>
+        </li>
+        {{/each}}
+        <li>
+          <div class="create_new_board">
+            Create new board...
+          </div>
+        </li>
+      </ul>
+    </section>
+  </div>
+</div>
