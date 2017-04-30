@@ -1,10 +1,20 @@
-var path = require('path'),
-    fs = require('fs'),
-    _ = require('underscore'),
-    file_path = path.resolve(path.dirname(__dirname), 'data/boards.json');
+var path = require('path');
+var fs = require('fs');
+var _ = require('underscore');
+var file_path = path.resolve(path.dirname(__dirname), 'data/boards.json');
 
 module.exports = {
-  get: function() {
+  get: function(id) {
+    var boards = this.getJSON();
+
+    if (id) {
+      console.log(_.findWhere(boards, {id: id}));
+      return _.findWhere(boards, {id: id});
+    } else {
+      return boards;
+    }
+  },
+  getJSON: function() {
     return JSON.parse(fs.readFileSync(file_path, "utf8")).data
   },
   write: function(data) {
