@@ -230,6 +230,10 @@ section.personal_boards li {
   font-weight: bold;
 }
 
+section.personal_boards li a {
+  color: white;
+  text-decoration: none;
+}
 
 div.board_name {
   font-size: 18px;
