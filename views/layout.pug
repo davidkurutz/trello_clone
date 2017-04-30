@@ -1,0 +1,21 @@
+include /_mixins
+
+doctype html
+html
+  head
+    title= title
+    +stylesheet_link_tag('vendor/bootstrap-3.3.7-dist/css/bootstrap.min')
+    +stylesheet_link_tag('vendor/trello-fonts')
+    +stylesheet_link_tag('trello')
+    +javascript_include_tag('vendor/all')
+    +javascript_include_tag('handlebars_templates')
+  body
+    block content
+    +javascript_include_tag('application')
+    +javascript_include_tag('models/board', 'models/card', 'models/list')
+    +javascript_include_tag('collections/boards', 'collections/cards', 'collections/lists')
+    +javascript_include_tag('views/board_view', 'views/list_view', 'views/card_view', 'views/header_view')
+    block scripts
+    script(type="text/javascript").
+        App.init();
+    +javascript_include_tag('router')
