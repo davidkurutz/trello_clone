@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  header
+  main
+
+block scripts
+  script(type="text/javascript").
+    App.Boards = new Boards(!{JSON.stringify(boards)});
+    App.boardView(!{board_id});
