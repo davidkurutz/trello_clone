@@ -1,11 +1,27 @@
 this["JST"] = this["JST"] || {};
 
-this["JST"]["board"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper;
+this["JST"]["board"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : {};
+
+  return "<li class=\"board_list\"><header><h1>"
+    + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</h1><span class=\"icon-sm icon-overflow-menu-horizontal list_actions\"></span></header><ul class=\"cards\">"
+    + ((stack1 = helpers.each.call(alias1,((stack1 = (depth0 != null ? depth0.Cards : depth0)) != null ? stack1.models : stack1),{"name":"each","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</ul><footer><a href=\"\">Add a card...</a></footer></li>";
+},"2":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "<li class=\"card\"><header><h1>"
+    + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.attributes : depth0)) != null ? stack1.name : stack1), depth0))
+    + "</h1><span class=\"edit icon-sm icon-edit\"></span></header></li>";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
 
   return "<div class=\"margin_wrapper\"><div class=\"wrapper\"><div class=\"board_header\"><div class=\"left\"><div class=\"board_name\">"
-    + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"name","hash":{},"data":data}) : helper)))
-    + "</div><div class=\"star\"><span class=\"icon-sm icon-star\"></span></div><div class=\"private\"><div class=\"lock\"><span class=\"icon-sm icon-private\"></span></div><span>Private</span></div></div><div class=\"right\"><div class=\"show_menu\"><div class=\"dots\"><span class=\"icon-sm icon-overflow-menu-horizontal\"></span></div><span class=\"btn-text\">Show Menu</span></div></div></div><div class=\"board_list_container\"><ul class=\"list-inline\"><li class=\"board_list\"><header><h1>Test Data</h1><span class=\"icon-sm icon-overflow-menu-horizontal list_actions\"></span></header><ul class=\"cards\"><li class=\"card\"><header><h1>Title</h1><span class=\"edit icon-sm icon-edit\"></span></header></li><li class=\"card\"><header><h1>Title</h1><span class=\"edit icon-sm icon-edit\"></span></header></li><li class=\"card\"><header><h1>Title</h1><span class=\"edit icon-sm icon-edit\"></span></header></li></ul><footer><a href=\"\">Add a card...</a></footer></li><li class=\"board_list\"><header><h1>Test Data</h1><span class=\"icon-sm icon-overflow-menu-horizontal list_actions\"></span></header><ul class=\"cards\"></ul><footer><a href=\"\">Add a card...</a></footer></li><li class=\"add_list\"><header>Add a list...</header></li></ul></div></div></div>";
+    + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.board : depth0)) != null ? stack1.name : stack1), depth0))
+    + "</div><div class=\"star\"><span class=\"icon-sm icon-star\"></span></div><div class=\"private\"><div class=\"lock\"><span class=\"icon-sm icon-private\"></span></div><span>Private</span></div></div><div class=\"right\"><div class=\"show_menu\"><div class=\"dots\"><span class=\"icon-sm icon-overflow-menu-horizontal\"></span></div><span class=\"btn-text\">Show Menu</span></div></div></div><div class=\"board_list_container\"><ul class=\"list-inline\">"
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.lists : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "<li class=\"add_list\"><header>Add a list...</header></li></ul></div></div></div>";
 },"useData":true});
 
 this["JST"]["boards"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
@@ -28,10 +44,18 @@ this["JST"]["header"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":fu
     return "<nav class=\"left_header\"><div class=\"boards\" id=\"board-btn\"><span class=\"icon-sm icon-board\"></span><span class=\"btn-text\">Boards<span></div><div class=\"search\"><span class=\"icon-sm icon-search\"></span></div></nav><div class=\"header_logo\"></div><nav class=\"right_header\"><div class=\"create\"><span class=\"icon-sm icon-add\"></span></div><div class=\"user\"><span class=\"btn-text\">David Kurutz<span></div><div class=\"info\"><span class=\"icon-sm icon-information\"></span></div><div class=\"notification\"><span class=\"icon-sm icon-notification\"></span></div></nav>";
 },"useData":true});
 
-this["JST"]["list"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+this["JST"]["list"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var helper;
 
-  return "<header><h1>"
+  return "<li class=\"card\"><header><h1>"
     + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"name","hash":{},"data":data}) : helper)))
-    + "</h1><span class=\"icon-sm icon-overflow-menu-horizontal list_actions\"></span></header><ul class=\"cards\"><li class=\"card\"><header><h1>Title</h1><span class=\"edit icon-sm icon-edit\"></span></header></li><li class=\"card\"><header><h1>Title</h1><span class=\"edit icon-sm icon-edit\"></span></header></li><li class=\"card\"><header><h1>Title</h1><span class=\"edit icon-sm icon-edit\"></span></header></li></ul><footer><a href=\"\">Add a card...</a></footer>";
+    + "</h1><span class=\"edit icon-sm icon-edit\"></span></header></li>";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : {};
+
+  return "<header><h1>"
+    + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</h1><span class=\"icon-sm icon-overflow-menu-horizontal list_actions\"></span></header><ul class=\"cards\">"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.Cards : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "<footer><a href=\"\">Add a card...</a></footer>";
 },"useData":true});

@@ -5,10 +5,14 @@ var App = {
   },
   boardView: function(board_id) {
     this.headerView();
-    var board = this.Boards.get(board_id);
-    board.getLists();
-    this.BoardView = new BoardView({ model: board });
-    // router.navigate("/b/" + board_id);
+    this.Board = this.Boards.get(+board_id);
+    this.Board.getLists(this.populateLists.bind(this));
+  },
+  populateLists: function() {
+    this.Board.get("Lists").getCards((this.createBoardView).bind(this))
+  },
+  createBoardView: function() {
+    this.BoardView = new BoardView({ model: this.Board });
   },
   boardsView: function() {
     this.headerView();

@@ -3,7 +3,11 @@ var ListView = Backbone.View.extend({
   className: "board_list",
   template: App.templates.list,
   render: function() {
-    this.$el.html(this.template(this.model.toJSON()));
+    alert('listview');
+    this.$el.html(this.template({
+      model: this.model.toJSON(),
+      Cards: this.model.get("Cards").toJSON()
+    }));
   },
   initialize: function() {
     this.render();
