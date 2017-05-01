@@ -3,28 +3,15 @@
   <span class="icon-sm icon-overflow-menu-horizontal list_actions"></span>
 </header>
 <ul class="cards">
+  {{#each Cards}}
   <li class="card">
     <header>
-      <h1>Title</h1>
+      <h1>{{name}}</h1>
       <span class="edit icon-sm icon-edit">
       </span>
     </header>
   </li>
-  <li class="card">
-    <header>
-      <h1>Title</h1>
-      <span class="edit icon-sm icon-edit">
-      </span>
-    </header>
-  </li>
-  <li class="card">
-    <header>
-      <h1>Title</h1>
-      <span class="edit icon-sm icon-edit">
-      </span>
-    </header>
-  </li>
-</ul>
+  {{/each}}
 <footer>
   <a href="">Add a card...</a>
 </footer>

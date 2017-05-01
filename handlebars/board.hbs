@@ -3,7 +3,9 @@
 
     <div class="board_header">
       <div class="left">
-        <div class="board_name">{{name}}</div>
+
+        <div class="board_name">{{board.name}}</div>
+
         <div class="star">
           <span class="icon-sm icon-star"></span>
         </div>
@@ -26,49 +28,29 @@
     
     <div class="board_list_container">
       <ul class="list-inline">
+        {{#each lists}}
         <li class="board_list">
           <header>
-            <h1>Test Data</h1>
+            <h1>{{name}}</h1>
             <span class="icon-sm icon-overflow-menu-horizontal list_actions"></span>
           </header>
           <ul class="cards">
+
+            {{#each Cards.models}}
             <li class="card">
               <header>
-                <h1>Title</h1>
+                <h1>{{attributes.name}}</h1>
                 <span class="edit icon-sm icon-edit">
                 </span>
               </header>
             </li>
-            <li class="card">
-              <header>
-                <h1>Title</h1>
-                <span class="edit icon-sm icon-edit">
-                </span>
-              </header>
-            </li>
-            <li class="card">
-              <header>
-                <h1>Title</h1>
-                <span class="edit icon-sm icon-edit">
-                </span>
-              </header>
-            </li>
+            {{/each}}
           </ul>
           <footer>
             <a href="">Add a card...</a>
           </footer>
         </li>
-        <li class="board_list">
-          <header>
-            <h1>Test Data</h1>
-            <span class="icon-sm icon-overflow-menu-horizontal list_actions"></span>
-          </header>
-          <ul class="cards">
-          </ul>
-          <footer>
-            <a href="">Add a card...</a>
-          </footer>
-        </li>
+        {{/each}}
         <li class="add_list">
           <header>Add a list...</header>
         </li>
