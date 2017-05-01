@@ -195,6 +195,16 @@ main.boards_view div.board_obj span:before {
   transition: opacity .25s, top 0.25s, right 0.25s, transform 0.25s;
 }
 
+main.boards_view div.board_obj span.gold:before {
+  color: gold;
+  opacity: 1;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  -webkit-transition: -webkit-transform 0.25s; /* Safari */
+  transition: transform 0.25s;
+}
+
 main.boards_view div.board_obj:hover span:before {
   color: white;
   opacity: .75;
@@ -217,11 +227,11 @@ div.boards_wrapper {
   padding: 10px;
 }
 
-section.personal_boards > ul {
+section.board_collection > ul {
   font-size: 0;
 }
 
-section.personal_boards li {
+section.board_collection li {
   display: inline-block;
   vertical-align: top;
   width: calc(25% - 14px);
@@ -230,7 +240,7 @@ section.personal_boards li {
   font-weight: bold;
 }
 
-section.personal_boards li a {
+section.board_collection li a {
   color: white;
   text-decoration: none;
 }
@@ -268,6 +278,10 @@ div.star span:before {
   position: absolute;
   top: 7px;
   left: 11px;
+}
+
+main.boards_view div.board_obj span.gold:before {
+  color: gold;
 }
 
 div.board_name:hover, div.star:hover, div.private:hover, div.show_menu:hover{
@@ -724,7 +738,7 @@ div.small_user_pic {
 /*MEDIA QUERIES*/
 
 @media (max-width: 900px) {
-  section.personal_boards li {
+  section.board_collection li {
     width: calc(33% - 14px);
   }
 }
@@ -781,12 +795,12 @@ div.small_user_pic {
     width: auto;
   }
 
-  section.personal_boards li {
+  section.board_collection li {
     width: 100%;
     margin-right: 0;
   }
 
-  section.personal_boards li > .create_new_board {
+  section.board_collection li > .create_new_board {
     width: 150px;
   }
 

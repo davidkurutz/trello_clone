@@ -4,6 +4,12 @@ var HeaderView = Backbone.View.extend({
   render: function() {
     this.$el.html(this.template());
   },
+  events: {
+
+  },
+  boardsView: function() {
+    App.trigger('boardsView')
+  },
   initialize: function() {
     this.render();
   }

@@ -9,6 +9,16 @@ var BoardView = Backbone.View.extend({
       lists: lists
     }));
   },
+  events: {
+    'click .card' : 'cardView'
+  },
+  cardView: function(e) {
+    e.preventDefault();
+    var $t = $(e.currentTarget);
+    var id = +$t.attr("data-card-id");
+    var listId = +$t.closest(".board_list").attr("data-list-id");
+    App.trigger('cardView', id, listId);
+  },
   initialize: function() {
     this.render();
   }

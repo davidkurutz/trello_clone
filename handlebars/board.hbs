@@ -29,7 +29,7 @@
     <div class="board_list_container">
       <ul class="list-inline">
         {{#each lists}}
-        <li class="board_list">
+        <li class="board_list" data-list-id="{{id}}">
           <header>
             <h1>{{name}}</h1>
             <span class="icon-sm icon-overflow-menu-horizontal list_actions"></span>
@@ -37,7 +37,7 @@
           <ul class="cards">
 
             {{#each Cards.models}}
-            <li class="card">
+            <li class="card" data-card-id="{{attributes.id}}">
               <header>
                 <h1>{{attributes.name}}</h1>
                 <span class="edit icon-sm icon-edit">
