@@ -1,0 +1,27 @@
+{
+  "data": [{
+    "id": 1,
+    "board_id": 1,
+    "created_by": 1,
+    "created_on": "2017-04-30T00:41:41.867Z",
+    "name": "List1"
+  },{
+    "id": 2,
+    "board_id": 1,
+    "created_by": 1,
+    "created_on": "2017-04-30T00:41:41.867Z",
+    "name": "List2"
+  },{
+    "id": 3,
+    "board_id": 2,
+    "created_by": 1,
+    "created_on": "2017-04-30T00:41:41.867Z",
+    "name": "List3"
+  },{
+    "id": 4,
+    "board_id": 1,
+    "created_by": 1,
+    "created_on": "2017-04-30T00:41:41.867Z",
+    "name": "List4"
+  }]
+}
