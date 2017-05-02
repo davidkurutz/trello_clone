@@ -1,0 +1,834 @@
+@import "whitespace-reset.css"
+@import "vendor/trello-fonts.css"
+@import "mixins"
+
+/*GLOBAL*/
+
+html
+  font: 14px "Helvetica"
+  height: 100%
+
+body
+  overflow: hidden
+  position:relative
+  width: 100%
+  height: 100%
+  color: white
+  & > header
+    background: #0067A3
+    height: 40px
+    color: white
+    padding: 3px
+
+
+.left_header, .left 
+  float: left
+
+
+.right_header, .right 
+  float: right
+
+
+nav 
+  & > div 
+    display: inline-block
+    vertical-align: top
+    width: 30px
+    height: 30px
+    padding: 4px
+    border-radius: 3px
+    font-weight: bold
+    background-color: #4A93BE
+    margin: 2px
+    position: relative
+    span
+      vertical-align: top
+      &:before
+        color: white
+        position: absolute
+        top: 6px
+        left: 6px
+        font-size: 16px
+    &:hover
+      navhover()
+    .header-btn
+      &:hover
+        navhover()
+
+
+div.boards 
+  width: 90px
+  span.btn-text 
+    position: absolute
+    left: 30px
+
+
+div.search 
+  width: 170px
+  span:before 
+    left: 150px
+
+
+div.header_logo 
+  display: inline-block
+  position: absolute
+  height: 30px
+  width: 80px
+  left: 50%
+  margin-left: -50px
+  background: url('../images/header-logo-2x.png') no-repeat center
+  background-size: 80px 30px
+  opacity: .5
+  &:hover
+    opacity: .75
+
+
+div.user 
+  width: 140px
+  background: #4A93BE url('../images/david.png') no-repeat center
+  background-size: 30px
+  background-position: 0
+  span 
+    display: inline-block
+    position: absolute
+    left: 40px
+
+i.fa 
+  margin-right: 12px
+
+
+/*END HEADER NAV*/
+
+
+/*MAIN NAV*/
+
+main 
+  position: absolute
+  top: 40px
+  left: 0
+  bottom: 0
+  right: 0
+  background: #0079BF
+
+
+div.margin_wrapper 
+  margin: 10px
+  position: absolute
+  top: 0px
+  left: 0
+  bottom: 0
+  right: 0
+
+
+/*BOARDS VIEW*/
+main.boards_view 
+  background: white
+  header 
+    margin: 22px 10px 5px 10px
+  h1 
+    color: #4D4D4D
+    font-weight: bold
+    font-size: 16px
+  .header_text 
+    vertical-align: 3px
+  div
+    &.boards_wrapper
+      max-width: 1235px
+      margin: 0 auto
+      padding: 10px
+    &.board_obj 
+      boardObj()
+      &:hover
+        darkBlueHover()
+        span
+          &:before
+            color: white
+            opacity: .75
+            position: absolute
+            top: 8px
+            right: 8px
+            display: block
+            -webkit-transition: top .25s, right .25s, opacity .25s, font-size .25s, -webkit-transform 0.25s /* Safari */
+            transition: top .25s, right .25s, opacity .25s, font-size .25s, transform 0.25s
+          &:hover
+            &:before
+              opacity: 1
+              font-size: 14px
+      span
+        &:before
+          color: white
+          opacity: 0
+          position: absolute
+          top: 8px
+          right: -12px
+          -webkit-transition: opacity .25s, top 0.25s, right 0.25s, -webkit-transform 0.25s /* Safari */
+          transition: opacity .25s, top 0.25s, right 0.25s, transform 0.25s
+        &.gold
+          &:before
+            color: gold
+            opacity: 1
+            position: absolute
+            top: 8px
+            right: 8px
+            -webkit-transition: -webkit-transform 0.25s /* Safari */
+            transition: transform 0.25s
+    &.create_new_board
+      boardObj()
+      background: #E2E4E6
+      color: #8C8C8C
+      font-size: 14px
+      font-weight: normal
+      text-align: center
+      padding-top: 40px
+      &:hover
+        greyBtnHover()
+
+section.board_collection
+  ul 
+    font-size: 0
+    li 
+      display: inline-block
+      vertical-align: top
+      width: calc(25% - 14px)
+      margin: 6px 14px 6px 0
+      font-size: 16px
+      font-weight: bold
+      a
+        color: white
+        text-decoration: none
+
+div.board_name 
+  font-size: 18px
+  font-weight: bold
+  padding: 4px 6px
+  border-radius: 4px
+  display: inline-block
+  vertical-align: top
+
+
+/*BOARD PAGE - LIST VIEW*/
+
+div.board_header 
+  height: 30px
+  position: absolute
+  top: 0px
+  left: 0
+  right: 0
+
+
+div.star 
+  position: relative
+  display: inline-block
+  width: 33px
+  height: 33px
+  border-radius: 3px
+  margin: 0 2px
+  span:before 
+    color: white
+    position: absolute
+    top: 7px
+    left: 11px
+
+div.board_name:hover, div.star:hover, div.private:hover, div.show_menu:hover
+  background-color: #0067A3
+
+
+div.lock 
+  display: inline-block
+  vertical-align: top
+  width: 18px
+  height: 18px
+  position: relative
+  span
+    &:before 
+      color: white
+      position: absolute
+      top: 1px
+      left: 3px
+
+
+div
+  &.private
+    smallBoardHeaderDiv()
+    span
+      display: inline-block
+      vertical-align: -3px
+  &.div.show_menu
+    smallBoardHeaderDiv()
+    span
+      display: inline-block
+      vertical-align: -3px
+      &.btn-text
+        text-decoration: underline
+      &.icon-sm
+        &:before
+          color: white
+
+div.dots 
+  display: inline-block
+  vertical-align: top
+  width: 18px
+  height: 18px
+
+
+/*CREATE NEW BOARD FORM*/
+div.create_board 
+  width: 304px
+  height: 253px
+  font-size: 14px
+  position: absolute
+  background-color: #FFFFFF
+  color: #888
+  z-index: 2
+  box-shadow: 0px 0px 1px #888888
+  padding: 8px
+  border-radius: 5px
+  header 
+    margin: 0
+    border-bottom: 1px solid #ddd
+    h1 
+      padding: 10px
+      font-weight: lighter
+      color: #888
+      text-align: center
+  form 
+    padding: 5px
+    dl
+      margin-bottom: 10px
+    dt 
+      label 
+        color: #555
+    dd
+      input#title, select
+        width: 100%
+        padding: 5px
+        border-radius: 5px
+        border: 1px solid #bbb
+        font-weight: lighter
+      & + dt 
+        margin-top: 10px
+    &.btn-submit
+      background-color: #5FB74B
+      color: white
+      font-weight: bold
+      width: 120px
+      margin: 10px 0 0 0
+      &:hover
+        background-color: #4EA63A
+  span
+    font-weight: lighter
+    &.icon-private
+      &:before
+        color: red
+    a
+      color: #888
+      text-decoration: underline
+      &:hover 
+        color: #333
+    &.icon-information
+      &:hover
+        color: #333
+
+select
+  &#team 
+    color: #333
+    
+
+// BOARD VIEW
+
+.board_list_container 
+  overflow-x:auto
+  position: absolute
+  top: 40px
+  right: 0
+  bottom: 0
+  left: 0
+  width:100%
+  padding: 6px
+
+
+.board_list, .add_list
+  max-height: 575px
+  width: 270px
+  background: #E2E4E6
+  border-radius: 3px
+  padding-top: 5px
+  color: #4D4D4D
+  vertical-align: top
+
+
+.add_list 
+  background: #006AA8
+  color: #B3D3E5
+
+
+.add_list:hover 
+  background: #155F9C
+
+
+.board_list > header, .add_list > header 
+  margin: 8px
+
+
+.board_list header h1 
+  display: inline-block
+  font-weight: bold
+
+
+.board_list + .board_list, .board_list + .add_list
+  margin-left: 6px
+
+
+.board_list footer 
+  padding: 8px
+
+
+.board_list footer a 
+  text-decoration: none
+  color: #8E8E8E
+
+
+.board_list footer:hover 
+  background: #ccc
+  border-bottom-left-radius: 3px
+  border-bottom-right-radius: 3px
+
+
+.board_list footer:hover a 
+  text-decoration: underline
+  color: #444
+
+
+.list-inline 
+  white-space:nowrap
+
+
+.list-inline > li 
+  padding: 0
+
+
+.list_actions 
+  border-radius: 3px
+  float: right
+  width: 24px
+  height: 24px
+  position: relative
+
+
+.list_actions:before 
+  position: absolute
+  top: 3px
+  left: 5px
+
+
+.list_actions:hover 
+  background-color: #cdcdcd
+  color: #666
+
+
+ul.cards 
+  margin: 15px 5px 0 5px
+
+
+li.card 
+  display: block
+  background: #ffffff
+  min-height: 32px
+  margin: 8px 4px
+  border-radius: 3px
+
+
+.card 
+  padding: 3px
+
+.card > header h1 
+  padding: 6px
+  font-weight: normal
+
+
+.card span.edit 
+  border-radius: 3px
+  float: right
+  width: 26px
+  height: 26px
+  display: none
+  position: relative
+
+
+.card span.icon-edit:before 
+  position: absolute
+  left: 7px
+  top: 5px
+
+
+.card:hover 
+  background: #eeeeee
+
+
+.card:hover span.edit 
+  display: block
+  background-color: inherit
+
+
+.card:hover span.edit:hover 
+  background-color: #ddd
+
+
+
+/*CARD DETAIL MODAL*/
+.cover_modal 
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  background: rgba(0, 0, 0, 0.5)
+
+
+.card_detail 
+  color: #4D4D4D
+  position: relative
+  width: 732px
+  height: 605px
+  background: #EDEFF0
+  margin: 40px auto auto auto
+  border-radius: 4px
+
+
+div.close 
+  position: absolute
+  top: 0
+  right: 10px
+
+
+div.close.small 
+  top: 10px
+  right: 15px
+
+
+div.close.small:after 
+  font-size: 24px
+
+
+div.close:after
+  display: inline-block
+  font-size: 36px
+  font-weight: lighter
+  content: "\00d7"
+
+
+div.content 
+  width: 75%
+  float: left
+
+
+.content section 
+  margin: 10px 20px 20px 50px
+
+
+.content section header .icon-lg 
+  margin-left: -40px
+  margin-right: 10px
+  margin-bottom: 5px
+  display: inline-block
+
+
+.content section header h1 
+  display: inline-block
+  vertical-align: 10px
+  font-size: 16px
+  font-weight: bold
+
+
+.content section header p 
+  margin-left: 6px
+
+
+.content section header p a 
+  text-decoration: underline
+  color: inherit
+
+
+#general a, #general p
+  color: #8C8C8C
+
+
+#general a:hover 
+  color: #444
+
+
+#general a.edit-description 
+  display: block
+  text-decoration: underline
+  padding: 5px
+  border-radius: 3px
+  margin: 10px 0
+
+
+#general a.edit-description span 
+  margin-left: 10px
+
+#general a.edit-description:hover 
+  background-color: #ddd
+
+
+#comment form textarea 
+  resize: none
+  border: none
+  padding: 10px
+  box-sizing: border-box
+  width: 100%
+  border-radius: 3px
+  outline: 0
+
+
+#comment .comment_toolbar 
+  height: 35px
+  background: white
+
+
+#comment .comment_container 
+  display: inline-block
+  box-shadow: -1px 1px 1px #aaa
+
+
+#comment .tools 
+  float: right
+  margin: 0 5px 5px 5px
+
+
+#comment form button 
+  margin: 10px 0
+  background-color: #ddd
+  padding-left: 20px
+  padding-right: 20px
+
+
+#comment div.user_pic 
+  width: 30px
+  height: 30px
+  background: url('../images/david.png') no-repeat center
+  background-size: 30px
+  display: inline-block
+  position: absolute
+  left: 10px
+  border-radius: 3px
+
+
+#activity_feed 
+  display: block
+
+
+#activity_feed li 
+  margin-left: 0 0 0 -30px
+  padding: 10px 0 10px 0
+
+
+#activity_feed li + li 
+  border-top: 1px solid #ddd
+
+
+#activity_feed small 
+  color: #8C8C8C
+
+
+#activity_feed small:hover 
+  color: #444
+  text-decoration: underline
+
+
+div.small_user_pic 
+  width: 20px
+  height: 20px
+  background: url('../images/david.png') no-repeat center
+  background-size: 20px
+  display: inline-block
+  position: absolute
+  border-radius: 3px
+  left: 20px
+
+
+.tools span 
+  width: 30px
+  height: 30px
+  line-height: 30px
+
+
+.tools span:hover 
+  background-color: #ddd
+  border-radius: 3px
+
+
+#activity h1 
+  float: left
+
+
+#activity a 
+  float: right
+  color: #8C8C8C
+  text-decoration: underline
+
+
+#activity a:hover 
+  color: #444
+
+
+
+.sidebar 
+  width: 25%
+  float: right
+  padding-bottom: 20px
+
+
+.sidebar .add 
+  margin-top: 60px
+
+
+.sidebar .edit_actions 
+  margin-top: 20px
+
+.sidebar h1 
+  font-weight: bold
+  font-size: 16px
+
+.sidebar ul 
+  width: 160px
+
+
+.sidebar li 
+  height: 32px
+  margin: 10px 0
+
+
+.sidebar .btn 
+  background-color: #FAFBFB
+  font-weight: bold
+  font-size: 14px
+  box-shadow: 0px 0px 1px #888888
+  text-align: left
+
+
+.sidebar .btn:hover 
+  background-color: #3879D9
+  color: white
+
+
+.sidebar .btn:hover .icon-sm:before 
+  color: white
+
+
+.sidebar footer 
+  margin-top: 20px
+
+
+.sidebar footer a
+  display: block
+  color: #8C8C8C
+  text-decoration: underline
+  width: 160px
+  height: 30px
+  border-radius: 3px
+  padding: 5px
+
+
+.sidebar footer a:hover 
+  background-color: #ddd
+  color: #444
+
+
+
+/*MEDIA QUERIES*/
+
+@media (max-width: 900px) 
+  section.board_collection li 
+    width: calc(33% - 14px)
+  
+
+
+@media (max-width: 750px) 
+  div.user, div.boards, div.search
+    width: 30px
+
+  
+
+  nav div .btn-text 
+    display: none
+  
+
+  nav .search span:before 
+    left: 6px
+    top: 6px
+  
+
+  div.card_detail 
+    width: 420px
+    height: auto
+  
+
+  div.content, div.sidebar 
+    width: 100%
+    float: none
+  
+
+  div.cover_modal 
+    background: #00304C
+    overflow: scroll
+    padding-bottom: 30px
+  
+
+  .sidebar .add 
+    margin-top: 20px
+  
+
+  .sidebar 
+    padding-left: 10px
+    padding-right: 10px
+  
+
+  .sidebar button 
+    width: 300px
+  
+
+  .sidebar footer 
+    width: 100%
+  
+
+  .sidebar footer a 
+    width: auto
+  
+
+  section.board_collection li 
+    width: 100%
+    margin-right: 0
+  
+
+  section.board_collection li > .create_new_board 
+    width: 150px
+  
+
+  div.boards_wrapper 
+    padding: 0
+  
+
+
+/*SCROLLBAR CUSTOMIZATION FOR BOARD_LIST*/
+.board_list_container::-webkit-scrollbar 
+ height: 20px
+
+
+.board_list_container::-webkit-scrollbar-track 
+ background-color: #0067A3
+ background-clip: padding-box
+ border: solid transparent
+ border-radius: 10px
+
+
+.board_list_container::-webkit-scrollbar-thumb 
+ background-color: #66A4C7
+ background-clip: padding-box
+ border: solid transparent
+ border-radius: 10px
+ min-height: 28px
+
+
+

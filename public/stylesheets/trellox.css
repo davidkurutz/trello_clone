@@ -48,11 +48,8 @@ nav > div span:before {
   left: 6px;
   font-size: 16px;
 }
-nav > div:hover {
-  background-color: #6ea2c0;
-  color: #fff;
-}
-nav > div .header-btn:hover {
+nav div:hover,
+.header-btn:hover {
   background-color: #6ea2c0;
   color: #fff;
 }
@@ -130,12 +127,8 @@ main.boards_view h1 {
 main.boards_view .header_text {
   vertical-align: 3px;
 }
-main.boards_view div.boards_wrapper {
-  max-width: 1235px;
-  margin: 0 auto;
-  padding: 10px;
-}
-main.boards_view div.board_obj {
+main.boards_view div.board_obj,
+main.boards_view div.create_new_board {
   width: auto;
   height: 97px;
   background: #0067a3;
@@ -143,22 +136,20 @@ main.boards_view div.board_obj {
   padding: 10px;
   position: relative;
 }
+main.boards_view div.create_new_board {
+  background: #e2e4e6;
+  color: #8c8c8c;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  padding-top: 40px;
+}
+main.boards_view div.create_new_board:hover {
+  background-color: #cdcdcd;
+  color: #666;
+}
 main.boards_view div.board_obj:hover {
   background-color: #1d507a;
-}
-main.boards_view div.board_obj:hover span:before {
-  color: #fff;
-  opacity: 0.75;
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  display: block;
-  -webkit-transition: top 0.25s, right 0.25s, opacity 0.25s, font-size 0.25s, -webkit-transform 0.25s /* Safari */;
-  transition: top 0.25s, right 0.25s, opacity 0.25s, font-size 0.25s, transform 0.25s;
-}
-main.boards_view div.board_obj:hover span:hover:before {
-  opacity: 1;
-  font-size: 14px;
 }
 main.boards_view div.board_obj span:before {
   color: #fff;
@@ -178,28 +169,32 @@ main.boards_view div.board_obj span.gold:before {
   -webkit-transition: -webkit-transform 0.25s /* Safari */;
   transition: transform 0.25s;
 }
-main.boards_view div.create_new_board {
-  width: auto;
-  height: 97px;
-  background: #0067a3;
-  border-radius: 3px;
-  padding: 10px;
-  position: relative;
-  background: #e2e4e6;
-  color: #8c8c8c;
+main.boards_view div.board_obj:hover span:before {
+  color: #fff;
+  opacity: 0.75;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: block;
+  -webkit-transition: top 0.25s, right 0.25s, opacity 0.25s, font-size 0.25s, -webkit-transform 0.25s /* Safari */;
+  transition: top 0.25s, right 0.25s, opacity 0.25s, font-size 0.25s, transform 0.25s;
+}
+main.boards_view div.board_obj:hover span:hover:before {
+  opacity: 1;
   font-size: 14px;
-  font-weight: normal;
-  text-align: center;
-  padding-top: 40px;
 }
-main.boards_view div.create_new_board:hover {
-  background-color: #cdcdcd;
-  color: #666;
+div.boards_wrapper {
+  max-width: 1235px;
+  margin: 0 auto;
+  padding: 10px;
 }
-section.board_collection ul {
+section.board_collection.starred ul:empty {
+  display: none;
+}
+section.board_collection > ul {
   font-size: 0;
 }
-section.board_collection ul li {
+section.board_collection li {
   display: inline-block;
   vertical-align: top;
   width: calc(25% - 14px);
@@ -207,7 +202,7 @@ section.board_collection ul li {
   font-size: 16px;
   font-weight: bold;
 }
-section.board_collection ul li a {
+section.board_collection li a {
   color: #fff;
   text-decoration: none;
 }
@@ -241,6 +236,9 @@ div.star span:before {
   top: 7px;
   left: 11px;
 }
+main.boards_view div.board_obj span.gold:before {
+  color: #ffd700;
+}
 div.board_name:hover,
 div.star:hover,
 div.private:hover,
@@ -260,6 +258,11 @@ div.lock span:before {
   top: 1px;
   left: 3px;
 }
+div.private span,
+div.show_menu span {
+  display: inline-block;
+  vertical-align: -3px;
+}
 div.private {
   display: inline-block;
   vertical-align: top;
@@ -269,11 +272,7 @@ div.private {
   box-sizing: border-box;
   padding: 6px;
 }
-div.private span {
-  display: inline-block;
-  vertical-align: -3px;
-}
-div.div.show_menu {
+div.show_menu {
   display: inline-block;
   vertical-align: top;
   height: 33px;
@@ -282,14 +281,10 @@ div.div.show_menu {
   box-sizing: border-box;
   padding: 6px;
 }
-div.div.show_menu span {
-  display: inline-block;
-  vertical-align: -3px;
-}
-div.div.show_menu span.btn-text {
+div.show_menu span.btn-text {
   text-decoration: underline;
 }
-div.div.show_menu span.icon-sm:before {
+div.show_menu span.icon-sm:before {
   color: #fff;
 }
 div.dots {
@@ -324,11 +319,11 @@ div.create_board header h1 {
 div.create_board form {
   padding: 5px;
 }
-div.create_board form dl {
-  margin-bottom: 10px;
-}
 div.create_board form dt label {
   color: #555;
+}
+div.create_board form dd + dt {
+  margin-top: 10px;
 }
 div.create_board form dd input#title,
 div.create_board form dd select {
@@ -338,21 +333,21 @@ div.create_board form dd select {
   border: 1px solid #bbb;
   font-weight: lighter;
 }
-div.create_board form dd + dt {
-  margin-top: 10px;
+div.create_board form dl {
+  margin-bottom: 10px;
 }
-div.create_board form.btn-submit {
+div.create_board span {
+  font-weight: lighter;
+}
+div.create_board form input[type="submit"] {
   background-color: #5fb74b;
   color: #fff;
   font-weight: bold;
   width: 120px;
   margin: 10px 0 0 0;
 }
-div.create_board form.btn-submit:hover {
+div.create_board form input[type="submit"]:hover {
   background-color: #4ea63a;
-}
-div.create_board span {
-  font-weight: lighter;
 }
 div.create_board span.icon-private:before {
   color: #f00;
