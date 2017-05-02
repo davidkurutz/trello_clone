@@ -49,6 +49,18 @@
       "private": false,
       "open": true,
       "archived": false
+    },
+    {
+      "title": "bork",
+      "team": "none",
+      "id": 6,
+      "createdBy": 1,
+      "createdOn": "2017-05-02T22:20:14.357Z",
+      "starred": false,
+      "open": true,
+      "archived": false
     }
-  ]
+  ],
+  "currentId": 7,
+  "currentStarredOrder": 5
 }
