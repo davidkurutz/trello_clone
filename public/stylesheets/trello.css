@@ -117,6 +117,7 @@ div.margin_wrapper {
 }
 /*BOARDS VIEW*/
 main.boards_view {
+  overflow: auto;
   background: #fff;
 }
 main.boards_view header {
@@ -390,6 +391,10 @@ select#team {
   color: #4d4d4d;
   vertical-align: top;
 }
+.board_list > header,
+.add_list > header {
+  margin: 8px;
+}
 .add_list {
   background: #006aa8;
   color: #b3d3e5;
@@ -397,24 +402,12 @@ select#team {
 .add_list:hover {
   background: #155f9c;
 }
-.board_list > header,
-.add_list > header {
-  margin: 8px;
-}
 .board_list header h1 {
   display: inline-block;
   font-weight: bold;
 }
-.board_list + .board_list,
-.board_list + .add_list {
-  margin-left: 6px;
-}
 .board_list footer {
   padding: 8px;
-}
-.board_list footer a {
-  text-decoration: none;
-  color: #8e8e8e;
 }
 .board_list footer:hover {
   background: #ccc;
@@ -424,6 +417,14 @@ select#team {
 .board_list footer:hover a {
   text-decoration: underline;
   color: #444;
+}
+.board_list footer a {
+  text-decoration: none;
+  color: #8e8e8e;
+}
+.board_list + .board_list,
+.board_list + .add_list {
+  margin-left: 6px;
 }
 .list-inline {
   white-space: nowrap;
@@ -456,15 +457,13 @@ li.card {
   min-height: 32px;
   margin: 8px 4px;
   border-radius: 3px;
-}
-.card {
   padding: 3px;
 }
-.card > header h1 {
+li.card header h1 {
   padding: 6px;
   font-weight: normal;
 }
-.card span.edit {
+li.card span.edit {
   border-radius: 3px;
   float: right;
   width: 26px;
@@ -472,19 +471,19 @@ li.card {
   display: none;
   position: relative;
 }
-.card span.icon-edit:before {
+li.card span.icon-edit:before {
   position: absolute;
   left: 7px;
   top: 5px;
 }
-.card:hover {
+li.card:hover {
   background: #eee;
 }
-.card:hover span.edit {
+li.card:hover span.edit {
   display: block;
   background-color: inherit;
 }
-.card:hover span.edit:hover {
+li.card:hover span.edit:hover {
   background-color: #ddd;
 }
 /*CARD DETAIL MODAL*/
@@ -510,18 +509,18 @@ div.close {
   top: 0;
   right: 10px;
 }
+div.close:after {
+  display: inline-block;
+  font-size: 36px;
+  font-weight: lighter;
+  content: "\00d7";
+}
 div.close.small {
   top: 10px;
   right: 15px;
 }
 div.close.small:after {
   font-size: 24px;
-}
-div.close:after {
-  display: inline-block;
-  font-size: 36px;
-  font-weight: lighter;
-  content: "\00d7";
 }
 div.content {
   width: 75%;
@@ -573,22 +572,11 @@ div.content {
   resize: none;
   border: none;
   padding: 10px;
+  font-size: 14px;
   box-sizing: border-box;
   width: 100%;
   border-radius: 3px;
   outline: 0;
-}
-#comment .comment_toolbar {
-  height: 35px;
-  background: #fff;
-}
-#comment .comment_container {
-  display: inline-block;
-  box-shadow: -1px 1px 1px #aaa;
-}
-#comment .tools {
-  float: right;
-  margin: 0 5px 5px 5px;
 }
 #comment form button {
   margin: 10px 0;
@@ -596,7 +584,7 @@ div.content {
   padding-left: 20px;
   padding-right: 20px;
 }
-#comment div.user_pic {
+#comment form div.user_pic {
   width: 30px;
   height: 30px;
   background: url("../images/david.png") no-repeat center;
@@ -605,6 +593,19 @@ div.content {
   position: absolute;
   left: 10px;
   border-radius: 3px;
+}
+#comment .comment_toolbar {
+  height: 35px;
+  background: #fff;
+}
+#comment .comment_container {
+  display: inline-block;
+  font-size: 0;
+  box-shadow: -1px 1px 1px #aaa;
+}
+#comment .tools {
+  float: right;
+  margin: 0 5px 5px 5px;
 }
 #activity_feed {
   display: block;
@@ -707,15 +708,50 @@ div.small_user_pic {
 }
 /*MEDIA QUERIES*/
 @media (max-width: 900px) {
-  section.board_collection li {
+  section.board_collection ul li {
     width: calc(33% - 14px);
   }
 }
 @media (max-width: 750px) {
   div.user,
   div.boards,
+  div.boards_wrapper {
+    padding: 0;
+  }
   div.search {
     width: 30px;
+  }
+  div.card_detail {
+    width: 520px;
+    height: auto;
+  }
+  div.content,
+  div.sidebar {
+    width: 100%;
+    float: none;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  div.content button,
+  div.sidebar button {
+    width: 300px;
+  }
+  div.content footer,
+  div.sidebar footer {
+    width: 100%;
+  }
+  div.content footer a,
+  div.sidebar footer a {
+    width: auto;
+  }
+  div.content .add,
+  div.sidebar .add {
+    margin-top: 20px;
+  }
+  div.cover_modal {
+    background: #00304c;
+    overflow: scroll;
+    padding-bottom: 30px;
   }
   nav div .btn-text {
     display: none;
@@ -724,45 +760,12 @@ div.small_user_pic {
     left: 6px;
     top: 6px;
   }
-  div.card_detail {
-    width: 420px;
-    height: auto;
-  }
-  div.content,
-  div.sidebar {
-    width: 100%;
-    float: none;
-  }
-  div.cover_modal {
-    background: #00304c;
-    overflow: scroll;
-    padding-bottom: 30px;
-  }
-  .sidebar .add {
-    margin-top: 20px;
-  }
-  .sidebar {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  .sidebar button {
-    width: 300px;
-  }
-  .sidebar footer {
-    width: 100%;
-  }
-  .sidebar footer a {
-    width: auto;
-  }
-  section.board_collection li {
+  section.board_collection ul li {
     width: 100%;
     margin-right: 0;
   }
-  section.board_collection li > .create_new_board {
+  section.board_collection ul li > .create_new_board {
     width: 150px;
-  }
-  div.boards_wrapper {
-    padding: 0;
   }
 }
 /*SCROLLBAR CUSTOMIZATION FOR BOARD_LIST*/

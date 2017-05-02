@@ -122,6 +122,7 @@ div.margin_wrapper
 
 /*BOARDS VIEW*/
 main.boards_view 
+  overflow: auto
   background: white
   header 
     margin: 22px 10px 5px 10px
@@ -355,57 +356,43 @@ select
   padding-top: 5px
   color: #4D4D4D
   vertical-align: top
+  & > header
+    margin: 8px
 
 
 .add_list 
   background: #006AA8
   color: #B3D3E5
+  &:hover
+    background: #155F9C
 
 
-.add_list:hover 
-  background: #155F9C
-
-
-.board_list > header, .add_list > header 
-  margin: 8px
-
-
-.board_list header h1 
-  display: inline-block
-  font-weight: bold
+.board_list
+  header 
+    h1 
+      display: inline-block
+      font-weight: bold
+  footer
+    padding: 8px
+    &:hover
+      background: #ccc
+      border-bottom-left-radius: 3px
+      border-bottom-right-radius: 3px
+      a
+        text-decoration: underline
+        color: #444
+    a
+      text-decoration: none
+      color: #8E8E8E
 
 
 .board_list + .board_list, .board_list + .add_list
   margin-left: 6px
 
-
-.board_list footer 
-  padding: 8px
-
-
-.board_list footer a 
-  text-decoration: none
-  color: #8E8E8E
-
-
-.board_list footer:hover 
-  background: #ccc
-  border-bottom-left-radius: 3px
-  border-bottom-right-radius: 3px
-
-
-.board_list footer:hover a 
-  text-decoration: underline
-  color: #444
-
-
 .list-inline 
   white-space:nowrap
-
-
-.list-inline > li 
-  padding: 0
-
+  & > li
+    padding: 0
 
 .list_actions 
   border-radius: 3px
@@ -413,17 +400,13 @@ select
   width: 24px
   height: 24px
   position: relative
-
-
-.list_actions:before 
-  position: absolute
-  top: 3px
-  left: 5px
-
-
-.list_actions:hover 
-  background-color: #cdcdcd
-  color: #666
+  &:before
+    position: absolute
+    top: 3px
+    left: 5px
+  &:hover
+    background-color: #cdcdcd
+    color: #666
 
 
 ul.cards 
@@ -436,44 +419,32 @@ li.card
   min-height: 32px
   margin: 8px 4px
   border-radius: 3px
-
-
-.card 
   padding: 3px
-
-.card > header h1 
-  padding: 6px
-  font-weight: normal
-
-
-.card span.edit 
-  border-radius: 3px
-  float: right
-  width: 26px
-  height: 26px
-  display: none
-  position: relative
-
-
-.card span.icon-edit:before 
-  position: absolute
-  left: 7px
-  top: 5px
-
-
-.card:hover 
-  background: #eeeeee
-
-
-.card:hover span.edit 
-  display: block
-  background-color: inherit
-
-
-.card:hover span.edit:hover 
-  background-color: #ddd
-
-
+  header
+    h1 
+      padding: 6px
+      font-weight: normal
+  span
+    &.edit 
+      border-radius: 3px
+      float: right
+      width: 26px
+      height: 26px
+      display: none
+      position: relative
+    &.icon-edit
+      &:before 
+        position: absolute
+        left: 7px
+        top: 5px
+  &:hover 
+    background: #eeeeee
+    span
+      &.edit
+        display: block
+        background-color: inherit
+        &:hover
+          background-color: #ddd
 
 /*CARD DETAIL MODAL*/
 .cover_modal 
@@ -499,22 +470,16 @@ div.close
   position: absolute
   top: 0
   right: 10px
-
-
-div.close.small 
-  top: 10px
-  right: 15px
-
-
-div.close.small:after 
-  font-size: 24px
-
-
-div.close:after
-  display: inline-block
-  font-size: 36px
-  font-weight: lighter
-  content: "\00d7"
+  &:after
+    display: inline-block
+    font-size: 36px
+    font-weight: lighter
+    content: "\00d7"
+  &.small
+    top: 10px
+    right: 15px
+    &:after
+      font-size: 24px
 
 
 div.content 
@@ -572,69 +537,58 @@ div.content
   background-color: #ddd
 
 
-#comment form textarea 
-  resize: none
-  border: none
-  padding: 10px
-  box-sizing: border-box
-  width: 100%
-  border-radius: 3px
-  outline: 0
-
-
-#comment .comment_toolbar 
-  height: 35px
-  background: white
-
-
-#comment .comment_container 
-  display: inline-block
-  box-shadow: -1px 1px 1px #aaa
-
-
-#comment .tools 
-  float: right
-  margin: 0 5px 5px 5px
-
-
-#comment form button 
-  margin: 10px 0
-  background-color: #ddd
-  padding-left: 20px
-  padding-right: 20px
-
-
-#comment div.user_pic 
-  width: 30px
-  height: 30px
-  background: url('../images/david.png') no-repeat center
-  background-size: 30px
-  display: inline-block
-  position: absolute
-  left: 10px
-  border-radius: 3px
-
+#comment
+  form
+    textarea
+      resize: none
+      border: none
+      padding: 10px
+      font-size: 14px
+      box-sizing: border-box
+      width: 100%
+      border-radius: 3px
+      outline: 0
+    button
+      margin: 10px 0
+      background-color: #ddd
+      padding-left: 20px
+      padding-right: 20px
+    div
+      &.user_pic
+        width: 30px
+        height: 30px
+        background: url('../images/david.png') no-repeat center
+        background-size: 30px
+        display: inline-block
+        position: absolute
+        left: 10px
+        border-radius: 3px
+  .comment_toolbar 
+    height: 35px
+    background: white
+  .comment_container
+    display: inline-block
+    font-size: 0
+    box-shadow: -1px 1px 1px #aaa
+  .tools 
+    float: right
+    margin: 0 5px 5px 5px
 
 #activity_feed 
   display: block
 
 
-#activity_feed li 
-  margin-left: 0 0 0 -30px
-  padding: 10px 0 10px 0
-
-
-#activity_feed li + li 
-  border-top: 1px solid #ddd
-
-
-#activity_feed small 
-  color: #8C8C8C
-
-
-#activity_feed small:hover 
-  color: #444
-  text-decoration: underline
+#activity_feed
+  li 
+    margin-left: 0 0 0 -30px
+    padding: 10px 0 10px 0
+    & + li
+      border-top: 1px solid #ddd
+  small
+    color: #8C8C8C
+    &:hover
+      color: #444
+      text-decoration: underline
 
 
 div.small_user_pic 
@@ -652,166 +606,126 @@ div.small_user_pic
   width: 30px
   height: 30px
   line-height: 30px
+  &:hover
+    background-color: #ddd
+    border-radius: 3px
 
 
-.tools span:hover 
-  background-color: #ddd
-  border-radius: 3px
-
-
-#activity h1 
-  float: left
-
-
-#activity a 
-  float: right
-  color: #8C8C8C
-  text-decoration: underline
-
-
-#activity a:hover 
-  color: #444
-
+#activity
+  h1 
+    float: left
+  a
+    float: right
+    color: #8C8C8C
+    text-decoration: underline
+    &:hover
+      color: #444
 
 
 .sidebar 
   width: 25%
   float: right
   padding-bottom: 20px
-
-
-.sidebar .add 
-  margin-top: 60px
-
-
-.sidebar .edit_actions 
-  margin-top: 20px
-
-.sidebar h1 
-  font-weight: bold
-  font-size: 16px
-
-.sidebar ul 
-  width: 160px
-
-
-.sidebar li 
-  height: 32px
-  margin: 10px 0
-
-
-.sidebar .btn 
-  background-color: #FAFBFB
-  font-weight: bold
-  font-size: 14px
-  box-shadow: 0px 0px 1px #888888
-  text-align: left
-
-
-.sidebar .btn:hover 
-  background-color: #3879D9
-  color: white
-
-
-.sidebar .btn:hover .icon-sm:before 
-  color: white
-
-
-.sidebar footer 
-  margin-top: 20px
-
-
-.sidebar footer a
-  display: block
-  color: #8C8C8C
-  text-decoration: underline
-  width: 160px
-  height: 30px
-  border-radius: 3px
-  padding: 5px
-
-
-.sidebar footer a:hover 
-  background-color: #ddd
-  color: #444
+  .add
+    margin-top: 60px
+  .edit_actions
+    margin-top: 20px
+  h1 
+    font-weight: bold
+    font-size: 16px
+  ul 
+    width: 160px
+  li 
+    height: 32px
+    margin: 10px 0
+  .btn 
+    background-color: #FAFBFB
+    font-weight: bold
+    font-size: 14px
+    box-shadow: 0px 0px 1px #888888
+    text-align: left
+    &:hover
+      background-color: #3879D9
+      color: white
+      .icon-sm
+        &:before
+          color: white
+  footer 
+    margin-top: 20px
+    a
+      display: block
+      color: #8C8C8C
+      text-decoration: underline
+      width: 160px
+      height: 30px
+      border-radius: 3px
+      padding: 5px
+      &:hover 
+        background-color: #ddd
+        color: #444
 
 
 
 /*MEDIA QUERIES*/
 
 @media (max-width: 900px) 
-  section.board_collection li 
+  section.board_collection ul li 
     width: calc(33% - 14px)
   
 
 
-@media (max-width: 750px) 
-  div.user, div.boards, div.search
-    width: 30px
+@media (max-width: 750px)
+  div
+    &.user,
+    &.boards,
+    &.boards_wrapper
+       padding: 0
+    &.search
+      width: 30px
+    &.card_detail
+      width: 520px
+      height: auto
+    &.content,
+    &.sidebar
+      width: 100%
+      float: none
+      padding-left: 10px
+      padding-right: 10px
+      button
+        width: 300px
+      footer
+        width: 100%
+        a
+          width: auto
+      .add
+        margin-top: 20px
+    &.cover_modal
+      background: #00304C
+      overflow: scroll
+      padding-bottom: 30px
+      
+  nav
+    div
+      .btn-text 
+        display: none
+    .search
+      span
+        &:before 
+          left: 6px
+          top: 6px
 
+  section
+    &.board_collection
+      ul
+        li 
+          width: 100%
+          margin-right: 0
+          & > .create_new_board
+            width: 150px
   
-
-  nav div .btn-text 
-    display: none
-  
-
-  nav .search span:before 
-    left: 6px
-    top: 6px
-  
-
-  div.card_detail 
-    width: 420px
-    height: auto
-  
-
-  div.content, div.sidebar 
-    width: 100%
-    float: none
-  
-
-  div.cover_modal 
-    background: #00304C
-    overflow: scroll
-    padding-bottom: 30px
-  
-
-  .sidebar .add 
-    margin-top: 20px
-  
-
-  .sidebar 
-    padding-left: 10px
-    padding-right: 10px
-  
-
-  .sidebar button 
-    width: 300px
-  
-
-  .sidebar footer 
-    width: 100%
-  
-
-  .sidebar footer a 
-    width: auto
-  
-
-  section.board_collection li 
-    width: 100%
-    margin-right: 0
-  
-
-  section.board_collection li > .create_new_board 
-    width: 150px
-  
-
-  div.boards_wrapper 
-    padding: 0
-  
-
-
+ 
 /*SCROLLBAR CUSTOMIZATION FOR BOARD_LIST*/
+
 .board_list_container::-webkit-scrollbar 
  height: 20px
 
