@@ -23,12 +23,17 @@ module.exports = {
   getCurrentId: function() {
     return this.getJSON().currentId;
   },
+  getCurrentStarredOrder: function() {
+    return this.getJSON().currentStarredOrder
+  },
   write: function(data) {
     fs.writeFileSync(file_path, JSON.stringify(data), "utf8");
   },
-  set: function(data, id) {
-    id = id ? id++ : this.getCurrentId();
-    this.write({ data: data, currentId: +id});
+  set: function(attributes) {
+    var json = this.getJSON();
+    _.extend(json, attributes)
+
+    this.write(json);
   },
   addBoard: function(board) {
     var boards = this.get();
@@ -45,16 +50,16 @@ module.exports = {
 
     _.extend(board, obj);
     boards.push(board);
-    this.set(boards, id + 1);
+    this.set({ "data": boards, "currentId": id + 1 });
     return board;
   },
   removeBoard: function(board) {
-    var id = item.id;
-    var boards = this.get();
-    var existing_b = _.findWhere(boards, {id: id});
+    // var id = item.id;
+    // var boards = this.get();
+    // var existing_b = _.findWhere(boards, {id: id});
 
-    boards = _.without(boards, existing_b);
+    // boards = _.without(boards, existing_b);
 
-    this.set(boards);
+    // this.set(boards);
   }
 };
