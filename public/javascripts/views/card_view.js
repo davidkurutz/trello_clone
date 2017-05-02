@@ -9,7 +9,7 @@ var CardView = Backbone.View.extend({
     this.remove();
   },
   render: function() {
-    this.$el.html(this.template(this.model.toJSON()))
+    this.$el.html(this.template(this.model.toJSON()));
     $("body").append(this.$el);
   },
   initialize: function() {

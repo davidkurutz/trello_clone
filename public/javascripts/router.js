@@ -1,8 +1,7 @@
 var router = new (Backbone.Router.extend({
   routes: {
     "": "boards",
-    "b/:id/*": "board",
-    "menu": "index"
+    "b/:id/*": "board"
   },
   boards: function() { 
     App.boardsView();

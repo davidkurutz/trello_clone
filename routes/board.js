@@ -3,7 +3,7 @@ var router = express.Router();
 var path = require('path');
 var _ = require('underscore');
 var Boards = require(path.resolve(path.dirname(__dirname), 'local_modules/boards_module'));
-var Lists = require(path.resolve(path.dirname(__dirname), 'local_modules/lists_module'))
+var Lists = require(path.resolve(path.dirname(__dirname), 'local_modules/lists_module'));
 
 module.exports = function(router) {
   router.get('/b/:board_id*', function(req, res, next) {
@@ -29,6 +29,12 @@ module.exports = function(router) {
 
     Boards.set(boards);
 
+    res.json(board);
+  });
+
+  router.post('/b', function(req, res) {
+    var data = req.body;
+    var board = Boards.addBoard(data)
     res.json(board);
   })
 };

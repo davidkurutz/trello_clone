@@ -14,6 +14,9 @@ var App = {
   createBoardView: function() {
     this.BoardView = new BoardView({ model: this.Board });
   },
+  toggleStarred: function(model) {
+    this.BoardsView.toggleStarred(model);
+  },
   boardsView: function(t) {
     this.headerView();
 
@@ -22,19 +25,27 @@ var App = {
       this.BoardView.$el.empty();
     }
 
-    this.BoardsView = new BoardsView({
+    this.BoardsView = this.BoardsView || new BoardsView({
       collection: this.Boards
     });
+
+    this.BoardsView.render();
   },
   cardView: function(cardId, listId) {
     var card = this.Board.get("Lists").get(listId).get("Cards").get(cardId);
     new CardView({ model: card });
+  },
+  addBoard: function(model) {
+    var board = this.Boards.add(model);
+    this.BoardsView.appendBoard(board);
   },
   bind: function() {
     _.extend(this, Backbone.Events);
     this.on('boardsView', this.boardsView);
     this.on('boardView', this.boardView);
     this.on('cardView', this.cardView);
+    this.on('toggleStarred', this.toggleStarred);
+    this.on('addBoard', this.addBoard);
   },
   init: function() {
     this.bind();

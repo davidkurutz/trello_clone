@@ -2,40 +2,54 @@ var BoardsView = Backbone.View.extend({
   el: "main",
   template: App.templates.boards,
   events: {
-    "click .board_obj .icon-star": "toggleStar"
+    "click .create_new_board": "createBoard"
   },
-  toggleStar: function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    var id = +$(e.target).closest(".board_obj").attr("data-board-id");
-    var board = this.collection.get(id);
-    var starred = !board.get("starred");
-
-    $.ajax({
-      url: "/b/" + id,
-      type: "PUT",
-      context: this,
-      data: { "starred": starred },
-      success: function(json) {
-        board.set(json);
-        this.render();
-      }
-    });
+  appendBoard: function(board) {
+    this.$(".personal ul li:last-child").before(new BoardOverviewView({model: board}).$el);
   },
   render: function() {
-    var boards = this.collection.toJSON();
-    var starred_boards = this.collection.where({ starred: true}).map(function(b){
-      return b.toJSON();
+    var boards = this.collection;
+    var starredBoards = this.collection.where({ starred: true});
+
+    this.$el.removeClass().addClass('boards_view').html(this.template({}));
+
+    if (!starredBoards[0]) {
+      this.$(".starred").hide();
+    }
+
+    starredBoards.forEach(function(board) {
+      this.$(".starred ul").append(new BoardOverviewView({model: board}).$el);
     });
 
-    this.$el.removeClass().addClass('boards_view').html(this.template({
-      boards: boards,
-      starred_boards: starred_boards
-    }));
-
+    boards.each(function(board) {
+      this.$(".personal ul li:last-child").before(new BoardOverviewView({model: board}).$el);
+    });
   },
-  initialize: function() {
-    this.render();
+  toggleStarred: function(model) {
+    var id = model.get("id");
+    var starred = model.get("starred");
+    var section = this.$("section.starred");
+    var list = section.find("ul");
+    var length;
+
+    if (starred) {
+      list.append(new BoardOverviewView({model: model}).$el);
+    } else {
+      list.find("[data-board-id=" + id + "]").closest("li").remove();
+    }
+
+    length = list.find("li").length;
+
+    if (length === 0) {
+      section.hide();
+    } else {
+      section.show();
+    }
+  },
+  createBoard: function(e) {
+    e.preventDefault();
+    var li = $(e.target).closest("li");
+    li.prepend(new CreateBoardFormView().$el);
+    $(".create_board input#title").focus();
   }
 });

@@ -8,9 +8,9 @@ var HeaderView = Backbone.View.extend({
 
   },
   boardsView: function() {
-    App.trigger('boardsView')
+    App.trigger('boardsView');
   },
   initialize: function() {
     this.render();
   }
-})
+});

@@ -22,4 +22,4 @@ var BoardView = Backbone.View.extend({
   initialize: function() {
     this.render();
   }
-})
+});

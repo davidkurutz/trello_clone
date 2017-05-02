@@ -1,1 +1,1 @@
-var Card = Backbone.Model.extend({})
+var Card = Backbone.Model.extend({});

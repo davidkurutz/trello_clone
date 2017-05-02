@@ -227,6 +227,10 @@ div.boards_wrapper {
   padding: 10px;
 }
 
+section.board_collection.starred ul:empty {
+  display: none;
+}
+
 section.board_collection > ul {
   font-size: 0;
 }
@@ -343,6 +347,92 @@ div.dots {
   height: 18px;
 }
 
+/*CREATE NEW BOARD FORM*/
+div.create_board {
+  width: 304px;
+  height: 253px;
+  font-size: 14px;
+  position: absolute;
+  background-color: #FFFFFF;
+  color: #888;
+  z-index: 2;
+  box-shadow: 0px 0px 1px #888888;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+div.create_board header {
+  margin: 0;
+  border-bottom: 1px solid #ddd
+}
+
+div.create_board header h1 {
+  padding: 10px;
+  font-weight: lighter;
+  color: #888;
+  text-align: center;
+}
+
+div.create_board form {
+  padding: 5px;
+}
+
+div.create_board form dt label {
+  color: #555;
+}
+
+div.create_board form dd + dt {
+  margin-top: 10px;
+}
+div.create_board form dd input#title,
+div.create_board form dd select {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+  font-weight: lighter;
+}
+
+div.create_board form dl {
+  margin-bottom: 10px;
+}
+
+div.create_board span {
+  font-weight: lighter;
+}
+
+div.create_board form input[type="submit"] {
+  background-color: #5FB74B;
+  color: white;
+  font-weight: bold;
+  width: 120px;
+  margin: 10px 0 0 0;
+}
+
+div.create_board form input[type="submit"]:hover {
+  background-color: #4EA63A;
+}
+
+div.create_board span.icon-private:before {
+  color: red;
+}
+
+div.create_board span a {
+  color: #888;
+  text-decoration: underline;
+}
+
+div.create_board span a:hover {
+  color: #333;
+}
+
+div.create_board span.icon-information:hover {
+  color: #333;
+}
+
+select#team {
+  color: #333;
+}
 .board_list_container {
   overflow-x:auto;
   position: absolute;
@@ -506,6 +596,15 @@ div.close {
   position: absolute;
   top: 0;
   right: 10px;
+}
+
+div.close.small {
+  top: 10px;
+  right: 15px;
+}
+
+div.close.small:after {
+  font-size: 24px;
 }
 
 div.close:after{
