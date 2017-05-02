@@ -10,6 +10,7 @@ var BoardsView = Backbone.View.extend({
   render: function() {
     var boards = this.collection;
     var starredBoards = this.collection.where({ starred: true});
+    var sortedStarred;
 
     this.$el.removeClass().addClass('boards_view').html(this.template({}));
 
@@ -17,7 +18,11 @@ var BoardsView = Backbone.View.extend({
       this.$(".starred").hide();
     }
 
-    starredBoards.forEach(function(board) {
+    sortedStarred = starredBoards.sort(function(a,b) {
+      return a.get("starredOrder") > b.get("starredOrder");
+    });
+
+    sortedStarred.forEach(function(board) {
       this.$(".starred ul").append(new BoardOverviewView({model: board}).$el);
     });
 
