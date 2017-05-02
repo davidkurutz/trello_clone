@@ -1,0 +1,31 @@
+<header>
+  <h1>Create Board</h1>
+  <div class="close small"></div>
+</header>
+<form action="#">
+  <fieldset>
+    <dl>
+      <dt>
+        <label for="title">Title</label>
+      </dt>
+      <dd>
+        <input type="text" autofocus placeholder='Like "Reading Collection" for example' name="title" id="title">
+      </dd>
+      <dt>
+        <label for="team">
+          Team
+          <span class="icon-sm icon-information"></span>
+        </label>
+      </dt>
+      <dd>
+        <select name="team" id="team">
+          <option value="none">(none)</option>
+        </select>
+      </dd>
+    </dl>
+    <span>
+    <span class="icon-sm icon-private"></span>This board will be <strong>Private</strong>. <a href="#">Change.</a>
+    </span>
+    <input type="submit" class="btn" value="Create">
+  </fieldset>
+</form>

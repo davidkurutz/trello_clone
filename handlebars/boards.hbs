@@ -1,7 +1,6 @@
 <div class="margin_wrapper">
   <div class="boards_wrapper">
-
-    {{#if starred_boards}}
+    
     <section class="board_collection starred">
       <header>
         <h1>
@@ -10,19 +9,8 @@
         </h1>
       </header>
       <ul>
-        {{#each starred_boards}}
-        <li>
-          <a href="/b/{{id}}">
-            <div class="board_obj" data-board-id="{{id}}">
-              {{name}}
-              <span class="icon-sm icon-star gold"></span>
-          </div>
-          </a>
-        </li>
-        {{/each}}
       </ul>
     </section>
-    {{/if}}
 
     <section class="board_collection personal">
       <header>
@@ -32,16 +20,6 @@
         </h1>
       </header>
       <ul>
-        {{#each boards}}
-        <li>
-          <a href="/b/{{id}}">
-            <div class="board_obj" data-board-id="{{id}}">
-              {{name}}
-              <span class="icon-sm icon-star {{#if starred}} gold {{/if}}"></span>
-          </div>
-          </a>
-        </li>
-        {{/each}}
         <li>
           <div class="create_new_board">
             Create new board...
