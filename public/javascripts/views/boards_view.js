@@ -29,6 +29,15 @@ var BoardsView = Backbone.View.extend({
     boards.each(function(board) {
       this.$(".personal ul li:last-child").before(new BoardOverviewView({model: board}).$el);
     });
+
+    $("#starred_boards").sortable({
+      helper: "clone",
+      opacity: 0.75,
+      scroll: false,
+      update: function(event, ui) {
+        var data = $("#starred_boards").sortable('serialize');
+      }
+    });
   },
   toggleStarred: function(model) {
     var id = model.get("id");

@@ -3,11 +3,12 @@ var BoardView = Backbone.View.extend({
   template: App.templates.board,
   render: function() {
     var board = this.model.toJSON();
-    var lists = board.Lists.toJSON();
-    this.$el.removeClass().html(this.template({
-      board: board,
-      lists: lists
-    }));
+    var lists = board.Lists;
+    this.$el.removeClass().html(this.template({ board: board }));
+
+    lists.forEach(function(list) {
+      this.$("#listlist li.add_list").before(new ListView({ model: list}).$el);
+    })
   },
   events: {
     'click .card' : 'cardView'
