@@ -36,7 +36,7 @@ module.exports = {
     this.write(json);
   },
   addBoard: function(board) {
-    var boards = this.get();
+    var boards = this.getData();
     var id = this.getCurrentId();
 
     var obj = {

@@ -4,14 +4,21 @@ var BoardView = Backbone.View.extend({
   render: function() {
     var board = this.model.toJSON();
     var lists = board.Lists;
-    this.$el.removeClass().html(this.template({ board: board }));
 
-    lists.forEach(function(list) {
-      this.$("#listlist li.add_list").before(new ListView({ model: list}).$el);
-    })
+    this.$el.removeClass().html(this.template({ board: board }));
+    lists.forEach(this.renderList.bind(this));
+  },
+  renderList: function(list) {
+    console.log(list)
+    this.$("#listlist li.add_list").before(new ListView({ model: list}).$el);
   },
   events: {
-    'click .card' : 'cardView'
+    'click .card' : 'cardView',
+    'click .add_list': 'addList'
+  },
+  addList: function(e) {
+    var id = this.model.get('id')
+    $(e.currentTarget).prepend(new NewListButtonView({ model: { 'board_id': id}}).$el);
   },
   cardView: function(e) {
     e.preventDefault();
@@ -22,5 +29,6 @@ var BoardView = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
+    this.on('newList', this.renderList)
   }
 });

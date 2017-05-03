@@ -4,125 +4,131 @@
     <link rel="stylesheet" href="stylesheets/trello.css">
   </head>
   <body>
-    <header>
 
-      <nav class="left_header">
-        <div class="boards" id="board-btn">
-          <span class="icon-sm icon-board"></span>
-          <span class="btn-text">Boards<span>
-        </div>
-        <div class="search">
-          <span class="icon-sm icon-search"></span>
-        </div>
-      </nav>
+<!-- HEADER VIEW -->
+<header>
 
-      <div class="header_logo"></div>
+  <nav class="left_header">
+    <div class="boards" id="board-btn">
+      <span class="icon-sm icon-board"></span>
+      <span class="btn-text">Boards<span>
+    </div>
+    <div class="search">
+      <span class="icon-sm icon-search"></span>
+    </div>
+  </nav>
 
-
-      <nav class="right_header">
-        <div class="create">
-          <span class="icon-sm icon-add"></span>
-        </div>
-        <div class="user">
-          <span class="btn-text">David Kurutz<span>
-        </div>
-        <div class="info">
-          <span class="icon-sm icon-information"></span>
-        </div>
-        <div class="notification">
-          <span class="icon-sm icon-notification"></span>
-        </div>
-      </nav>
-    </header>
+  <div class="header_logo"></div>
 
 
-    
-    <main class="boards_view">
-      <div class="margin_wrapper">
-        <div class="boards_wrapper">
-          <section class="board_collection personal">
-            <header>
-              <h1>
-                <span class="icon-lg icon-member"></span>
-                <span class="header_text">Personal Boards</span>
-              </h1>
-            </header>
-            <ul>
-              <li>
-                <div class="board_obj">
-                  Apartment Things
-                  <span class="icon-sm icon-star"></span>
-                </div>
-              </li>
-              <li>
-                <div class="board_obj">
-                  cloning trello
-                  <span class="icon-sm icon-star"></span>
-                </div>
-              </li>
-              <li>
-                <div class="board_obj">
-                  test board
-                  <span class="icon-sm icon-star"></span>
-                </div>
-              </li>
-              <li>
-                <div class="board_obj">
-                  work all day cloning trello
-                  <span class="icon-sm icon-star"></span>
-                </div>
-              </li>
-              <li>
-                <div class="board_obj">
-                  5th board
-                  <span class="icon-sm icon-star"></span>
-                </div>
-              </li>
-              <li>
-<!--                 <div class="create_board">
-                  <header>
-                    <h1>Create Board</h1>
-                    <div class="close small"></div>
-                  </header>
-                  <form action="#">
-                    <fieldset>
-                      <dl>
-                        <dt>
-                          <label for="title">Title</label>
-                        </dt>
-                        <dd>
-                          <input type="text" autofocus placeholder='Like "Reading Collection" for example' name="title" id="title">
-                        </dd>
-                        <dt>
-                          <label for="team">
-                            Team
-                            <span class="icon-sm icon-information"></span>
-                          </label>
-                        </dt>
-                        <dd>
-                          <select name="team" id="team">
-                            <option value="none">(none)</option>
-                          </select>
-                        </dd>
-                      </dl>
-                      <span>
-                      <span class="icon-sm icon-private"></span>This board will be <strong>Private</strong>. <a href="#">Change.</a>
-                      </span>
-                      <input type="submit" class="btn" value="Create">
-                    </fieldset>
-                  </form>
-                </div> -->
-                <div class="create_new_board">
-                  Create new board...
-                </div>
-              </li>
-            </ul>
-          </section>
-        </div>
-      </div>
-    </main>
+  <nav class="right_header">
+    <div class="create">
+      <span class="icon-sm icon-add"></span>
+    </div>
+    <div class="user">
+      <span class="btn-text">David Kurutz<span>
+    </div>
+    <div class="info">
+      <span class="icon-sm icon-information"></span>
+    </div>
+    <div class="notification">
+      <span class="icon-sm icon-notification"></span>
+    </div>
+  </nav>
+</header>
+<!-- END HEADER VIEW -->
 
-<div id="boardMenu">
+
+<!-- BOARDS VIEW -->
+<!-- <main class="boards_view">
+  <div class="margin_wrapper">
+    <div class="boards_wrapper">
+      <section class="board_collection personal">
+        <header>
+          <h1>
+            <span class="icon-lg icon-member"></span>
+            <span class="header_text">Personal Boards</span>
+          </h1>
+        </header>
+        <ul>
+          <li>
+            <div class="board_obj">
+              Apartment Things
+              <span class="icon-sm icon-star"></span>
+            </div>
+          </li>
+          <li>
+            <div class="board_obj">
+              cloning trello
+              <span class="icon-sm icon-star"></span>
+            </div>
+          </li>
+          <li>
+            <div class="board_obj">
+              test board
+              <span class="icon-sm icon-star"></span>
+            </div>
+          </li>
+          <li>
+            <div class="board_obj">
+              work all day cloning trello
+              <span class="icon-sm icon-star"></span>
+            </div>
+          </li>
+          <li>
+            <div class="board_obj">
+              5th board
+              <span class="icon-sm icon-star"></span>
+            </div>
+          </li>
+          <li>
+            <div class="create_board">
+              <header>
+                <h1>Create Board</h1>
+                <div class="close small"></div>
+              </header>
+              <form action="#">
+                <fieldset>
+                  <dl>
+                    <dt>
+                      <label for="title">Title</label>
+                    </dt>
+                    <dd>
+                      <input type="text" autofocus placeholder='Like "Reading Collection" for example' name="title" id="title">
+                    </dd>
+                    <dt>
+                      <label for="team">
+                        Team
+                        <span class="icon-sm icon-information"></span>
+                      </label>
+                    </dt>
+                    <dd>
+                      <select name="team" id="team">
+                        <option value="none">(none)</option>
+                      </select>
+                    </dd>
+                  </dl>
+                  <span>
+                  <span class="icon-sm icon-private"></span>This board will be <strong>Private</strong>. <a href="#">Change.</a>
+                  </span>
+                  <input type="submit" class="btn" value="Create">
+                </fieldset>
+              </form>
+            </div>
+            <div class="create_new_board">
+              Create new board...
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</main> -->
+<!-- END BOARDS VIEW -->
+
+<!-- BOARD MENU -->
+
+<!-- <div id="boardMenu">
   <input type="text" placeholder="Find boards by name...">
   <ul id="board_types">
     <li>
@@ -158,257 +164,277 @@
       </div>
     </li>
   </ul>
-</div>
-<!-- 
-    <main>
-      <div class="margin_wrapper">
-        <div class="wrapper">
-          <div class="board_header">
-            <div class="left">
-              <div class="board_name">cloning trello</div>
-              <div class="star">
-                <span class="icon-sm icon-star"></span>
-              </div>
-              <div class="private">
-                <div class="lock">
-                  <span class="icon-sm icon-private"></span>
-                </div>
-                <span>Private</span>
-              </div>
-            </div>
-            <div class="right">
-              <div class="show_menu">
-                <div class="dots">
-                  <span class="icon-sm icon-overflow-menu-horizontal"></span>
-                </div>
-                <span class="btn-text">Show Menu</span>
-              </div>
-            </div>
+</div> -->
+
+<!-- BOARD VIEW -->
+
+<main>
+  <div class="margin_wrapper">
+    <div class="wrapper">
+      <div class="board_header">
+        <div class="left">
+          <div class="board_name">cloning trello</div>
+          <div class="star">
+            <span class="icon-sm icon-star"></span>
           </div>
-          <div class="board_list_container">
-            <ul class="list-inline">
-              <li class="board_list">
+          <div class="private">
+            <div class="lock">
+              <span class="icon-sm icon-private"></span>
+            </div>
+            <span>Private</span>
+          </div>
+        </div>
+        <div class="right">
+          <div class="show_menu">
+            <div class="dots">
+              <span class="icon-sm icon-overflow-menu-horizontal"></span>
+            </div>
+            <span class="btn-text">Show Menu</span>
+          </div>
+        </div>
+      </div>
+      <div class="board_list_container">
+        <ul class="list-inline">
+          <li class="board_list">
+            <header>
+              <h1>Test Data</h1>
+              <span class="icon-sm icon-overflow-menu-horizontal list_actions"></span>
+            </header>
+            <ul class="cards">
+              <li class="card">
                 <header>
-                  <h1>Test Data</h1>
-                  <span class="icon-sm icon-overflow-menu-horizontal list_actions"></span>
+                  <h1>Title</h1>
+                  <span class="edit icon-sm icon-edit">
+                  </span>
                 </header>
-                <ul class="cards">
-                  <li class="card">
-                    <header>
-                      <h1>Title</h1>
-                      <span class="edit icon-sm icon-edit">
-                      </span>
-                    </header>
-                  </li>
-                  <li class="card">
-                    <header>
-                      <h1>Title</h1>
-                      <span class="edit icon-sm icon-edit">
-                      </span>
-                    </header>
-                  </li>
-                  <li class="card">
-                    <header>
-                      <h1>Title</h1>
-                      <span class="edit icon-sm icon-edit">
-                      </span>
-                    </header>
-                  </li>
-                </ul>
-                <footer>
-                  <a href="">Add a card...</a>
-                </footer>
               </li>
-              <li class="board_list">
+              <li class="card">
                 <header>
-                  <h1>Test Data</h1>
-                  <span class="icon-sm icon-overflow-menu-horizontal list_actions"></span>
+                  <h1>Title</h1>
+                  <span class="edit icon-sm icon-edit">
+                  </span>
                 </header>
-                <ul class="cards">
-                </ul>
-                <footer>
-                  <a href="">Add a card...</a>
-                </footer>
               </li>
-              <li class="add_list">
-                <header>Add a list...</header>
+              <li class="card">
+                <header>
+                  <h1>Title</h1>
+                  <span class="edit icon-sm icon-edit">
+                  </span>
+                </header>
               </li>
             </ul>
-          </div>
-        </div>
-      </div>
-    </main> -->
-
-    <!-- <div class="cover_modal">
-      <div class="card_detail">
-        <div class="close"></div>
-        <div class="two_columns">
-          <div class="content">
-            <section id="general">
-              <header>
-                <h1>
-                  <span class="icon-lg icon-card"></span>
-                  Title
-                </h1>
-                <p>in list <a href="listname">listname</a><p>
-              </header>
-              <a href="#" class="edit-description">
-                <span class="icon-sm icon-description"></span>
-                Edit the description...
-              </a>
-            </section>
-
-            <section id="comment">
-
-              <header>
-                <h1>
-                  <span class="icon-lg icon-comment"></span>
-                  Add Comment
-                </h1>
-              </header>
-              <div class="user_pic"></div>
-              <form action="">
-                <fieldset>
-                  <div class="comment_container">
-                    <textarea name="comment_text" id="comment_text" cols="65" rows="2" placeholder="Write a comment..."></textarea>
-                    <div class="comment_toolbar">
-                      <div class="tools">
-                        <span class="icon-sm icon-attachment"></span>
-                        <span class="icon-sm icon-mention"></span>
-                        <span class="icon-sm icon-emoji"></span>
-                        <span class="icon-sm icon-card"></span>
-                      </div>
-                    </div>
-                  </div>
-                  <button class="btn btn-secondary" disabled="disabled">Send</button>
-                </fieldset>
-              </form>
-            </section>
-
-            <section id="activity">
-              <header class="clearfix">
-                <h1>
-                  <span class="icon-lg icon-activity"></span>
-                  Activity
-                </h1>
-                <a href="#">Hide Details</a>
-              </header>
-
-
-              <ul id="activity_feed">
-                <li>
-                  <div class="small_user_pic"></div>
-                  <span>
-                    <strong>
-                      David Kurutz
-                    </strong>
-                     left this card
-                     <small>yesterday at 11:34PM</small>
-                  </span>
-                </li>
-                <li>
-                  <div class="small_user_pic"></div>
-                  <span>
-                    <strong>
-                      David Kurutz
-                    </strong>
-                     left this card
-                     <small>yesterday at 11:34PM</small>
-                  </span>
-                </li>
-                <li>
-                  <div class="small_user_pic"></div>
-                  <span>
-                    <strong>
-                      David Kurutz
-                    </strong>
-                     left this card
-                     <small>yesterday at 11:34PM</small>
-                  </span>
-                </li>
-              </ul>
-            </section>
-          </div>
-
-          <div class="sidebar">
-            <div class="add">
-              <header>
-                <h1>Add</h1>
-              </header>
-              <ul class="edit_add">
-                <li>
-                  <button class="btn btn-sm btn-block">
-                    <span class="icon-sm icon-member"></span>
-                    Members
-                  </button>
-                </li>
-                <li>
-                  <button class="btn btn-sm btn-block">
-                    <span class="icon-sm icon-label"></span>
-                    Labels
-                  </button>
-                </li>
-                <li>
-                  <button class="btn btn-sm btn-block">
-                    <span class="icon-sm icon-checklist"></span>
-                    Checklist
-                  </button>
-                </li>
-                <li>
-                  <button class="btn btn-sm btn-block">
-                    <span class="icon-sm icon-clock"></span>
-                    Due Date
-                  </button>
-                </li>
-                <li>
-                  <button class="btn btn-sm btn-block">
-                    <span class="icon-sm icon-attachment"></span>
-                    Attachment
-                  </button>
-                </li>
-              </ul>
-            </div>
-
-            <div class="edit_actions">
-              <header>
-                <h1>Actions</h1>
-              </header>
-              <ul class="actions_list">
-                <li>
-                  <button class="btn btn-sm btn-block">
-                    <span class="icon-sm icon-move"></span>
-                    Move
-                  </button>
-                </li>
-                <li>
-                  <button class="btn btn-sm btn-block">
-                    <span class="icon-sm icon-card"></span>
-                    Copy
-                  </button>
-                </li>
-                <li>
-                  <button class="btn btn-sm btn-block">
-                    <span class="icon-sm icon-subscribe"></span>
-                    Subscribe
-                  </button>
-                </li>
-                <li>
-                  <button class="btn btn-sm btn-block">
-                    <span class="icon-sm icon-archive"></span>
-                    Archive
-                  </button>
-                </li>
-              </ul>
-            </div>
-
             <footer>
-              <a href="#" class="share">Share and more...</a>
+              <a href="">Add a card...</a>
             </footer>
-          </div>
+          </li>
+          <li class="board_list">
+            <header>
+              <h1>Test Data</h1>
+              <span class="icon-sm icon-overflow-menu-horizontal list_actions"></span>
+            </header>
+            <ul class="cards">
+            </ul>
+            <footer>
+              <a href="">Add a card...</a>
+            </footer>
+          </li>
+          <li class="add_list">
+            <header>Add a list...</header>
+  <!-- NEW LIST             -->
+<!-- <div id="new_list">
+  <form action="#">
+    <fieldset>
+      <input type="text" id="add_list_name" name="add_list_name" placeholder="Add a list...">
+      <input type="submit" value="Save" class="btn-sm btn-success">
+    </fieldset>
+  </form>
+  <div class="close"></div>
+</div> -->
 
-        </div>
+<!-- END NEW LIST -->
+          </li>
+        </ul>
       </div>
-    </div> -->
+    </div>
+  </div>
+</main>
+
+<!-- END BOARD VIEW -->
+
+<!-- CARD DETAIL VIEW -->
+
+<!-- <div class="cover_modal">
+  <div class="card_detail">
+    <div class="close"></div>
+    <div class="two_columns">
+      <div class="content">
+        <section id="general">
+          <header>
+            <h1>
+              <span class="icon-lg icon-card"></span>
+              Title
+            </h1>
+            <p>in list <a href="listname">listname</a><p>
+          </header>
+          <a href="#" class="edit-description">
+            <span class="icon-sm icon-description"></span>
+            Edit the description...
+          </a>
+        </section>
+
+        <section id="comment">
+
+          <header>
+            <h1>
+              <span class="icon-lg icon-comment"></span>
+              Add Comment
+            </h1>
+          </header>
+          <div class="user_pic"></div>
+          <form action="">
+            <fieldset>
+              <div class="comment_container">
+                <textarea name="comment_text" id="comment_text" cols="65" rows="2" placeholder="Write a comment..."></textarea>
+                <div class="comment_toolbar">
+                  <div class="tools">
+                    <span class="icon-sm icon-attachment"></span>
+                    <span class="icon-sm icon-mention"></span>
+                    <span class="icon-sm icon-emoji"></span>
+                    <span class="icon-sm icon-card"></span>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-secondary" disabled="disabled">Send</button>
+            </fieldset>
+          </form>
+        </section>
+
+        <section id="activity">
+          <header class="clearfix">
+            <h1>
+              <span class="icon-lg icon-activity"></span>
+              Activity
+            </h1>
+            <a href="#">Hide Details</a>
+          </header>
+
+
+          <ul id="activity_feed">
+            <li>
+              <div class="small_user_pic"></div>
+              <span>
+                <strong>
+                  David Kurutz
+                </strong>
+                 left this card
+                 <small>yesterday at 11:34PM</small>
+              </span>
+            </li>
+            <li>
+              <div class="small_user_pic"></div>
+              <span>
+                <strong>
+                  David Kurutz
+                </strong>
+                 left this card
+                 <small>yesterday at 11:34PM</small>
+              </span>
+            </li>
+            <li>
+              <div class="small_user_pic"></div>
+              <span>
+                <strong>
+                  David Kurutz
+                </strong>
+                 left this card
+                 <small>yesterday at 11:34PM</small>
+              </span>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="sidebar">
+        <div class="add">
+          <header>
+            <h1>Add</h1>
+          </header>
+          <ul class="edit_add">
+            <li>
+              <button class="btn btn-sm btn-block">
+                <span class="icon-sm icon-member"></span>
+                Members
+              </button>
+            </li>
+            <li>
+              <button class="btn btn-sm btn-block">
+                <span class="icon-sm icon-label"></span>
+                Labels
+              </button>
+            </li>
+            <li>
+              <button class="btn btn-sm btn-block">
+                <span class="icon-sm icon-checklist"></span>
+                Checklist
+              </button>
+            </li>
+            <li>
+              <button class="btn btn-sm btn-block">
+                <span class="icon-sm icon-clock"></span>
+                Due Date
+              </button>
+            </li>
+            <li>
+              <button class="btn btn-sm btn-block">
+                <span class="icon-sm icon-attachment"></span>
+                Attachment
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="edit_actions">
+          <header>
+            <h1>Actions</h1>
+          </header>
+          <ul class="actions_list">
+            <li>
+              <button class="btn btn-sm btn-block">
+                <span class="icon-sm icon-move"></span>
+                Move
+              </button>
+            </li>
+            <li>
+              <button class="btn btn-sm btn-block">
+                <span class="icon-sm icon-card"></span>
+                Copy
+              </button>
+            </li>
+            <li>
+              <button class="btn btn-sm btn-block">
+                <span class="icon-sm icon-subscribe"></span>
+                Subscribe
+              </button>
+            </li>
+            <li>
+              <button class="btn btn-sm btn-block">
+                <span class="icon-sm icon-archive"></span>
+                Archive
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <footer>
+          <a href="#" class="share">Share and more...</a>
+        </footer>
+      </div>
+
+    </div>
+  </div>
+</div> -->
+
+<!-- END CARD DETAIL VIEW -->
 
 
 

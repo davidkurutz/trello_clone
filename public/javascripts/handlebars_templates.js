@@ -63,3 +63,11 @@ this["JST"]["list"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":func
     + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"name","hash":{},"data":data}) : helper)))
     + "</h1><span class=\"icon-sm icon-overflow-menu-horizontal list_actions\"></span></header><ul class=\"cards\"></ul><footer><a href=\"\">Add a card...</a></footer>";
 },"useData":true});
+
+this["JST"]["new_list_button"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "<form action=\"#\"><fieldset><input type=\"text\" id=\"add_list_name\" name=\"name\" placeholder=\"Add a list...\"><input type=\"hidden\" name=\"board_id\" value="
+    + container.escapeExpression(((helper = (helper = helpers.board_id || (depth0 != null ? depth0.board_id : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"board_id","hash":{},"data":data}) : helper)))
+    + "><input type=\"submit\" value=\"Save\" class=\"btn-sm btn-success\"></fieldset></form><div class=\"close\"></div>";
+},"useData":true});

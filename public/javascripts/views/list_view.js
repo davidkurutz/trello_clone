@@ -15,7 +15,6 @@ var ListView = Backbone.View.extend({
     var list = this.$("ul.cards");
     
     cards.forEach(function(card) {
-      console.log(card)
       list.append(new CardOverviewView({ model: card}).$el)
     })
 

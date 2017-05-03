@@ -396,6 +396,7 @@ select#team {
   margin: 8px;
 }
 .add_list {
+  position: relative;
   background: #006aa8;
   color: #b3d3e5;
 }
@@ -485,6 +486,44 @@ li.card:hover span.edit {
 }
 li.card:hover span.edit:hover {
   background-color: #ddd;
+}
+#new_list {
+  width: 100%;
+  height: 80px;
+  background-color: #e2e4e6;
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
+  padding: 5px;
+}
+#new_list #add_list_name {
+  width: 100%;
+  outline: none;
+  height: 35px;
+  background-color: #d6d8da;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+  box-shadow: inset 0 0 5px #aaa;
+  padding: 0 5px;
+  color: #333;
+}
+#new_list #add_list_name::placeholder {
+  color: #888;
+}
+#new_list input[type="submit"] {
+  display: block;
+  width: 70px;
+  margin: 5px 0;
+  border: none;
+  box-shadow: 0 1px 1px #222;
+  font-weight: bold;
+  font-size: 14px;
+}
+#new_list div.close {
+  top: 39px;
+  right: 165px;
 }
 /*CARD DETAIL MODAL*/
 .cover_modal {

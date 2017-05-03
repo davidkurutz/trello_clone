@@ -5,8 +5,7 @@ var HeaderView = Backbone.View.extend({
     this.$el.html(this.template());
   },
   events: {
-    'click #board-btn' : 'toggleBoardMenu',
-    'click' : 'removeBoardMenu'
+    'click #board-btn' : 'toggleBoardMenu'
   },
   boardsView: function() {
     App.trigger('boardsView');

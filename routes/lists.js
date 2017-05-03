@@ -8,4 +8,10 @@ module.exports = function(router) {
     var lists = Lists.getByBoardId(+req.params.board_id);
     res.json(lists);
   });
+
+  router.post('/lists/:board_id', function(req, res, next) {
+    var data = req.body;
+    var list = Lists.addList(data);
+    res.json(list);
+  })
 };

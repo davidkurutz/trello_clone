@@ -5,6 +5,13 @@ var App = {
     var board = this.Boards.add(model);
     this.BoardsView.appendBoard(board);
   },
+  addList: function(model) {
+    var Lists = this.Board.get("Lists");
+    var list = Lists.add(model)
+    list.getCards((function() { 
+      this.BoardView.trigger('newList', list)
+    }).bind(this))
+  }, 
   boardView: function(board_id) {
     this.headerView();
     this.Board = this.Boards.get(+board_id);
@@ -38,24 +45,25 @@ var App = {
     this.Board.get("Lists").getCards((this.createBoardView).bind(this));
   },
   removeBoardMenu: function() {
-    this.boardMenu.remove();
+    if (this.boardMenu) {
+      this.boardMenu.remove();
+      delete this.boardMenu;
+    }
   },
   toggleStarred: function(model) {
     this.BoardsView.toggleStarred(model);
   },
   toggleBoardMenu: function() {
-    this.boardMenu = this.boardMenu || new BoardMenuView();
-    var $el = this.boardMenu.$el;
-
-    if ($el.is(":visible")) {
+    if (this.boardMenu) {
       this.removeBoardMenu();
     } else {
-      this.$el.append($el);
-      $el.find("#search").focus();
+      this.boardMenu = new BoardMenuView();
+      this.$el.append(this.boardMenu.$el).find("#search").focus();
     }
   },
   bind: function() {
     _.extend(this, Backbone.Events);
+    this.on('addList', this.addList);
     this.on('boardsView', this.boardsView);
     this.on('boardView', this.boardView);
     this.on('cardView', this.cardView);
@@ -63,6 +71,7 @@ var App = {
     this.on('addBoard', this.addBoard);
     this.on('toggleBoardMenu', this.toggleBoardMenu);
     this.on('removeBoardMenu', this.removeBoardMenu);
+    this.$el.on('click', this.removeBoardMenu.bind(this));
   },
   init: function() {
     this.bind();
