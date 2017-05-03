@@ -665,6 +665,59 @@ div.small_user_pic
         color: #444
 
 
+// BOARDS MENU IN HEADER
+
+#boardMenu
+  width: 280px
+  position: absolute
+  top: 42px
+  background: white
+  z-index: 5
+  color: #888
+  border: 1px solid #bbb
+  border-radius: 4px
+  padding: 5px
+  box-shadow: 0px 0px 1px #888888
+  input
+    width: 100%
+    padding: 5px
+  & > ul
+    margin: 10px 5px
+    li
+      position: relative
+      h1
+        display: inline-block
+  #board_types
+    h1
+      font-weight: normal  
+    li
+      padding: 5px
+      .icon-add
+        &:before
+          position: absolute
+          top: 3px
+          left: 7px
+        border-radius: 3px;
+        float: right;
+        width: 28px;
+        height: 26px;
+        position: relative;
+        vertial-align: top
+        &:hover
+          background-color: #ddd
+          border-radius: 2px
+  #menu_actions
+    li
+      div
+        padding: 10px
+        border-radius: 3px
+        &:hover
+          background-color: #E2E4E6
+          a
+            color: #333
+      a
+        color: #888
+        text-decoration: underline
 
 /*MEDIA QUERIES*/
 
@@ -680,6 +733,8 @@ div.small_user_pic
     &.boards,
     &.boards_wrapper
        padding: 0
+    &.user,
+    &.boards,
     &.search
       width: 30px
     &.card_detail
@@ -722,8 +777,7 @@ div.small_user_pic
           margin-right: 0
           & > .create_new_board
             width: 150px
-  
- 
+
 /*SCROLLBAR CUSTOMIZATION FOR BOARD_LIST*/
 
 .board_list_container::-webkit-scrollbar 
@@ -743,6 +797,3 @@ div.small_user_pic
  border: solid transparent
  border-radius: 10px
  min-height: 28px
-
-
-
