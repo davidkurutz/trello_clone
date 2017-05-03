@@ -6,6 +6,7 @@
         dest: 'public/javascripts/vendor/all.js',
         dependencies: {
           "underscore": "jquery",
+          "jquery-ui": "jquery",
           "backbone": "underscore"
         }
       }
