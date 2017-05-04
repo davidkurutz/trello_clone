@@ -33,5 +33,6 @@ var NewListButtonView = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
+    this.listenTo(App.BoardView, 'removeNewListButton', this.remove)
   }
 });

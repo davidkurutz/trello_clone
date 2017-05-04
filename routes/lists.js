@@ -14,4 +14,10 @@ module.exports = function(router) {
     var list = Lists.addList(data);
     res.json(list);
   })
+
+  router.delete('/lists/:list_id', function(req, res, next) {
+    var listId = +req.params.list_id;
+    Lists.remove(listId);
+    res.status(200).end();
+  })
 };

@@ -14,34 +14,48 @@ module.exports = {
     }
   },
   getByListId: function(list_id) {
-    var cards = this.getJSON();
+    var cards = this.getData();
     return _.where(cards, {list_id: list_id});
   },
   getJSON: function() {
-    return JSON.parse(fs.readFileSync(file_path, "utf8")).data
+    return JSON.parse(fs.readFileSync(file_path, "utf8"));
+  },
+  getData: function() {
+    return this.getJSON().data;
+  },
+  getCurrentId: function() {
+    return this.getJSON().currentId;
   },
   write: function(data) {
     fs.writeFileSync(file_path, JSON.stringify(data), "utf8");
   },
-  set: function(data) {
-    this.write({ data: data })
+  set: function(attributes) {
+    var json = this.getJSON();
+    _.extend(json, attributes);
+
+    this.write(json);
+  },
+  addCard: function(card) {
+    var cards = this.getData();
+    var id = this.getCurrentId();
+    var obj = {
+      id: id,
+      created_by: 1,
+      created_on: new Date(),
+    };
+
+    _.extend(obj, card);
+    obj.list_id = +obj.list_id;
+    cards.push(obj);
+    this.set({"data": cards, 'currentId': id + 1});
+    return obj;
+  },
+  remove: function(id) {
+    var cards = this.getData();
+    var existing_c = _.findWhere(cards, {id: id});
+
+    cards = _.without(cards, existing_c);
+
+    this.set({"data": cards});
   }
-  // ,
-  // addList: function(list) {
-  //   var id = item.id;
-  //   var lists = this.get();
-
-  //   lists.push(list)
-
-  //   this.set(lists);
-  // },
-  // removeList: function(list) {
-  //   var id = item.id;
-  //   var lists = this.get();
-  //   var existing_l = _.findWhere(lists, {id: id});
-
-  //   lists = _.without(boards, existing_l)
-
-  //   this.set(lists)
-  // }
-}
+};

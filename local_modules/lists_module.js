@@ -37,7 +37,6 @@ module.exports = {
   },
   addList: function(list) {
     var lists = this.get();
-    console.log(lists);
     var id = this.getCurrentId();
     var obj = {
       id: id,
@@ -45,20 +44,19 @@ module.exports = {
       createdOn: new Date(),
     };
 
-    _.extend(list, obj);
-    list.board_id = +list.board_id;
+    _.extend(obj, list);
+    obj.board_id = +obj.board_id;
     
-    lists.push(list);
+    lists.push(obj);
     this.set({ "data": lists, "currentId": id + 1 });
-    return list;
+    return obj;
   },
-  // removeList: function(list) {
-  //   var id = item.id;
-  //   var lists = this.get();
-  //   var existing_l = _.findWhere(lists, {id: id});
+  remove: function(id) {
+    var lists = this.getData();
+    var existing_l = _.findWhere(lists, {id: id});
 
-  //   lists = _.without(boards, existing_l)
+    lists = _.without(lists, existing_l)
 
-  //   this.set(lists)
-  // }
+    this.set({"data": lists})
+  }
 };

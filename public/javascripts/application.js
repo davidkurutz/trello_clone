@@ -50,6 +50,15 @@ var App = {
       delete this.boardMenu;
     }
   },
+  removeListActionsMenu() {
+    this.trigger('remove_list_actions_menu')
+  },
+  removeNewListButton: function() {
+    this.BoardView.trigger('removeNewListButton')
+  },
+  removeNewCardForm: function() {
+    this.trigger('removeNewCardForm')
+  },
   toggleStarred: function(model) {
     this.BoardsView.toggleStarred(model);
   },
@@ -72,6 +81,9 @@ var App = {
     this.on('toggleBoardMenu', this.toggleBoardMenu);
     this.on('removeBoardMenu', this.removeBoardMenu);
     this.$el.on('click', this.removeBoardMenu.bind(this));
+    this.$el.on('click', this.removeNewListButton.bind(this))
+    this.$el.on('click', this.removeListActionsMenu.bind(this))
+    this.$el.on('click', this.removeNewCardForm.bind(this))
   },
   init: function() {
     this.bind();

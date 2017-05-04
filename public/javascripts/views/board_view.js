@@ -9,16 +9,17 @@ var BoardView = Backbone.View.extend({
     lists.forEach(this.renderList.bind(this));
   },
   renderList: function(list) {
-    console.log(list)
     this.$("#listlist li.add_list").before(new ListView({ model: list}).$el);
   },
   events: {
-    'click .card' : 'cardView',
     'click .add_list': 'addList'
   },
   addList: function(e) {
+    e.stopPropagation();
     var id = this.model.get('id')
-    $(e.currentTarget).prepend(new NewListButtonView({ model: { 'board_id': id}}).$el);
+    var addList = new NewListButtonView({ model: { 'board_id': id}});
+    $(e.currentTarget).prepend(addList.$el);
+    addList.$el.find("#add_list_name").focus()
   },
   cardView: function(e) {
     e.preventDefault();

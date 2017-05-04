@@ -8,7 +8,6 @@ module.exports = {
     var boards = this.getData();
 
     if (id) {
-      console.log(_.findWhere(boards, {id: id}));
       return _.findWhere(boards, {id: id});
     } else {
       return boards;
@@ -48,18 +47,17 @@ module.exports = {
       archived: false
     };
 
-    _.extend(board, obj);
-    boards.push(board);
+    _.extend(obj, board);
+    boards.push(obj);
     this.set({ "data": boards, "currentId": id + 1 });
-    return board;
+    return obj;
   },
-  removeBoard: function(board) {
-    // var id = item.id;
-    // var boards = this.get();
-    // var existing_b = _.findWhere(boards, {id: id});
+  remove: function(id) {
+    var boards = this.get();
+    var existing_b = _.findWhere(boards, {id: id});
 
-    // boards = _.without(boards, existing_b);
+    boards = _.without(boards, existing_b);
 
-    // this.set(boards);
+    this.set({ "data": boards});
   }
 };

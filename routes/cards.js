@@ -8,4 +8,16 @@ module.exports = function(router) {
     var lists = Cards.getByListId(+req.params.list_id);
     res.json(lists);
   });
+
+  router.delete('/cards/:cardId', function(req, res, next) {
+    var cardId = +req.params.cardId;
+    Cards.remove(cardId);
+    res.status(200).end();
+  })
+
+  router.post('/cards', function(req, res, next) {
+    var card = req.body
+    Cards.addCard(card)
+    res.json(card)
+  })
 };

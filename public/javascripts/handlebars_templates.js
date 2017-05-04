@@ -56,12 +56,24 @@ this["JST"]["header"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":fu
     return "<nav class=\"left_header\"><div class=\"boards\" id=\"board-btn\"><span class=\"icon-sm icon-board\"></span><span class=\"btn-text\">Boards<span></div><div class=\"search\"><span class=\"icon-sm icon-search\"></span></div></nav><a href=\"/\"><div class=\"header_logo\"></div></a><nav class=\"right_header\"><div class=\"create\"><span class=\"icon-sm icon-add\"></span></div><div class=\"user\"><span class=\"btn-text\">David Kurutz<span></div><div class=\"info\"><span class=\"icon-sm icon-information\"></span></div><div class=\"notification\"><span class=\"icon-sm icon-notification\"></span></div></nav>";
 },"useData":true});
 
+this["JST"]["list_actions"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<header><h1>List Actions</h1><div class=\"close small\"></div></header><ul><li>Add Card...</li><li>Copy List...</li><li>Move List...</li><li>Subscribe</li></ul><ul><li>Move All Cards in This List..</li><li>Archive All Cards in This List...</li></ul><ul><li id=\"archive_list\">Archive This List</li></ul>";
+},"useData":true});
+
 this["JST"]["list"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper;
 
   return "<header><h1>"
     + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"name","hash":{},"data":data}) : helper)))
-    + "</h1><span class=\"icon-sm icon-overflow-menu-horizontal list_actions\"></span></header><ul class=\"cards\"></ul><footer><a href=\"\">Add a card...</a></footer>";
+    + "</h1><span class=\"icon-sm icon-overflow-menu-horizontal list_actions\"></span></header><ul class=\"cards\"></ul><footer><a href=\"#\">Add a card...</a></footer>";
+},"useData":true});
+
+this["JST"]["new_card"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "<form action=\"#\"><fieldset><textarea name=\"name\" id=\"card_name\" cols=\"30\" rows=\"3\"></textarea><input type=\"hidden\" name=\"list_id\" value="
+    + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"id","hash":{},"data":data}) : helper)))
+    + "><input type=\"submit\" value=\"Add\" class=\"btn-sm btn-success\"><div class=\"close\"></div><span class=\"icon-lg icon-overflow-menu-horizontal\"></span></fieldset></form>";
 },"useData":true});
 
 this["JST"]["new_list_button"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {

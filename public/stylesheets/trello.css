@@ -300,7 +300,8 @@ div.dots {
   height: 18px;
 }
 /*CREATE NEW BOARD FORM*/
-div.create_board {
+div.create_board,
+div.list_actions_menu {
   width: 304px;
   height: 253px;
   font-size: 14px;
@@ -312,61 +313,102 @@ div.create_board {
   padding: 8px;
   border-radius: 5px;
 }
-div.create_board header {
+div.create_board header,
+div.list_actions_menu header {
   margin: 0;
   border-bottom: 1px solid #ddd;
 }
-div.create_board header h1 {
+div.create_board header h1,
+div.list_actions_menu header h1 {
   padding: 10px;
   font-weight: lighter;
   color: #888;
   text-align: center;
 }
-div.create_board form {
+div.create_board form,
+div.list_actions_menu form {
   padding: 5px;
 }
-div.create_board form dl {
+div.create_board form dl,
+div.list_actions_menu form dl {
   margin-bottom: 10px;
 }
-div.create_board form dt label {
+div.create_board form dt label,
+div.list_actions_menu form dt label {
   color: #555;
 }
 div.create_board form dd input#title,
-div.create_board form dd select {
+div.list_actions_menu form dd input#title,
+div.create_board form dd select,
+div.list_actions_menu form dd select {
   width: 100%;
   padding: 5px;
   border-radius: 5px;
   border: 1px solid #bbb;
   font-weight: lighter;
 }
-div.create_board form dd + dt {
+div.create_board form dd + dt,
+div.list_actions_menu form dd + dt {
   margin-top: 10px;
 }
-div.create_board form.btn-submit {
+div.create_board form.btn-submit,
+div.list_actions_menu form.btn-submit {
   background-color: #5fb74b;
   color: #fff;
   font-weight: bold;
   width: 120px;
   margin: 10px 0 0 0;
 }
-div.create_board form.btn-submit:hover {
+div.create_board form.btn-submit:hover,
+div.list_actions_menu form.btn-submit:hover {
   background-color: #4ea63a;
 }
-div.create_board span {
+div.create_board span,
+div.list_actions_menu span {
   font-weight: lighter;
 }
-div.create_board span.icon-private:before {
+div.create_board span.icon-private:before,
+div.list_actions_menu span.icon-private:before {
   color: #f00;
 }
-div.create_board span a {
+div.create_board span a,
+div.list_actions_menu span a {
   color: #888;
   text-decoration: underline;
 }
-div.create_board span a:hover {
+div.create_board span a:hover,
+div.list_actions_menu span a:hover {
   color: #333;
 }
-div.create_board span.icon-information:hover {
+div.create_board span.icon-information:hover,
+div.list_actions_menu span.icon-information:hover {
   color: #333;
+}
+div.list_actions_menu {
+  top: 40px;
+  left: 230px;
+  height: auto;
+  padding: 8px 0;
+}
+div.list_actions_menu header h1 {
+  display: block;
+  font-weight: normal;
+  font-size: 14px;
+}
+div.list_actions_menu ul {
+  padding: 8px 0;
+}
+div.list_actions_menu ul + ul {
+  border-top: 1px solid #ddd;
+}
+div.list_actions_menu li {
+  font-weight: bold;
+  padding: 5px 8px;
+  color: #333;
+}
+div.list_actions_menu li:hover {
+  background-color: #2083c1;
+  color: #fff;
 }
 select#team {
   color: #333;
@@ -402,6 +444,9 @@ select#team {
 }
 .add_list:hover {
   background: #155f9c;
+}
+.board_list {
+  position: relative;
 }
 .board_list header h1 {
   display: inline-block;
@@ -452,19 +497,21 @@ select#team {
 ul.cards {
   margin: 15px 5px 0 5px;
 }
-li.card {
+li.card,
+li.new_card {
   display: block;
   background: #fff;
   min-height: 32px;
   margin: 8px 4px;
   border-radius: 3px;
-  padding: 3px;
 }
-li.card header h1 {
+li.card header h1,
+li.new_card header h1 {
   padding: 6px;
   font-weight: normal;
 }
-li.card span.edit {
+li.card span.edit,
+li.new_card span.edit {
   border-radius: 3px;
   float: right;
   width: 26px;
@@ -472,10 +519,14 @@ li.card span.edit {
   display: none;
   position: relative;
 }
-li.card span.icon-edit:before {
+li.card span.icon-edit:before,
+li.new_card span.icon-edit:before {
   position: absolute;
   left: 7px;
   top: 5px;
+}
+li.card {
+  padding: 3px;
 }
 li.card:hover {
   background: #eee;
@@ -486,6 +537,48 @@ li.card:hover span.edit {
 }
 li.card:hover span.edit:hover {
   background-color: #ddd;
+}
+li.new_card fieldset {
+  padding: 0;
+  background-color: #e2e4e6;
+}
+li.new_card textarea {
+  border: none;
+  resize: vertical;
+  outline: none;
+  border-radius: 3px;
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+}
+li.new_card input {
+  margin: 0;
+  display: block;
+  width: 70px;
+  border: none;
+  box-shadow: 0 1px 1px #222;
+  font-weight: bold;
+  font-size: 14px;
+}
+li.new_card div.close {
+  top: auto;
+  bottom: 10px;
+  left: 86px;
+  width: 30px;
+}
+li.new_card span {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  top: auto;
+  left: auto;
+}
+li.new_card span:hover {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+li.new_card + footer {
+  display: none;
 }
 #new_list {
   width: 100%;

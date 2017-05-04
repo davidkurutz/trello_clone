@@ -2,7 +2,6 @@ var CardView = Backbone.View.extend({
   template: App.templates.card,
   className: "cover_modal",
   events: {
-    "click": "close",
     "click div.close": "close"
   },
   close: function(e) {
@@ -14,5 +13,6 @@ var CardView = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
+    this.listenTo(this.model, 'destroy', this.remove)
   }
 });
