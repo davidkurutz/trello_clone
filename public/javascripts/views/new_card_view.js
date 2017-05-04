@@ -22,7 +22,8 @@ var NewCardView = Backbone.View.extend({
     c.save(obj, {
       success: function(json) {
         model.get("Cards").add(json);
-        
+        App.trigger('appendCard', c)
+        this.$("#card_name").val('');
       }
     });
   },

@@ -20,11 +20,14 @@ var ListView = Backbone.View.extend({
     e.preventDefault();
     e.stopPropagation();
 
+    this.stopListening(App)
+
     var ncv = new NewCardView({ model: this.model });
 
     this.$(".cards").append(ncv.$el);
     this.$("footer").hide();
     this.$("textarea").focus();
+    this.listenTo(App, 'appendCard', this.appendCard)
     this.listenTo(ncv, 'showFooter', this.showFooter)
   },
   showFooter: function() {
@@ -45,7 +48,11 @@ var ListView = Backbone.View.extend({
     }
   },
   appendCard: function(card) {
-    alert('appended')
+    if (+card.get("list_id") === this.model.get("id")) {
+      var last = this.$("ul.cards li:last-child");
+      last.before(new CardOverviewView({ model: card}).$el);
+    }
+
   },
   render: function() {
     var cards = this.model.get('Cards');
