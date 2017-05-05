@@ -1,4 +1,5 @@
 var Board = Backbone.Model.extend({
+  urlRoot: "/boards",
   getLists: function(cb) {
     var id = this.get("id");
     $.ajax({

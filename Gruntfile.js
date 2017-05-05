@@ -39,13 +39,18 @@
             'public/javascripts/views/*.js',
             'public/javascripts/application.js'
             ]
+    },
+    watch: {
+      files: ['handlebars/*.hbs'],
+      tasks: ['handlebars'],
     }
   });
 
   [ "grunt-bower-concat",
     "grunt-contrib-uglify",
     "grunt-contrib-handlebars",
-    "grunt-contrib-jshint"
+    "grunt-contrib-jshint",
+    "grunt-contrib-watch"
   ].forEach(function(task) {
     grunt.loadNpmTasks(task);
   });

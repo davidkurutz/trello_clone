@@ -9,15 +9,21 @@ module.exports = function(router) {
     res.json(lists);
   });
 
-  router.delete('/cards/:cardId', function(req, res, next) {
+  router.delete('/cards/:cardId', function(req, res) {
     var cardId = +req.params.cardId;
     Cards.remove(cardId);
     res.status(200).end();
   })
 
-  router.post('/cards', function(req, res, next) {
-    var card = req.body
-    Cards.addCard(card)
+  router.post('/cards', function(req, res) {
+    var card = Cards.addCard(req.body)
     res.json(card)
+  }),
+
+  router.put('/cards/:card_id', function(req, res) {
+    var cardId = +req.params.card_id;
+    var data = req.body;
+    var newCard = Cards.update(cardId, data);
+    res.json(newCard);
   })
 };

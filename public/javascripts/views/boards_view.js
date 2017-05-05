@@ -2,7 +2,11 @@ var BoardsView = Backbone.View.extend({
   el: "main",
   template: App.templates.boards,
   events: {
+    "click" : "stop",
     "click .create_new_board": "createBoard"
+  },
+  stop: function(e) {
+    e.stopPropagation();
   },
   appendBoard: function(board) {
     this.$(".personal ul li:last-child").before(new BoardOverviewView({model: board}).$el);

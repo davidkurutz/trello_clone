@@ -1,7 +1,5 @@
 var List = Backbone.Model.extend({
-  url: function() {
-    return "/lists/" + this.get("id");
-  },
+  urlRoot: "/lists",
   getCards: function(cb) {
     var id = this.get("id");
     $.ajax({

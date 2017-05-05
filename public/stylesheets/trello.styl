@@ -14,6 +14,7 @@ body
   width: 100%
   height: 100%
   color: white
+  user-select: none
   & > header
     background: #0067A3
     height: 40px
@@ -55,6 +56,9 @@ nav
       &:hover
         navhover()
 
+span.gold
+  &:before
+    color: gold
 
 div.boards 
   width: 90px
@@ -224,11 +228,16 @@ div.star
   height: 33px
   border-radius: 3px
   margin: 0 2px
-  span:before 
-    color: white
-    position: absolute
-    top: 7px
-    left: 11px
+  span
+    &.gold
+      &:before
+        color: gold
+    &:before
+      color: white
+      position: absolute
+      top: 7px
+      left: 11px
+
 
 div.board_name:hover, div.star:hover, div.private:hover, div.show_menu:hover
   background-color: #0067A3
@@ -274,7 +283,8 @@ div.dots
 
 /*CREATE NEW BOARD FORM*/
 div.create_board,
-div.list_actions_menu
+div.list_actions_menu,
+#rename_board_form
   width: 304px
   height: 253px
   font-size: 14px
@@ -330,12 +340,61 @@ div.list_actions_menu
     &.icon-information
       &:hover
         color: #333
+    &.icon-back
+      position: absolute
+      left: 10px
+      top: 15px
+      color: #bbb
+      &:hover
+        color: #888
+        
+#rename_board_form
+  top: 55px
+  left: 10px
+  height: auto
+  border-radius: 2px
+  header
+    h1
+      font-weight: normal
+  #new_name
+    width: 100%
+    padding: 5px
+    border-radius: 3px
+    border: 1px solid #bbb
+  .btn
+    background-color: #61BD4F
+    padding: 10px 30px
+    color: white
+    &:hover
+      background-color: #439532
 
 div.list_actions_menu
   top: 40px
   left: 230px
   height: auto
   padding: 8px 0
+  section
+    padding: 10px 10px 0 10px
+    white-space: normal 
+    p
+      overflow-x: auto
+      word-wrap: break-word
+      margin-bottom: 10px
+      color: #333
+    button
+      width: 100%
+      height: 40px
+      background-color: #bbb
+      color: #B04632
+      font-weight: bold
+      border: none
+      box-shadow: inset 0 0 10px #ccc
+      box-shadow: 0 1px 1px #888
+      &:hover
+        background-color: #B04632
+        color: white
+        
+      
   header
     h1
       display: block
@@ -352,6 +411,11 @@ div.list_actions_menu
     &:hover
       background-color: #2083C1
       color: white
+    &.no-hover
+      color: #888
+      &:hover
+        color: inherit
+        background-color: inherit
   
 
 select
@@ -395,9 +459,24 @@ select
 .board_list
   position: relative
   header 
-    h1 
+    div.edit_title
       display: inline-block
+      overflow-x: auto
+      word-wrap: break-word
+      // word-break: break-all
+      white-space: normal
+      overflow-wrap: break-word
       font-weight: bold
+      border: none
+      resize: none
+      width: 200px
+      heigth: auto
+      border-radius: 3px
+      padding-left: 5px
+      outline: none
+      background-color: inherit
+      &:focus
+        background-color: white
   footer
     padding: 8px
     &:hover
@@ -420,7 +499,7 @@ select
   & > li
     padding: 0
 
-.list_actions 
+.list_actions
   border-radius: 3px
   float: right
   width: 24px
@@ -443,10 +522,14 @@ li
   &.card,
   &.new_card
     display: block
+    position: relative
     background: #ffffff
     min-height: 32px
     margin: 8px 4px
     border-radius: 3px
+    a
+      text-decoration: none
+      color: #555
     header
       h1 
         padding: 6px
@@ -458,7 +541,10 @@ li
         width: 26px
         height: 26px
         display: none
-        position: relative
+        position: absolute
+        top: 3px
+        right: 3px
+        z-index: 3
       &.icon-edit
         &:before 
           position: absolute
@@ -498,13 +584,13 @@ li
     div
       &.close
         top: auto
-        bottom: 10px
+        bottom: 2px
         left: 86px
         width: 30px
     span
       position: absolute
-      bottom: 10px
-      right: 10px
+      bottom: 0px
+      right: 0px
       top: auto
       left: auto
       &:hover
@@ -882,7 +968,6 @@ div.small_user_pic
 
 .board_list_container::-webkit-scrollbar 
  height: 20px
-
 
 .board_list_container::-webkit-scrollbar-track 
  background-color: #0067A3

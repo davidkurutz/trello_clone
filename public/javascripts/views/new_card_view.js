@@ -4,7 +4,13 @@ var NewCardView = Backbone.View.extend({
   className: "new_card",
   events: {
     'click div.close': 'close',
-    'submit form': 'submit'
+    'submit form': 'submit',
+    'keypress' : 'keypress'
+  },
+  keypress: function(e) {
+    if (e.keyCode === 13) {
+      this.submit(e);
+    }
   },
   submit: function(e) {
     e.preventDefault();
@@ -23,7 +29,7 @@ var NewCardView = Backbone.View.extend({
       success: function(json) {
         model.get("Cards").add(json);
         App.trigger('appendCard', c)
-        this.$("#card_name").val('');
+        this.$("#card_name").val('').focus();
       }
     });
   },

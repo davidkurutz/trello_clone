@@ -1,66 +1,16 @@
 {
   "data": [
     {
-      "id": 1,
-      "created_by": 1,
-      "created_on": "2017-04-30T00:41:41.867Z",
-      "title": "My First Board",
-      "starred": false,
-      "private": false,
-      "open": true,
-      "archived": false
-    },
-    {
-      "id": 2,
-      "created_by": 1,
-      "created_on": "2017-04-30T00:41:41.867Z",
-      "title": "My Second Board",
-      "starred": false,
-      "private": false,
-      "open": true,
-      "archived": false
-    },
-    {
-      "id": 3,
-      "created_by": 1,
-      "created_on": "2017-04-30T00:41:41.867Z",
-      "title": "My Third Board",
-      "starred": false,
-      "private": false,
-      "open": true,
-      "archived": false
-    },
-    {
-      "id": 4,
-      "created_by": 1,
-      "created_on": "2017-04-30T00:41:41.867Z",
-      "title": "My Fourth Board",
-      "starred": false,
-      "private": false,
-      "open": true,
-      "archived": false
-    },
-    {
-      "id": 5,
-      "created_by": 1,
-      "created_on": "2017-04-30T00:41:41.867Z",
-      "title": "My Fifth Board",
-      "starred": false,
-      "private": false,
-      "open": true,
-      "archived": false
-    },
-    {
-      "title": "bork",
-      "team": "none",
-      "id": 6,
+      "id": 10,
       "createdBy": 1,
-      "createdOn": "2017-05-02T22:20:14.357Z",
+      "createdOn": "2017-05-05T02:22:04.964Z",
       "starred": false,
       "open": true,
-      "archived": false
+      "archived": false,
+      "title": "my shitty board",
+      "team": "none"
     }
   ],
-  "currentId": 7,
-  "currentStarredOrder": 5
+  "currentId": 11,
+  "currentStarredOrder": 7
 }

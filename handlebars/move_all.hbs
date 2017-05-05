@@ -1,0 +1,17 @@
+<header>
+  <span class="icon-sm icon-back"></span>
+  <h1>Move All Cards in List</h1>
+  <div class="close small"></div>
+</header>
+<ul>
+  {{#with current}}
+  <li class="no-hover">
+    {{name}} (current)
+  </li>
+  {{/with}}
+  {{#each lists}}
+  <li data-id="{{id}}" class="move_target">
+    {{name}}
+  </li>
+  {{/each}}
+</ul>

@@ -57,5 +57,12 @@ module.exports = {
     cards = _.without(cards, existing_c);
 
     this.set({"data": cards});
-  }
+  },
+  update: function(cardId, newData) {
+    var cards = this.getData();
+    var card = _.findWhere(cards, {id: +cardId});
+    _.extend(card, newData);
+    this.set({ data: cards });
+    return card
+  },
 };

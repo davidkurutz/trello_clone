@@ -51,6 +51,13 @@ module.exports = {
     this.set({ "data": lists, "currentId": id + 1 });
     return obj;
   },
+  update: function(listId, newData) {
+    var lists = this.getData();
+    var list = _.findWhere(lists, {id: listId});
+    _.extend(list, newData);
+    this.set({ data: lists });
+    return list
+  },
   remove: function(id) {
     var lists = this.getData();
     var existing_l = _.findWhere(lists, {id: id});

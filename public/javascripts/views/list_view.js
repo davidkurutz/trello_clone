@@ -9,11 +9,25 @@ var ListView = Backbone.View.extend({
     }
   },
   events: {
-    'click': 'stopPropagation',
+    'click': 'stop',
     'click .list_actions': 'toggleListActions',
-    'click footer a' : 'newCard'
+    'click footer' : 'newCard',
+    'keypress .edit_title': 'keypress',
+    'blur .edit_title': 'editTitle',
+    'dblclick': 'stop'
   },
-  stopPropagation: function(e) {
+  keypress: function(e) {
+    if(e.keyCode === 13) {
+      e.preventDefault()
+      this.$(".edit_title").blur();
+    }
+  },
+  editTitle: function(e) {
+    var title = $(e.target).text()
+    this.model.set('name', title);
+    this.model.save();
+  },
+  stop: function(e) {
     e.stopPropagation();
   },
   newCard: function(e) {
@@ -21,13 +35,27 @@ var ListView = Backbone.View.extend({
     e.stopPropagation();
 
     this.stopListening(App)
-
-    var ncv = new NewCardView({ model: this.model });
-
-    this.$(".cards").append(ncv.$el);
+    this.newCardView = new NewCardView({ model: this.model });
+    this.$(".cards").append(this.newCardView.$el);
     this.$("footer").hide();
     this.$("textarea").focus();
     this.listenTo(App, 'appendCard', this.appendCard)
+    this.listenTo(this.newCardView, 'showFooter', this.showFooter)
+  },
+  newCardTop: function(e) {
+    this.stopListening(App)
+
+    if (this.newCardView) {
+      this.newCardView.remove()
+      delete this.newCardView;
+    }
+
+    var ncv = new NewCardView({ model: this.model });
+
+    this.$(".cards").prepend(ncv.$el);
+    this.$("footer").hide();
+    this.$("textarea").focus();
+    this.listenTo(App, 'appendCard', this.prependCard)
     this.listenTo(ncv, 'showFooter', this.showFooter)
   },
   showFooter: function() {
@@ -47,6 +75,12 @@ var ListView = Backbone.View.extend({
       }).$el);
     }
   },
+  prependCard: function(card) {
+    if (+card.get("list_id") === this.model.get("id")) {
+      var first = this.$("ul.cards li:first-child");
+      first.before(new CardOverviewView({ model: card}).$el);
+    }
+  },
   appendCard: function(card) {
     if (+card.get("list_id") === this.model.get("id")) {
       var last = this.$("ul.cards li:last-child");
@@ -56,6 +90,7 @@ var ListView = Backbone.View.extend({
   },
   render: function() {
     var cards = this.model.get('Cards');
+    // console.log(cards)
     this.$el.html(this.template(this.model.toJSON()));
 
     var list = this.$("ul.cards");
@@ -67,5 +102,6 @@ var ListView = Backbone.View.extend({
   initialize: function() {
     this.render();
     this.listenTo(this.model, 'destroy', this.remove);
+    this.listenTo(this.model, 'add_card', this.newCardTop);
   }
 });

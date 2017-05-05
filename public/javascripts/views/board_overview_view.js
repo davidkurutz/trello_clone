@@ -9,24 +9,20 @@ var BoardOverviewView = Backbone.View.extend({
     e.stopPropagation();
 
     var board = this.model;
-    var id = board.get("id");
+
     var starred = !board.get("starred");
 
-    $.ajax({
-      url: "/b/" + id,
-      type: "PUT",
+    board.save({"starred": starred}, {
       context: this,
-      data: { "starred": starred },
       success: function(json) {
-        board.set(json);
-        this.render();
+        $(e.target).toggleClass('gold', starred);
         App.trigger('toggleStarred', this.model);
       }
     });
   },
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
-    this.listenTo(this.model, 'change', this.render)
+    this.listenTo(this.model, 'change', this.render);
   },
   initialize: function() {
     this.render();

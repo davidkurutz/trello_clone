@@ -6,7 +6,7 @@ var Boards = require(path.resolve(path.dirname(__dirname), 'local_modules/boards
 var Lists = require(path.resolve(path.dirname(__dirname), 'local_modules/lists_module'));
 
 module.exports = function(router) {
-  router.get('/b/:board_id*', function(req, res, next) {
+  router.get('/b/:board_id*?', function(req, res, next) {
     var board_id = +req.params.board_id;
 
     res.render('board', {
@@ -17,28 +17,28 @@ module.exports = function(router) {
     });
   });
 
-  router.put('/b/:board_id', function(req, res) {
-    var data = req.body;
-    var id = +req.params.board_id;
-    var boards = Boards.get();
-    var board = _.findWhere(boards, {id: id});
-    var obj = {};
+  // router.put('/boards/:board_id', function(req, res) {
+  //   var data = req.body;
+  //   var id = +req.params.board_id;
+  //   var boards = Boards.get();
+  //   var board = _.findWhere(boards, {id: id});
+  //   var obj = {};
 
-    data.starred = data.starred === "true";
+  //   data.starred = data.starred === "true";
     
-    if (data.starred) {
-      data.starredOrder = Boards.getCurrentStarredOrder();
-      obj.currentStarredOrder = data.starredOrder + 1;
-    } else {
-      delete board.starredOrder;
-    }
+  //   if (data.starred) {
+  //     data.starredOrder = Boards.getCurrentStarredOrder();
+  //     obj.currentStarredOrder = data.starredOrder + 1;
+  //   } else {
+  //     delete board.starredOrder;
+  //   }
 
-    _.extend(board, data);
-    obj.data = boards;
-    Boards.set(obj);
+  //   _.extend(board, data);
+  //   obj.data = boards;
+  //   Boards.set(obj);
 
-    res.json(board);
-  });
+  //   res.json(board);
+  // });
 
   router.post('/b', function(req, res) {
     var data = req.body;

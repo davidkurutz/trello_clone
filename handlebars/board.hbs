@@ -1,4 +1,4 @@
-<div class="margin_wrapper">
+<div class="margin_wrapper" data-board-id="{{board.id}}">
   <div class="wrapper">
 
     <div class="board_header">
@@ -7,7 +7,7 @@
         <div class="board_name">{{board.title}}</div>
 
         <div class="star">
-          <span class="icon-sm icon-star"></span>
+          <span class="icon-sm icon-star{{#if board.starred}} gold {{/if}}"></span>
         </div>
         <div class="private">
           <div class="lock">

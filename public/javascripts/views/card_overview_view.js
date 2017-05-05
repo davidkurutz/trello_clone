@@ -3,7 +3,7 @@ var CardOverviewView = Backbone.View.extend({
   tagName: 'li',
   className: 'card',
   events: {
-    'click': 'archiveCard'
+    // 'click': 'showDetail'
   },
   attributes: function() {
     var id = +this.model.get('id');

@@ -59,6 +59,9 @@ var App = {
   removeNewCardForm: function() {
     this.trigger('removeNewCardForm')
   },
+  removeBoardRename: function() {
+    this.trigger('removeBoardRename')
+  },
   toggleStarred: function(model) {
     this.BoardsView.toggleStarred(model);
   },
@@ -84,8 +87,13 @@ var App = {
     this.$el.on('click', this.removeNewListButton.bind(this))
     this.$el.on('click', this.removeListActionsMenu.bind(this))
     this.$el.on('click', this.removeNewCardForm.bind(this))
+    this.$el.on('click', this.removeBoardRename.bind(this))
   },
   init: function() {
     this.bind();
   }
 };
+
+Handlebars.registerHelper('uri', function(text) {
+  return encodeURI(text.replace(/\s/g,'-'));
+});
