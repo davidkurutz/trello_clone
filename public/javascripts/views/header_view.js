@@ -10,9 +10,6 @@ var HeaderView = Backbone.View.extend({
   boardsView: function() {
     App.trigger('boardsView');
   },
-  removeBoardMenu: function(){
-    App.trigger('removeBoardMenu');
-  },
   toggleBoardMenu: function(e) {
     e.stopPropagation();
     App.trigger('toggleBoardMenu');
