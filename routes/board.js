@@ -17,29 +17,6 @@ module.exports = function(router) {
     });
   });
 
-  // router.put('/boards/:board_id', function(req, res) {
-  //   var data = req.body;
-  //   var id = +req.params.board_id;
-  //   var boards = Boards.get();
-  //   var board = _.findWhere(boards, {id: id});
-  //   var obj = {};
-
-  //   data.starred = data.starred === "true";
-    
-  //   if (data.starred) {
-  //     data.starredOrder = Boards.getCurrentStarredOrder();
-  //     obj.currentStarredOrder = data.starredOrder + 1;
-  //   } else {
-  //     delete board.starredOrder;
-  //   }
-
-  //   _.extend(board, data);
-  //   obj.data = boards;
-  //   Boards.set(obj);
-
-  //   res.json(board);
-  // });
-
   router.post('/b', function(req, res) {
     var data = req.body;
     var board = Boards.addBoard(data);
