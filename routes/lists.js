@@ -9,7 +9,7 @@ module.exports = function(router) {
     res.json(lists);
   });
 
-  router.post('/lists/:board_id', function(req, res, next) {
+  router.post('/lists', function(req, res, next) {
     var data = req.body;
     var list = Lists.addList(data);
     res.json(list);
