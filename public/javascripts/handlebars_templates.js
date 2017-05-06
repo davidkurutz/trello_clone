@@ -56,24 +56,46 @@ this["JST"]["card_overview"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"m
     + "</h1><span class=\"edit icon-sm icon-edit\"></span></header></a>";
 },"useData":true});
 
-this["JST"]["card"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper;
+this["JST"]["card"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var stack1;
 
-  return "<div class=\"card_detail\"><div class=\"close\"></div><div class=\"two_columns\"><div class=\"content\"><section id=\"general\"><header><h1><span class=\"icon-lg icon-card\"></span>"
-    + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"name","hash":{},"data":data}) : helper)))
-    + "</h1><p>in list <a href=\"listname\">listname</a><p></header><a href=\"#\" class=\"edit-description\"><span class=\"icon-sm icon-description\"></span>Edit the description...</a></section><section id=\"comment\"><header><h1><span class=\"icon-lg icon-comment\"></span>Add Comment</h1></header><div class=\"user_pic\"></div><form action=\"\"><fieldset><div class=\"comment_container\"><textarea name=\"comment_text\" id=\"comment_text\" cols=\"65\" rows=\"2\" placeholder=\"Write a comment...\"></textarea><div class=\"comment_toolbar\"><div class=\"tools\"><span class=\"icon-sm icon-attachment\"></span><span class=\"icon-sm icon-mention\"></span><span class=\"icon-sm icon-emoji\"></span><span class=\"icon-sm icon-card\"></span></div></div></div><button class=\"btn btn-secondary\">Send</button></fieldset></form></section><section id=\"activity\"><header class=\"clearfix\"><h1><span class=\"icon-lg icon-activity\"></span>Activity</h1><a href=\"#\">Hide Details</a></header><ul id=\"activity_feed\"><li><div class=\"small_user_pic\"></div><span><strong>David Kurutz</strong>left this card<small>yesterday at 11:34PM</small></span></li><li><div class=\"small_user_pic\"></div><span><strong>David Kurutz</strong>left this card<small>yesterday at 11:34PM</small></span></li><li><div class=\"small_user_pic\"></div><span><strong>David Kurutz</strong>left this card<small>yesterday at 11:34PM</small></span></li></ul></section></div><div class=\"sidebar\"><div class=\"add\"><header><h1>Add</h1></header><ul class=\"edit_add\"><li><button class=\"btn btn-sm btn-block\"><span class=\"icon-sm icon-member\"></span>Members</button></li><li><button class=\"btn btn-sm btn-block\"><span class=\"icon-sm icon-label\"></span>Labels</button></li><li><button class=\"btn btn-sm btn-block\"><span class=\"icon-sm icon-checklist\"></span>Checklist</button></li><li><button class=\"btn btn-sm btn-block\"><span class=\"icon-sm icon-clock\"></span>Due Date</button></li><li><button class=\"btn btn-sm btn-block\"><span class=\"icon-sm icon-attachment\"></span>Attachment</button></li></ul></div><div class=\"edit_actions\"><header><h1>Actions</h1></header><ul class=\"actions_list\"><li><button class=\"btn btn-sm btn-block\"><span class=\"icon-sm icon-move\"></span>Move</button></li><li><button class=\"btn btn-sm btn-block\"><span class=\"icon-sm icon-card\"></span>Copy</button></li><li><button class=\"btn btn-sm btn-block\"><span class=\"icon-sm icon-subscribe\"></span>Subscribe</button></li><li><button class=\"btn btn-sm btn-block\"><span class=\"icon-sm icon-archive\"></span>Archive</button></li></ul></div><footer><a href=\"#\" class=\"share\">Share and more...</a></footer></div></div></div>";
+  return "<div class=\"go_away\"><p>Description <a href=\"#\" class=\"edit-description\">Edit</a><p><p>"
+    + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.model : depth0)) != null ? stack1.description : stack1), depth0))
+    + "</p></div>";
+},"3":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"go_away\"><a href=\"#\" class=\"edit-description\"><span class=\"icon-sm icon-description\"></span>Edit the description...</a></div>";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=container.escapeExpression, alias2=depth0 != null ? depth0 : {};
+
+  return "<div class=\"card_detail\"><div class=\"close\"></div><div class=\"two_columns\"><div class=\"content\"><section id=\"general\"><header><h1><span class=\"icon-lg icon-card\"></span><div contenteditable=\"true\" class=\"edit_title\">"
+    + alias1(container.lambda(((stack1 = (depth0 != null ? depth0.model : depth0)) != null ? stack1.name : stack1), depth0))
+    + "</div></h1><p>in list <a href=\"#\">"
+    + alias1(((helper = (helper = helpers.listName || (depth0 != null ? depth0.listName : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias2,{"name":"listName","hash":{},"data":data}) : helper)))
+    + "</a><p></header><div class=\"append_here\">"
+    + ((stack1 = helpers["if"].call(alias2,((stack1 = (depth0 != null ? depth0.model : depth0)) != null ? stack1.description : stack1),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "")
+    + "</div></section><section id=\"comment\"><header><h1><span class=\"icon-lg icon-comment\"></span>Add Comment</h1></header><div class=\"user_pic\"></div><form action=\"\"><fieldset><div class=\"comment_container\"><textarea name=\"comment_text\" id=\"comment_text\" cols=\"65\" rows=\"2\" placeholder=\"Write a comment...\"></textarea><div class=\"comment_toolbar\"><div class=\"tools\"><span class=\"icon-sm icon-attachment\"></span><span class=\"icon-sm icon-mention\"></span><span class=\"icon-sm icon-emoji\"></span><span class=\"icon-sm icon-card\"></span></div></div></div><button class=\"btn btn-secondary\">Send</button></fieldset></form></section><section id=\"activity\"><header class=\"clearfix\"><h1><span class=\"icon-lg icon-activity\"></span>Activity</h1><a href=\"#\">Hide Details</a></header><ul id=\"activity_feed\"><li><div class=\"small_user_pic\"></div><span><strong>David Kurutz</strong>left this card<small>yesterday at 11:34PM</small></span></li><li><div class=\"small_user_pic\"></div><span><strong>David Kurutz</strong>left this card<small>yesterday at 11:34PM</small></span></li><li><div class=\"small_user_pic\"></div><span><strong>David Kurutz</strong>left this card<small>yesterday at 11:34PM</small></span></li></ul></section></div><div class=\"sidebar\"><div class=\"add\"><header><h1>Add</h1></header><ul class=\"edit_add\"><li><button class=\"btn btn-sm btn-block\"><span class=\"icon-sm icon-member\"></span>Members</button></li><li><button class=\"btn btn-sm btn-block\"><span class=\"icon-sm icon-label\"></span>Labels</button></li><li><button class=\"btn btn-sm btn-block\"><span class=\"icon-sm icon-checklist\"></span>Checklist</button></li><li><button class=\"btn btn-sm btn-block\"><span class=\"icon-sm icon-clock\"></span>Due Date</button></li><li><button class=\"btn btn-sm btn-block\"><span class=\"icon-sm icon-attachment\"></span>Attachment</button></li></ul></div><div class=\"edit_actions\"><header><h1>Actions</h1></header><ul class=\"actions_list\"><li><button class=\"btn btn-sm btn-block\"><span class=\"icon-sm icon-move\"></span>Move</button></li><li><button class=\"btn btn-sm btn-block\"><span class=\"icon-sm icon-card\"></span>Copy</button></li><li><button class=\"btn btn-sm btn-block\"><span class=\"icon-sm icon-subscribe\"></span>Subscribe</button></li><li><button class=\"btn btn-sm btn-block\"><span class=\"icon-sm icon-archive\"></span>Archive</button></li></ul></div><footer><a href=\"#\" class=\"share\">Share and more...</a></footer></div></div></div>";
 },"useData":true});
 
 this["JST"]["copy_list"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper;
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
   return "<header><span class=\"icon-sm icon-back\"></span><h1>Copy List</h1><div class=\"close small\"></div></header><section><form action=\"#\"><fieldset><label for=\"new_name\">Name</label><textarea name=\"name\" id=\"new_name\" cols=\"30\" rows=\"10\">"
-    + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"name","hash":{},"data":data}) : helper)))
-    + "</textarea><input type=\"submit\" class=\"btn green-btn\"></fieldset></form></section>";
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</textarea><input type=\"hidden\" name=\"board_id\" value="
+    + alias4(((helper = (helper = helpers.board_id || (depth0 != null ? depth0.board_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"board_id","hash":{},"data":data}) : helper)))
+    + "><input type=\"submit\" class=\"btn green-btn\"></fieldset></form></section>";
 },"useData":true});
 
 this["JST"]["create_board_form"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<header><h1>Create Board</h1><div class=\"close small\"></div></header><form action=\"#\"><fieldset><dl><dt><label for=\"title\">Title</label></dt><dd><input type=\"text\" autofocus placeholder='Like \"Reading Collection\" for example' name=\"title\" id=\"title\"></dd><dt><label for=\"team\">Team<span class=\"icon-sm icon-information\"></span></label></dt><dd><select name=\"team\" id=\"team\"><option value=\"none\">(none)</option></select></dd></dl><span><span class=\"icon-sm icon-private\"></span>This board will be <strong>Private</strong>. <a href=\"#\">Change.</a></span><input type=\"submit\" class=\"btn btn-submit\" value=\"Create\"></fieldset></form>";
+},"useData":true});
+
+this["JST"]["edit_card_description"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "<form action=\"#\"><fieldset><textarea name=\"description\" id=\"description\" cols=\"30\" rows=\"5\">"
+    + container.escapeExpression(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"description","hash":{},"data":data}) : helper)))
+    + "</textarea><input type=\"submit\" value=\"Save\" class=\"btn-sm btn-success\"><div class=\"close\"></div></fieldset></form>";
 },"useData":true});
 
 this["JST"]["header"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -81,7 +103,7 @@ this["JST"]["header"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":fu
 },"useData":true});
 
 this["JST"]["list_actions"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<header><h1>List Actions</h1><div class=\"close small\"></div></header><ul><li id=\"add_card\">Add Card...</li><li id=\"copy_list\">Copy List...</li><li>Move List...</li><li>Subscribe</li></ul><ul><li id=\"move_all_to_another\">Move All Cards in This List..</li><li id=\"archive_all_cards\">Archive All Cards in This List...</li></ul><ul><li id=\"archive_list\">Archive This List</li></ul>";
+    return "<header><h1>List Actions</h1><div class=\"close small\"></div></header><ul><li id=\"add_card\">Add Card...</li><li id=\"copy_list\">Copy List...</li><li id=\"move_list\">Move List...</li><li>Subscribe</li></ul><ul><li id=\"move_all_to_another\">Move All Cards in This List..</li><li id=\"archive_all_cards\">Archive All Cards in This List...</li></ul><ul><li id=\"archive_list\">Archive This List</li></ul>";
 },"useData":true});
 
 this["JST"]["list"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
