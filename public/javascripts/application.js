@@ -11,11 +11,14 @@ var App = {
     list.getCards((function() { 
       this.BoardView.trigger('newList', list)
     }).bind(this))
-  }, 
+  },
+  getListsAndPopulate: function() {
+    this.Board.getLists(this.populateLists.bind(this));
+  },
   boardView: function(board_id) {
     this.headerView();
     this.Board = this.Boards.get(+board_id);
-    this.Board.getLists(this.populateLists.bind(this));
+    this.getListsAndPopulate();
     this.bind()
   },
   boardsView: function() {
@@ -24,6 +27,7 @@ var App = {
     if (this.BoardView) {
       this.BoardView.undelegateEvents();
       this.BoardView.$el.empty();
+      delete this.BoardView;
     }
 
     this.BoardsView = this.BoardsView || new BoardsView({
@@ -34,33 +38,18 @@ var App = {
     this.bind();
   },
   createBoardView: function() {
-    this.BoardView = new BoardView({ model: this.Board });
+    if (this.BoardView) {
+      this.BoardView.undelegateEvents();
+      this.BoardView.$el.empty();
+      delete this.BoardView;
+    }
+    this.BoardView = this.BoardView || new BoardView({ model: this.Board });
   },
   headerView: function() {
     this.HeaderView = this.HeaderView || new HeaderView();
   },
   populateLists: function() {
     this.Board.get("Lists").getCards((this.createBoardView).bind(this));
-  },
-  removeBoardMenu: function() {
-    if (this.boardMenu) {
-      this.boardMenu.remove();
-      delete this.boardMenu;
-    }
-  },
-  removeListActionsMenu() {
-    this.trigger('remove_list_actions_menu')
-  },
-  removeNewListButton: function() {
-    if (this.BoardView) {
-      this.BoardView.trigger('removeNewListButton')
-    }
-  },
-  removeNewCardForm: function() {
-    this.trigger('removeNewCardForm')
-  },
-  removeBoardRename: function() {
-    this.trigger('removeBoardRename')
   },
   closePopup: function() {
     this.trigger('closePopup')
@@ -69,12 +58,9 @@ var App = {
     this.BoardsView.toggleStarred(model);
   },
   toggleBoardMenu: function() {
-    if (this.boardMenu) {
-      this.removeBoardMenu();
-    } else {
-      this.boardMenu = new BoardMenuView();
-      this.$el.append(this.boardMenu.$el).find("#search").focus();
-    }
+    this.boardMenu = this.boardMenu || new BoardMenuView();
+    this.$el.append(this.boardMenu.$el)
+    this.boardMenu.$el.toggle()
   },
   cardView: function() {
     new CardView({model: App.Card});
@@ -86,6 +72,8 @@ var App = {
   },  
   bind: function() {
     _.extend(this, Backbone.Events);
+    this.off();
+    this.$el.off();
     this.on('addList', this.addList);
     this.on('boardsView', this.boardsView);
     this.on('boardView', this.boardView);
@@ -93,12 +81,8 @@ var App = {
     this.on('toggleStarred', this.toggleStarred);
     this.on('addBoard', this.addBoard);
     this.on('toggleBoardMenu', this.toggleBoardMenu);
-    this.on('removeBoardMenu', this.removeBoardMenu);
-    this.$el.on('click', this.removeBoardMenu.bind(this));
-    this.$el.on('click', this.removeNewListButton.bind(this))
-    this.$el.on('click', this.removeListActionsMenu.bind(this))
-    this.$el.on('click', this.removeNewCardForm.bind(this))
-    this.$el.on('click', this.removeBoardRename.bind(this))
+    // this.on('removeBoardMenu', this.removeBoardMenu);
+    // this.$el.on('click', this.removeBoardMenu.bind(this));
     this.$el.on('click', this.closePopup.bind(this))
   }
 };
