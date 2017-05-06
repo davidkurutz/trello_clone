@@ -742,6 +742,58 @@ li.new_card + footer {
   left: 0;
   background: rgba(0,0,0,0.5);
 }
+.cover_modal > div.close {
+  font-weight: normal;
+  color: #fff;
+  z-index: 10;
+  opacity: 0.75;
+}
+.cover_modal > div.close:hover {
+  opacity: 1;
+}
+.cover_modal #quick_edit {
+  width: 425px;
+  height: 220px;
+  z-index: 3;
+  position: absolute;
+}
+.cover_modal #quick_edit form {
+  display: inline-block;
+}
+.cover_modal #quick_edit textarea {
+  display: block;
+  width: 250px;
+  height: 115px;
+  background-color: #fff;
+  border-radius: 3px;
+  color: #333;
+  padding: 6px 9px;
+  outline: none;
+  resize: none;
+  border: none;
+}
+.cover_modal #quick_edit .btn {
+  background-color: #5fb74b;
+  color: #fff;
+  font-weight: bold;
+  width: 120px;
+  margin: 10px 0 0 0;
+}
+.cover_modal #quick_edit .btn:hover {
+  background-color: #4ea63a;
+}
+.cover_modal #quick_edit #card_options {
+  float: right;
+  width: 169px;
+}
+.cover_modal #quick_edit #card_options li {
+  background-color: #000;
+  opacity: 0.75;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  width: auto;
+}
 .card_detail {
   color: #4d4d4d;
   position: relative;

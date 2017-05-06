@@ -2,7 +2,14 @@ var BoardOverviewView = Backbone.View.extend({
   template: App.templates.board_overview,
   tagName: "li",
   events: {
-    "click .icon-star": "toggleStar"
+    "click .icon-star": "toggleStar",
+    "click a": 'board'
+  },
+  board: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    router.navigate($(e.currentTarget).attr("href"), { trigger: true });
   },
   toggleStar: function(e) {
     e.preventDefault();

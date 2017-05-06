@@ -15,8 +15,8 @@ var BoardView = Backbone.View.extend({
   events: {
     'click .add_list': 'addList',
     'click .board_name': 'toggleBoardRename',
-    'click div.star' : 'toggleStar',
-    'dblclick .board_list_container': 'positionedList'
+    'click div.star' : 'toggleStar'
+    // 'dblclick .board_list_container': 'positionedList'
   },
   positionedList: function(e) {
     e.stopPropagation();

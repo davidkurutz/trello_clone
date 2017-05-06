@@ -2,6 +2,7 @@ var CreateBoardFormView = Backbone.View.extend({
   template: App.templates.create_board_form,
   className: "create_board",
   events: {
+    "click": "stop",
     "click .close": "close",
     "submit form" : "submit"
   },
@@ -25,6 +26,9 @@ var CreateBoardFormView = Backbone.View.extend({
       }
     });
   },
+  stop: function(e) {
+    e.stopPropagation()
+  },
   close: function() {
     this.remove();
   },
@@ -33,5 +37,6 @@ var CreateBoardFormView = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
+    this.listenTo(App, 'closePopup', this.remove);
   }
 });

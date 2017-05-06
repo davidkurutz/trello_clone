@@ -2,7 +2,6 @@ var BoardsView = Backbone.View.extend({
   el: "main",
   template: App.templates.boards,
   events: {
-    "click" : "stop",
     "click .create_new_board": "createBoard"
   },
   stop: function(e) {
@@ -66,6 +65,7 @@ var BoardsView = Backbone.View.extend({
   },
   createBoard: function(e) {
     e.preventDefault();
+    e.stopPropagation()
     var li = $(e.target).closest("li");
     li.prepend(new CreateBoardFormView().$el);
     $(".create_board input#title").focus();

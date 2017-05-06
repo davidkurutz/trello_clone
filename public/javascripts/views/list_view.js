@@ -14,7 +14,7 @@ var ListView = Backbone.View.extend({
     'click footer' : 'newCard',
     'keypress .edit_title': 'keypress',
     'blur .edit_title': 'editTitle',
-    'dblclick': 'stop'
+    // 'dblclick': 'stop'
   },
   keypress: function(e) {
     if(e.keyCode === 13) {

@@ -320,13 +320,8 @@ div.list_actions_menu,
       & + dt 
         margin-top: 10px
     &.btn-submit
-      background-color: #5FB74B
-      color: white
-      font-weight: bold
-      width: 120px
-      margin: 10px 0 0 0
-      &:hover
-        background-color: #4EA63A
+      greenButton()
+  
   span
     font-weight: lighter
     &.icon-private
@@ -634,13 +629,52 @@ li
     right: 165px
 
 /*CARD DETAIL MODAL*/
-.cover_modal 
+.cover_modal
+  & > div
+    &.close
+      font-weight: normal
+      color: white
+      z-index: 10
+      opacity: .75
+      &:hover
+        opacity: 1
   position: absolute
   top: 0
   right: 0
   bottom: 0
   left: 0
   background: rgba(0, 0, 0, 0.5)
+  #quick_edit
+    form
+      display: inline-block
+    width: 425px
+    height: 220px
+    z-index: 3
+    position: absolute
+    textarea
+      display: block
+      width: 250px
+      height: 115px
+      background-color: white
+      border-radius: 3px
+      color: #333
+      padding: 6px 9px
+      outline: none
+      resize: none
+      border: none
+    .btn
+      greenButton()
+    #card_options
+      float: right
+      width: 169px
+      li
+        background-color: black
+        opacity: .75
+        padding: 5px
+        margin-bottom: 5px
+        border-radius: 5px
+        width: auto
+        
 
 .card_detail 
   color: #4D4D4D
