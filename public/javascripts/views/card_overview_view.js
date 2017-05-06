@@ -7,14 +7,14 @@ var CardOverviewView = Backbone.View.extend({
     'click span': 'quickEdit'
   },
   quickEdit: function(e) {
-    e.preventDefault()
+    e.preventDefault();
     e.stopPropagation();
     var offset = this.$el.offset();
     
     new QuickEditView({
       model: this.model,
       offset: offset
-    })
+    });
   },
   attributes: function() {
     var id = +this.model.get('id');
