@@ -123,6 +123,14 @@ this["JST"]["new_list_button"] = Handlebars.template({"compiler":[7,">= 4.0.0"],
     + "><input type=\"submit\" value=\"Save\" class=\"btn-sm btn-success\"></fieldset></form><div class=\"close\"></div>";
 },"useData":true});
 
+this["JST"]["quick_edit"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "<div class=\"close\"></div><div id=\"quick_edit\"><form action=\"#\"><fieldset><textarea name=\"name\" id=\"\" cols=\"30\" rows=\"10\" id=\"quick_edit_name\">"
+    + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"name","hash":{},"data":data}) : helper)))
+    + "</textarea><input type=\"submit\" class=\"btn\" value=\"Save\"></fieldset></form><ul id=\"card_options\"><li><span class=\"icon-sm icon-label\"></span>Edit Labels</li><li><span class=\"icon-sm icon-member\"></span>Change Members</li><li><span class=\"icon-sm icon-move\"></span>Move</li><li><span class=\"icon-sm icon-card\"></span>Copy</li><li><span class=\"icon-sm icon-clock\"></span>Change Due Date</li><li id=\"archive_card\"><span class=\"icon-sm icon-archive\"></span>Archive</li></ul></div>";
+},"useData":true});
+
 this["JST"]["rename_board"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper;
 

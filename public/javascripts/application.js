@@ -16,6 +16,7 @@ var App = {
     this.headerView();
     this.Board = this.Boards.get(+board_id);
     this.Board.getLists(this.populateLists.bind(this));
+    this.bind()
   },
   boardsView: function() {
     this.headerView();
@@ -30,10 +31,7 @@ var App = {
     });
 
     this.BoardsView.render();
-  },
-  cardView: function(cardId, listId) {
-    var card = this.Board.get("Lists").get(listId).get("Cards").get(cardId);
-    new CardView({ model: card });
+    this.bind();
   },
   createBoardView: function() {
     this.BoardView = new BoardView({ model: this.Board });
@@ -54,13 +52,18 @@ var App = {
     this.trigger('remove_list_actions_menu')
   },
   removeNewListButton: function() {
-    this.BoardView.trigger('removeNewListButton')
+    if (this.BoardView) {
+      this.BoardView.trigger('removeNewListButton')
+    }
   },
   removeNewCardForm: function() {
     this.trigger('removeNewCardForm')
   },
   removeBoardRename: function() {
     this.trigger('removeBoardRename')
+  },
+  closePopup: function() {
+    this.trigger('closePopup')
   },
   toggleStarred: function(model) {
     this.BoardsView.toggleStarred(model);
@@ -73,6 +76,14 @@ var App = {
       this.$el.append(this.boardMenu.$el).find("#search").focus();
     }
   },
+  cardView: function() {
+    new CardView({model: App.Card});
+  },
+  cardOverlay: function(cardid) {
+    var id = this.Board.get("id")
+    this.boardView(id)
+    this.cardView(cardid);
+  },  
   bind: function() {
     _.extend(this, Backbone.Events);
     this.on('addList', this.addList);
@@ -88,9 +99,7 @@ var App = {
     this.$el.on('click', this.removeListActionsMenu.bind(this))
     this.$el.on('click', this.removeNewCardForm.bind(this))
     this.$el.on('click', this.removeBoardRename.bind(this))
-  },
-  init: function() {
-    this.bind();
+    this.$el.on('click', this.closePopup.bind(this))
   }
 };
 
