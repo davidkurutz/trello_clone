@@ -63,7 +63,9 @@ var App = {
     this.boardMenu.$el.toggle()
   },
   cardView: function() {
-    new CardView({model: App.Card});
+    var listId = App.Card.get('list_id');
+    var listName = App.Board.get('Lists').get(listId).get("name");
+    new CardView({model: App.Card, listName: listName});
   },
   cardOverlay: function(cardid) {
     var id = this.Board.get("id")
