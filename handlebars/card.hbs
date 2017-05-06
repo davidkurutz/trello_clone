@@ -6,14 +6,26 @@
         <header>
           <h1>
             <span class="icon-lg icon-card"></span>
-            {{name}}
+            <div contenteditable="true" class="edit_title">{{model.name}}</div>
           </h1>
-          <p>in list <a href="listname">listname</a><p>
+          <p>in list <a href="#">{{listName}}</a><p>
         </header>
-        <a href="#" class="edit-description">
-          <span class="icon-sm icon-description"></span>
-          Edit the description...
-        </a>
+        <div class="append_here">
+          {{#if model.description}}
+            <div class="go_away">
+              <p>Description <a href="#" class="edit-description">Edit</a><p>
+              <p>{{model.description}}</p>
+            </div>
+          {{else}}
+          <div class="go_away">
+            <a href="#" class="edit-description">
+              <span class="icon-sm icon-description"></span>
+              Edit the description...
+            </a>
+           </div>
+          {{/if}}
+        </div>
+
       </section>
 
       <section id="comment">
