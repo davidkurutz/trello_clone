@@ -8,10 +8,13 @@ var BoardMenuView = Backbone.View.extend({
     e.stopPropagation();
   },
   render: function() {
-    this.$el.html(this.template());
-    this.delegateEvents();
+    this.$el.html(this.template({}));
+  },
+  hide: function() {
+    this.$el.hide();
   },
   initialize: function() {
     this.render();
+    this.listenTo(App, 'closePopup', this.hide);
   }
 });
