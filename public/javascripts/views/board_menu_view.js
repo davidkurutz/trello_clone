@@ -1,11 +1,8 @@
-var BoardMenuView = Backbone.View.extend({
+var BoardMenuView = BaseView.extend({
   template: App.templates.board_menu,
   id: "boardMenu",
   events: {
     'click': 'stop'
-  },
-  stop: function(e) {
-    e.stopPropagation();
   },
   render: function() {
     this.$el.html(this.template({}));

@@ -1,4 +1,4 @@
-var ListView = Backbone.View.extend({
+var ListView = BaseView.extend({
   template: App.templates.list,
   tagName: "li",
   className: "board_list",
@@ -26,9 +26,6 @@ var ListView = Backbone.View.extend({
     var title = $(e.target).text()
     this.model.set('name', title);
     this.model.save();
-  },
-  stop: function(e) {
-    e.stopPropagation();
   },
   newCard: function(e) {
     e.preventDefault();

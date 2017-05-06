@@ -1,4 +1,4 @@
-var CreateBoardFormView = Backbone.View.extend({
+var CreateBoardFormView = BaseView.extend({
   template: App.templates.create_board_form,
   className: "create_board",
   events: {
@@ -25,9 +25,6 @@ var CreateBoardFormView = Backbone.View.extend({
         this.close();
       }
     });
-  },
-  stop: function(e) {
-    e.stopPropagation()
   },
   close: function() {
     this.remove();

@@ -1,25 +1,49 @@
-var CopyListView = Backbone.View.extend({
+var CopyListView = BaseView.extend({
   template: App.templates.copy_list,
   events: {
-    'submit form': 'submit'
+    'submit form': 'submit',
+    'keypress': 'submitme'
+  },
+  submitme: function(e) {
+   if(e.keyCode === 13) {
+      e.preventDefault();
+      console.log(this)
+      this.submit(e);
+    }
   },
   submit: function(e) {
     e.preventDefault();
-    var data = $(e.target).serializeArray();
+    var data = this.$("form").serializeArray();
+    var cards = this.model.get('Cards');
     var obj = {};
+    var newList;
+    
+    var newListId;
 
     data.forEach(function(input) {
       obj[input.name] = input.value;
     });
 
-    
-
-    this.model.save(obj, {
+    newList = new List()
+    newList.save(obj, {
       context: this,
-      success: function() {
-        this.close();
+      success: function(json) {
+        newListId = json.id;
+        App.trigger('addList', json);
+        this.populateCards(newListId, cards);
       }
-    });
+    })
+  },
+  populateCards(newListId, cards) {
+    var newCards = cards.clone()
+    newCards.models.forEach(function(model) {
+      delete model.attributes.created_on;
+      delete model.attributes.id;
+      model.set('list_id', +newListId);
+      model.save()
+    })
+    App.trigger('closePopup')
+    this.remove()
   },
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));

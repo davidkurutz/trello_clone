@@ -23,9 +23,6 @@ var RenameBoardView = Backbone.View.extend({
     });
 
   },
-  stop: function(e) {
-    e.stopPropagation();
-  },
   close: function() {
     App.trigger('toggleRenameBoard');
     this.remove();

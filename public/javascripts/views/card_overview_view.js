@@ -25,7 +25,9 @@ var CardOverviewView = Backbone.View.extend({
   showDetail: function(e) {
     e.preventDefault();
     e.stopPropagation();
-    new CardView({model: this.model});
+    var listId = this.model.get('list_id');
+    var listName = App.Board.get('Lists').get(listId).get("name");
+    new CardView({model: this.model, listName: listName});
     router.navigate($(e.currentTarget).attr("href"));
   },
   archiveCard: function(e) {

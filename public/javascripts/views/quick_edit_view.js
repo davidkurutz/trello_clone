@@ -1,4 +1,4 @@
-var QuickEditView = Backbone.View.extend({
+var QuickEditView = BaseView.extend({
  template: App.templates.quick_edit,
   className: "cover_modal",
   events: {
@@ -6,7 +6,7 @@ var QuickEditView = Backbone.View.extend({
     "click": "close",
     "click #archive_card": "archive",
     "submit form": "submit",
-    "keypress": "keypress"
+    "keypress": "submitOnEnter"
   },
   archive: function(e) {
     e.stopPropagation();
@@ -28,15 +28,6 @@ var QuickEditView = Backbone.View.extend({
         this.close();
       }
     });
-  },
-  keypress: function(e) {
-    if(e.keyCode === 13) {
-      e.preventDefault();
-      this.submit(e);
-    }
-  },
-  stop: function(e) {
-    e.stopPropagation();
   },
   close: function(e) {
     this.remove();

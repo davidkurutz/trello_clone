@@ -1,4 +1,4 @@
-var NewListButtonView = Backbone.View.extend({
+var NewListButtonView = BaseView.extend({
   template: App.templates.new_list_button,
   id: 'new_list',
   events: {
@@ -6,23 +6,20 @@ var NewListButtonView = Backbone.View.extend({
     'click div.close': 'close',
     'submit form': 'submit'
   },
-  stop: function(e) {
-    e.stopPropagation();
-  },
   submit: function(e) {
     e.preventDefault();
     var data = this.$("form").serializeArray();
     var obj = {};
+    var newList;
 
     data.forEach(function(input) {
       obj[input.name] = input.value
     });
 
-    $.ajax({
+    newList = new List();
+
+    newList.save(obj, {
       context: this,
-      url: '/lists/' + obj.board_id,
-      type: 'POST',
-      data: obj,
       success: function(json) {
         App.trigger('addList', json)
         this.$("#add_list_name").val('');

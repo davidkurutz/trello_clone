@@ -9,11 +9,16 @@ var ListActionsView = Backbone.View.extend({
     "click #archive_list": "archiveList",
     "click #add_card": "addCard",
     "click #archive_all_cards": "archiveAllCards",
+    "click #move_list": "moveList",
     "click span.icon-back": "back",
     "click #move_all_to_another": 'moveAllToAnother',
     "click #nuke_it": "nukeIt",
     "click .move_target": "moveCards",
-    "click #copy_list": 'copyList'
+    "click #copy_list": 'copyList',
+    "submit form": "remove"
+  },
+  moveList: function(e) {
+    alert('moved')
   },
   copyList: function(e) {
     this.$el.html(new CopyListView({

@@ -1,16 +1,11 @@
-var NewCardView = Backbone.View.extend({
+var NewCardView = BaseView.extend({
   template: App.templates.new_card,
   tagName: "li",
   className: "new_card",
   events: {
     'click div.close': 'close',
     'submit form': 'submit',
-    'keypress' : 'keypress'
-  },
-  keypress: function(e) {
-    if (e.keyCode === 13) {
-      this.submit(e);
-    }
+    'keypress' : 'submitOnEnter'
   },
   submit: function(e) {
     e.preventDefault();
