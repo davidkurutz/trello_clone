@@ -4,6 +4,9 @@ var router = new (Backbone.Router.extend({
     "b/:id(/:name)": "board",
     "c/:id(/:name)": "card"
   },
+  card: function(id) {
+    App.cardOverlay(id);
+  },
   boards: function() { 
     App.boardsView();
   },
