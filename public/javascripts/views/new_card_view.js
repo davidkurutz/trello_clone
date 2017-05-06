@@ -42,6 +42,6 @@ var NewCardView = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
-    this.listenTo(App, 'removeNewCardForm', this.close);
+    this.listenTo(App, 'closePopup', this.close);
   }
 });
