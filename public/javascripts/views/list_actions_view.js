@@ -2,6 +2,7 @@ var ListActionsView = Backbone.View.extend({
   template: App.templates.list_actions,
   archiveTemplate: App.templates.archive_all_cards,
   moveAllTemplate: App.templates.move_all,
+  copyTemplate: App.templates.copy_list,
   className: "list_actions_menu",
   events: {
     "click .close": "remove",
@@ -11,7 +12,15 @@ var ListActionsView = Backbone.View.extend({
     "click span.icon-back": "back",
     "click #move_all_to_another": 'moveAllToAnother',
     "click #nuke_it": "nukeIt",
-    "click .move_target": "moveCards"
+    "click .move_target": "moveCards",
+    "click #copy_list": 'copyList'
+  },
+  copyList: function(e) {
+    this.$el.html(new CopyListView({
+      model: this.model
+    }).$el)
+ 
+    this.$("textarea").focus().select()
   },
   moveCards: function(e) {
     var targetId = +$(e.target).attr("data-id");
@@ -19,7 +28,8 @@ var ListActionsView = Backbone.View.extend({
     _.invoke(cards.toArray(), 'set', {'list_id': targetId});
     _.invoke(cards.toArray(), 'save');
     this.remove();
-    
+    App.getListsAndPopulate();
+    // App.bind();
   },
   moveAllToAnother: function(e) {
     e.stopPropagation();
@@ -60,6 +70,6 @@ var ListActionsView = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
-    this.listenTo(App, 'remove_list_actions_menu', this.remove);
+    this.listenTo(App, 'closePopup', this.remove);
   }
 });
