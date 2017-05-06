@@ -2,8 +2,12 @@ var NewListButtonView = Backbone.View.extend({
   template: App.templates.new_list_button,
   id: 'new_list',
   events: {
+    'click': 'stop',
     'click div.close': 'close',
     'submit form': 'submit'
+  },
+  stop: function(e) {
+    e.stopPropagation();
   },
   submit: function(e) {
     e.preventDefault();
@@ -21,7 +25,7 @@ var NewListButtonView = Backbone.View.extend({
       data: obj,
       success: function(json) {
         App.trigger('addList', json)
-        this.remove();
+        this.$("#add_list_name").val('');
       }
     })
   },
@@ -33,6 +37,6 @@ var NewListButtonView = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
-    this.listenTo(App.BoardView, 'removeNewListButton', this.remove)
+    this.listenTo(App, 'closePopup', this.remove)
   }
 });
