@@ -5,10 +5,9 @@ var file_path = path.resolve(path.dirname(__dirname), 'data/cards.json');
 
 module.exports = {
   get: function(id) {
-    var cards = this.getJSON();
-
+    var cards = this.getData();
     if (id) {
-      return _.where(cards, {id: id});
+      return _.findWhere(cards, {id: id});
     } else {
       return cards;
     }
