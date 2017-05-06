@@ -8,4 +8,5 @@ block scripts
   script(type="text/javascript").
     App.Boards = new Boards(!{JSON.stringify(boards)});
     App.Board = App.Boards.get(!{board_id});
-    App.Board.set("Lists", new Lists(!{JSON.stringify(lists)}));
+    App.Board.set("Lists", new Lists(!{JSON.stringify(lists)}))
+
