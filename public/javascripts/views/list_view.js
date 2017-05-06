@@ -77,8 +77,8 @@ var ListView = Backbone.View.extend({
   },
   prependCard: function(card) {
     if (+card.get("list_id") === this.model.get("id")) {
-      var first = this.$("ul.cards li:first-child");
-      first.before(new CardOverviewView({ model: card}).$el);
+      var form = this.$("ul.cards li.new_card");
+      form.before(new CardOverviewView({ model: card}).$el);
     }
   },
   appendCard: function(card) {
