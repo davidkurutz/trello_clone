@@ -304,6 +304,12 @@ div.list_actions_menu,
       color: #888
       text-align: center
   form 
+    textarea
+      display: block
+      resize: vertical
+      height: 80px
+      width: 100%
+      border-radius: 5px
     padding: 5px
     dl
       margin-bottom: 10px
@@ -432,7 +438,8 @@ select
 
 
 .board_list, .add_list
-  max-height: 575px
+  // max-height: 575px
+  height: auto
   width: 270px
   background: #E2E4E6
   border-radius: 3px
@@ -511,7 +518,11 @@ select
 
 ul.cards 
   margin: 15px 5px 0 5px
+  overflow: auto
+  max-height: 575px
 
+.green-btn
+  greenButton()
 
 li
   &.card,
@@ -888,6 +899,7 @@ div.small_user_pic
 // BOARDS MENU IN HEADER
 
 #boardMenu
+  display: none
   width: 280px
   position: absolute
   top: 42px
