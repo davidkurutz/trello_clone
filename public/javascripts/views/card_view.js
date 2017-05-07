@@ -10,7 +10,24 @@ var CardView = BaseView.extend({
     "click #archive-card": 'archiveCard',
     "click #dueDate": "changeDueDate",
     "click div.square": "colorize",
-    "click div.clickable_due_date a": "changeDueDate"
+    "click div.clickable_due_date a": "changeDueDate",
+    "submit #comment_form": "sendComment"
+  },
+  sendComment: function(e) {
+    // e.preventDefault();
+    // e.stopPropagation();
+    // var $f = this.$("#comment_form").serializeArray();
+    // var obj = {};
+
+    // $f.forEach(function(input) {
+    //   obj[input.name] = input.val();
+    // })
+
+    // obj.card_id = this.model.get("id");
+
+    
+
+
   },
   colorize: function(e) {
     $(e.target).closest(".clickable_due_date").css('background', '#99E585')
