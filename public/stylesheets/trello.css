@@ -211,6 +211,7 @@ section.board_collection ul li {
   margin: 6px 14px 6px 0;
   font-size: 16px;
   font-weight: bold;
+  position: relative;
 }
 section.board_collection ul li a {
   color: #fff;
@@ -459,6 +460,9 @@ div.list_actions_menu span.icon-back:hover,
 #rename_board_form span.icon-back:hover,
 #dueDateForm span.icon-back:hover {
   color: #888;
+}
+div.create_board {
+  font-weight: bold;
 }
 #rename_board_form {
   top: 55px;
