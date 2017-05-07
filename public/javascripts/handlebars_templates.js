@@ -7,13 +7,17 @@ this["JST"]["archive_all_cards"] = Handlebars.template({"compiler":[7,">= 4.0.0"
 this["JST"]["board_menu_item"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     return "gold";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=depth0 != null ? depth0 : {};
+    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "<li><div class=\"tab\"></div><div class=\"title\"><h1>"
-    + container.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
+  return "<a href='/b/"
+    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
+    + "/"
+    + alias4((helpers.uri || (depth0 && depth0.uri) || alias2).call(alias1,(depth0 != null ? depth0.title : depth0),{"name":"uri","hash":{},"data":data}))
+    + "'><div class=\"tab\"></div><h1>"
+    + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
     + "</h1><span class=\"icon-sm icon-star "
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.starred : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "\"></span></div></li>";
+    + "\"></span></a>";
 },"useData":true});
 
 this["JST"]["board_menu"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {

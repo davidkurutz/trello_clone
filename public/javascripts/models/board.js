@@ -10,5 +10,8 @@ var Board = Backbone.Model.extend({
         cb();
       }
     });
+  },
+  initialize: function() {
+    this.on('change:starred', App.triggerStarred.bind(App))
   }
 });
