@@ -12,8 +12,12 @@ var ListView = BaseView.extend({
     'click': 'stop',
     'click .list_actions': 'toggleListActions',
     'click footer' : 'newCard',
+    'click .edit_title': 'focus',
     'keypress .edit_title': 'keypress',
     'blur .edit_title': 'editTitle',
+  },
+  focus: function(e) {
+    this.$(".edit_title").focus().select();
   },
   keypress: function(e) {
     if(e.keyCode === 13) {
