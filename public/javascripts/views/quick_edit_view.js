@@ -4,14 +4,10 @@ var QuickEditView = BaseView.extend({
   events: {
     "click #quick_edit" : "stop",
     "click": "close",
-    "click #archive_card": "archive",
+    "click #archive_card": "archiveCard",
     "submit form": "submit",
-    "keypress": "submitOnEnter"
-  },
-  archive: function(e) {
-    e.stopPropagation();
-    this.model.destroy();
-    this.close();
+    "keypress": "submitOnEnter",
+    "click #duedate": "changeDueDate"
   },
   submit: function(e) {
     e.preventDefault();

@@ -309,7 +309,8 @@ div.dots {
 /*CREATE NEW BOARD FORM*/
 div.create_board,
 div.list_actions_menu,
-#rename_board_form {
+#rename_board_form,
+#dueDateForm {
   width: 304px;
   height: 253px;
   font-size: 14px;
@@ -321,15 +322,29 @@ div.list_actions_menu,
   padding: 8px;
   border-radius: 5px;
 }
+div.create_board .btn,
+div.list_actions_menu .btn,
+#rename_board_form .btn,
+#dueDateForm .btn,
+div.create_board .submit,
+div.list_actions_menu .submit,
+#rename_board_form .submit,
+#dueDateForm .submit {
+  width: 121px;
+  height: 36px;
+  margin-top: 10px;
+}
 div.create_board header,
 div.list_actions_menu header,
-#rename_board_form header {
+#rename_board_form header,
+#dueDateForm header {
   margin: 0;
   border-bottom: 1px solid #ddd;
 }
 div.create_board header h1,
 div.list_actions_menu header h1,
-#rename_board_form header h1 {
+#rename_board_form header h1,
+#dueDateForm header h1 {
   padding: 10px;
   font-weight: lighter;
   color: #888;
@@ -337,12 +352,14 @@ div.list_actions_menu header h1,
 }
 div.create_board form,
 div.list_actions_menu form,
-#rename_board_form form {
+#rename_board_form form,
+#dueDateForm form {
   padding: 5px;
 }
 div.create_board form textarea,
 div.list_actions_menu form textarea,
-#rename_board_form form textarea {
+#rename_board_form form textarea,
+#dueDateForm form textarea {
   display: block;
   resize: vertical;
   height: 80px;
@@ -351,20 +368,24 @@ div.list_actions_menu form textarea,
 }
 div.create_board form dl,
 div.list_actions_menu form dl,
-#rename_board_form form dl {
+#rename_board_form form dl,
+#dueDateForm form dl {
   margin-bottom: 10px;
 }
 div.create_board form dt label,
 div.list_actions_menu form dt label,
-#rename_board_form form dt label {
+#rename_board_form form dt label,
+#dueDateForm form dt label {
   color: #555;
 }
 div.create_board form dd input#title,
 div.list_actions_menu form dd input#title,
 #rename_board_form form dd input#title,
+#dueDateForm form dd input#title,
 div.create_board form dd select,
 div.list_actions_menu form dd select,
-#rename_board_form form dd select {
+#rename_board_form form dd select,
+#dueDateForm form dd select {
   width: 100%;
   padding: 5px;
   border-radius: 5px;
@@ -373,12 +394,14 @@ div.list_actions_menu form dd select,
 }
 div.create_board form dd + dt,
 div.list_actions_menu form dd + dt,
-#rename_board_form form dd + dt {
+#rename_board_form form dd + dt,
+#dueDateForm form dd + dt {
   margin-top: 10px;
 }
 div.create_board form.btn-submit,
 div.list_actions_menu form.btn-submit,
-#rename_board_form form.btn-submit {
+#rename_board_form form.btn-submit,
+#dueDateForm form.btn-submit {
   background-color: #5fb74b;
   color: #fff;
   font-weight: bold;
@@ -387,38 +410,45 @@ div.list_actions_menu form.btn-submit,
 }
 div.create_board form.btn-submit:hover,
 div.list_actions_menu form.btn-submit:hover,
-#rename_board_form form.btn-submit:hover {
+#rename_board_form form.btn-submit:hover,
+#dueDateForm form.btn-submit:hover {
   background-color: #4ea63a;
 }
 div.create_board span,
 div.list_actions_menu span,
-#rename_board_form span {
+#rename_board_form span,
+#dueDateForm span {
   font-weight: lighter;
 }
 div.create_board span.icon-private:before,
 div.list_actions_menu span.icon-private:before,
-#rename_board_form span.icon-private:before {
+#rename_board_form span.icon-private:before,
+#dueDateForm span.icon-private:before {
   color: #f00;
 }
 div.create_board span a,
 div.list_actions_menu span a,
-#rename_board_form span a {
+#rename_board_form span a,
+#dueDateForm span a {
   color: #888;
   text-decoration: underline;
 }
 div.create_board span a:hover,
 div.list_actions_menu span a:hover,
-#rename_board_form span a:hover {
+#rename_board_form span a:hover,
+#dueDateForm span a:hover {
   color: #333;
 }
 div.create_board span.icon-information:hover,
 div.list_actions_menu span.icon-information:hover,
-#rename_board_form span.icon-information:hover {
+#rename_board_form span.icon-information:hover,
+#dueDateForm span.icon-information:hover {
   color: #333;
 }
 div.create_board span.icon-back,
 div.list_actions_menu span.icon-back,
-#rename_board_form span.icon-back {
+#rename_board_form span.icon-back,
+#dueDateForm span.icon-back {
   position: absolute;
   left: 10px;
   top: 15px;
@@ -426,7 +456,8 @@ div.list_actions_menu span.icon-back,
 }
 div.create_board span.icon-back:hover,
 div.list_actions_menu span.icon-back:hover,
-#rename_board_form span.icon-back:hover {
+#rename_board_form span.icon-back:hover,
+#dueDateForm span.icon-back:hover {
   color: #888;
 }
 #rename_board_form {
@@ -522,6 +553,9 @@ select#team {
   width: 100%;
   padding: 6px;
 }
+ul:empty {
+  margin: 0;
+}
 .board_list,
 .add_list {
   height: auto;
@@ -557,7 +591,6 @@ select#team {
   border: none;
   resize: none;
   width: 200px;
-  heigth: auto;
   border-radius: 3px;
   padding-left: 5px;
   outline: none;
@@ -565,7 +598,6 @@ select#team {
 }
 .board_list header div.edit_title:focus {
   background-color: #fff;
-  z-index: 20;
 }
 .board_list footer {
   padding: 8px;
@@ -610,7 +642,7 @@ select#team {
   color: #666;
 }
 ul.cards {
-  margin: 15px 5px 0 5px;
+  margin: 0px 5px 0 5px;
   overflow: auto;
   max-height: 575px;
 }
@@ -630,7 +662,7 @@ li.new_card {
   position: relative;
   background: #fff;
   min-height: 32px;
-  margin: 8px 4px;
+  margin: 0px 4px;
   border-radius: 3px;
 }
 li.card a,
@@ -664,6 +696,17 @@ li.new_card span.icon-edit:before {
 li.card {
   padding: 3px;
 }
+li.card + .card,
+li.card + .new_card {
+  margin-top: 8px;
+}
+li.card ul li {
+  display: inline-block;
+  margin: 2px 10px;
+}
+li.card small {
+  color: #888;
+}
 li.card:hover {
   background: #eee;
 }
@@ -673,6 +716,9 @@ li.card:hover span.edit {
 }
 li.card:hover span.edit:hover {
   background-color: #ddd;
+}
+li.new_card {
+  margin-bottom: 8px;
 }
 li.new_card fieldset {
   padding: 0;
@@ -728,6 +774,9 @@ li.new_card + footer {
   border-radius: inherit;
   padding: 5px;
 }
+#new_list #add_list_name {
+  height: 35px;
+}
 #new_list #add_list_name,
 #new_list textarea {
   width: 100%;
@@ -769,7 +818,7 @@ li.new_card + footer {
 .cover_modal > div.close {
   font-weight: normal;
   color: #fff;
-  z-index: 10;
+  z-index: 3;
   opacity: 0.75;
 }
 .cover_modal > div.close:hover {
@@ -818,6 +867,76 @@ li.new_card + footer {
   border-radius: 5px;
   width: auto;
 }
+.cover_modal #dueDateForm {
+  z-index: 20;
+  font-weight: normal;
+  font-size: 16px;
+  color: #333;
+  width: 302px;
+  height: 395px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 5px;
+}
+.cover_modal #dueDateForm td,
+.cover_modal #dueDateForm th {
+  text-align: center;
+}
+.cover_modal #dueDateForm div.date-col,
+.cover_modal #dueDateForm div.time-col {
+  width: 130px;
+  display: inline-block;
+}
+.cover_modal #dueDateForm div.date-col input,
+.cover_modal #dueDateForm div.time-col input {
+  width: 100%;
+}
+.cover_modal #dueDateForm div.time-col {
+  float: right;
+}
+.cover_modal #dueDateForm .ui-datepicker-prev {
+  float: left;
+}
+.cover_modal #dueDateForm .ui-datepicker-next {
+  float: right;
+}
+.cover_modal #dueDateForm .ui-datepicker-title {
+  position: absolute;
+  top: 122px;
+  right: 110px;
+}
+.cover_modal #dueDateForm .ui-datepicker-current-day {
+  background-color: #bbb;
+}
+.cover_modal #dueDateForm .ui-datepicker-current-day a {
+  color: #fff;
+}
+.cover_modal #dueDateForm .btn.submit {
+  background-color: #5fb74b;
+  color: #fff;
+  font-weight: bold;
+  width: 120px;
+  margin: 10px 0 0 0;
+}
+.cover_modal #dueDateForm .btn.submit:hover {
+  background-color: #4ea63a;
+}
+.cover_modal #dueDateForm .btn.remove {
+  background-color: #bbb;
+  float: right;
+  color: #b04632;
+}
+.cover_modal #dueDateForm .btn.remove:hover {
+  background-color: #b04632;
+  color: #fff;
+}
+.cover_modal #dueDateForm #calendar {
+  padding: 20px;
+}
+.cover_modal #dueDateForm #calendar table {
+  width: 100%;
+}
 .card_detail {
   color: #4d4d4d;
   overflow: auto;
@@ -826,6 +945,7 @@ li.new_card + footer {
   background: #edeff0;
   margin: 40px auto 60px auto;
   border-radius: 4px;
+  z-index: 10;
 }
 div.close {
   position: absolute;
@@ -852,7 +972,8 @@ div.content {
 }
 .content section {
   height: auto;
-  margin: 10px 20px 20px 50px;
+  margin: 10px 20px 20px 0;
+  padding-left: 50px;
   overflow: auto;
 }
 .content section header .icon-lg {
@@ -867,15 +988,36 @@ div.content {
   font-size: 16px;
   font-weight: bold;
 }
-.content section header p {
-  margin-left: 6px;
-}
 .content section header p a {
   text-decoration: underline;
   color: inherit;
 }
 #general {
   overflow: auto;
+}
+#general .clickable_due_date {
+  width: 163px;
+  background-color: #e2e4e6;
+  color: #a8a8a9;
+  padding: 5px;
+  border-radius: 2px;
+}
+#general .clickable_due_date:hover {
+  background-color: #ddd;
+}
+#general .clickable_due_date div.square {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  display: inline-block;
+  margin-right: 2px;
+}
+#general .clickable_due_date div.square span.icon-check {
+  color: #ebecee;
+}
+#general .clickable_due_date div.square span:hover {
+  color: #fdffee;
 }
 #general > div {
   position: relative;
@@ -890,18 +1032,16 @@ div.content {
   border: none;
   resize: none;
   width: 200px;
-  heigth: auto;
   border-radius: 3px;
   padding-left: 5px;
   outline: none;
   background-color: inherit;
   background-color: inherit;
   width: 600px;
-  padding: 10px;
+  padding: 10px 3px;
 }
 #general .edit_title:focus {
   background-color: #fff;
-  z-index: 20;
 }
 #general header .icon-lg {
   vertical-align: 10px;
@@ -920,6 +1060,9 @@ div.content {
   overflow: auto;
   position: relative;
   background-color: #edeff0;
+}
+#general #edit_description_form #add_list_name {
+  height: 35px;
 }
 #general #edit_description_form #add_list_name,
 #general #edit_description_form textarea {
@@ -963,6 +1106,19 @@ div.content {
   resize: none;
   background-color: #e6e8e8;
   box-shadow: inset 0 0 1px #ddd;
+}
+#general .greenCheck {
+  background: #5aac44;
+  color: #fff;
+}
+#general .greenCheck a {
+  color: #fff;
+}
+#general .greenCheck a:hover {
+  color: #fff;
+}
+#general .greenCheck .square {
+  background: #99e585;
 }
 #general a,
 #general p {
@@ -1148,13 +1304,14 @@ div.small_user_pic {
 #boardMenu > ul li h1 {
   display: inline-block;
 }
-#boardMenu #board_types h1 {
-  font-weight: normal;
-}
 #boardMenu #board_types li {
   padding: 5px;
 }
-#boardMenu #board_types li .icon-add {
+#boardMenu #board_types li h1 {
+  font-weight: normal;
+}
+#boardMenu #board_types li .icon-add,
+#boardMenu #board_types li .icon-remove {
   border-radius: 3px;
   float: right;
   width: 28px;
@@ -1162,14 +1319,21 @@ div.small_user_pic {
   position: relative;
   vertial-align: top;
 }
-#boardMenu #board_types li .icon-add:before {
+#boardMenu #board_types li .icon-add:before,
+#boardMenu #board_types li .icon-remove:before {
   position: absolute;
   top: 3px;
   left: 7px;
 }
-#boardMenu #board_types li .icon-add:hover {
+#boardMenu #board_types li .icon-add:hover,
+#boardMenu #board_types li .icon-remove:hover {
   background-color: #ddd;
   border-radius: 2px;
+}
+#boardMenu #board_types li ul .board_type li div.tab {
+  background: #008000;
+  width: 20px;
+  height: 20px;
 }
 #boardMenu #menu_actions li div {
   padding: 10px;

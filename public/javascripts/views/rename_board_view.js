@@ -1,9 +1,9 @@
-var RenameBoardView = Backbone.View.extend({
+var RenameBoardView = BaseView.extend({
   template: App.templates.rename_board,
   id: 'rename_board_form',
   events: {
-    'click .close': 'close',
     'click': 'stop',
+    'click .close': 'close',
     'submit form': 'submit'
   },
   submit: function(e) {
@@ -21,11 +21,9 @@ var RenameBoardView = Backbone.View.extend({
         this.close()
       }
     });
-
   },
   close: function() {
     App.trigger('toggleRenameBoard');
-    this.remove();
   },
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));

@@ -61,6 +61,10 @@ module.exports = {
     var cards = this.getData();
     var card = _.findWhere(cards, {id: +cardId});
     _.extend(card, newData);
+
+    if (!newData.duedate) {
+      delete card.duedate;
+    }
     this.set({ data: cards });
     return card
   },

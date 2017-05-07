@@ -10,10 +10,21 @@
           </h1>
           <p>in list <a href="#">{{listName}}</a><p>
         </header>
-        <div class="append_here">
+        <div class="due_date_container">
+          {{#if model.duedate}}
+          <p>Due Date</p>
+          <div class="clickable_due_date corner">
+            <div class="square">
+              <span class="icon-sm icon-check"></span>
+            </div>
+            <a>{{lnDate model.duedate}}</a>
+          </div>
+          {{/if}}
+        </div>
+        <div class="description">
           {{#if model.description}}
             <div class="go_away">
-              <p>Description <a href="#" class="edit-description">Edit</a><p>
+              <p>Description <a href="#" class="edit-description">Edit</a></p>
               <p>{{model.description}}</p>
             </div>
           {{else}}
@@ -25,9 +36,7 @@
            </div>
           {{/if}}
         </div>
-
       </section>
-
       <section id="comment">
 
         <header>
@@ -107,31 +116,31 @@
         </header>
         <ul class="edit_add">
           <li>
-            <button class="btn btn-sm btn-block">
+            <button class="btn btn-sm btn-block" id="members">
               <span class="icon-sm icon-member"></span>
               Members
             </button>
           </li>
           <li>
-            <button class="btn btn-sm btn-block">
+            <button class="btn btn-sm btn-block" id="labels">
               <span class="icon-sm icon-label"></span>
               Labels
             </button>
           </li>
           <li>
-            <button class="btn btn-sm btn-block">
+            <button class="btn btn-sm btn-block" id="checklist">
               <span class="icon-sm icon-checklist"></span>
               Checklist
             </button>
           </li>
-          <li>
-            <button class="btn btn-sm btn-block">
+          <li class="corner">
+            <button class="btn btn-sm btn-block" id="dueDate">
               <span class="icon-sm icon-clock"></span>
               Due Date
             </button>
           </li>
           <li>
-            <button class="btn btn-sm btn-block">
+            <button class="btn btn-sm btn-block" id="attachment">
               <span class="icon-sm icon-attachment"></span>
               Attachment
             </button>
@@ -145,25 +154,25 @@
         </header>
         <ul class="actions_list">
           <li>
-            <button class="btn btn-sm btn-block">
+            <button class="btn btn-sm btn-block" id="move">
               <span class="icon-sm icon-move"></span>
               Move
             </button>
           </li>
           <li>
-            <button class="btn btn-sm btn-block">
+            <button class="btn btn-sm btn-block" id="copy">
               <span class="icon-sm icon-card"></span>
               Copy
             </button>
           </li>
           <li>
-            <button class="btn btn-sm btn-block">
+            <button class="btn btn-sm btn-block" id="subscribe">
               <span class="icon-sm icon-subscribe"></span>
               Subscribe
             </button>
           </li>
           <li>
-            <button class="btn btn-sm btn-block">
+            <button class="btn btn-sm btn-block" id="archive-card">
               <span class="icon-sm icon-archive"></span>
               Archive
             </button>

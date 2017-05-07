@@ -40,6 +40,6 @@ var CardOverviewView = Backbone.View.extend({
   initialize: function() {
     this.render();
     this.listenTo(this.model, 'destroy', this.remove);
-    this.listenTo(this.model, 'change:name', this.render);
+    this.listenTo(this.model, 'change', this.render);
   }
 });

@@ -16,6 +16,12 @@ module.exports = function(router) {
     });
   });
 
+  router.post('/boards', function(req, res) {
+    var data = req.body;
+    var board = Boards.addBoard(data);
+    res.json(board);
+  });
+
   router.put('/boards/:board_id', function(req, res) {
     var boardId = +req.params.board_id;
     var data = req.body;

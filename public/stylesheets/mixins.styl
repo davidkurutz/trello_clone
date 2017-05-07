@@ -46,25 +46,33 @@ greenButton()
   &:hover
     background-color: #4EA63A
     
+greyRedButton()
+  width: 100%;
+  height: 40px;
+  background-color: #bbb;
+  color: #b04632;
+  font-weight: bold;
+  border: none;
+  box-shadow: inset 0 0 10px #ccc;
+  box-shadow: 0 1px 1px #888
+      
 inPlaceEdit()
   display: inline-block
   overflow-x: auto
   word-wrap: break-word
-  // word-break: break-all
   white-space: normal
   overflow-wrap: break-word
   font-weight: bold
   border: none
   resize: none
   width: 200px
-  heigth: auto
   border-radius: 3px
   padding-left: 5px
   outline: none
   background-color: inherit
   &:focus
     background-color: white
-    z-index: 20
+
     
 editForm()
   width: 100%
@@ -76,6 +84,8 @@ editForm()
   left: 0
   border-radius: inherit
   padding: 5px
+  #add_list_name
+    height: 35px
   #add_list_name,
   textarea
     width: 100%

@@ -2,5 +2,15 @@
 <header>
   <h1>{{name}}</h1>
   <span class="edit icon-sm icon-edit"></span>
+    <ul>
+    {{#if duedate}}
+    <li>
+      <span class="icon-sm icon-clock"></span><small>{{smDate duedate}}</small>
+    </li>
+    {{/if}}
+    {{#if description}}
+      <span class="icon-sm icon-description"></small>
+    {{/if}}
+    </ul>
 </header>
 </a>

@@ -8,6 +8,26 @@ var BoardView = Backbone.View.extend({
 
     this.$el.removeClass().html(this.template({ board: board }));
     lists.forEach(this.renderList.bind(this));
+    
+    $("#listlist").sortable({
+      helper: "clone",
+      items: ".board_list",
+      opacity: 0.75,
+      scroll: false,
+      update: function(event, ui) {
+        var data = $("#starred_boards").sortable('serialize');
+      }
+    });
+
+    $(".cards").sortable({
+      connectWith: ".cards",
+      helper: "clone",
+      opacity: 0.75,
+      scroll: false,
+      update: function(event, ui) {
+        var data = $("#starred_boards").sortable('serialize');
+      }
+    });
   },
   renderList: function(list) {
     this.$("#listlist li.add_list").before(new ListView({ model: list}).$el);
@@ -39,8 +59,11 @@ var BoardView = Backbone.View.extend({
   toggleBoardRename: function(e) {
     e.stopPropagation();
     if (this.renameBoardView) {
+      console.log(true, this.renameBoardView)
       this.removeRenameForm();
+
     } else {
+      console.log(false)
       this.renameBoardView = new RenameBoardView({model: this.model});
       this.$el.append(this.renameBoardView.$el);
       this.$("#new_name").focus().select();

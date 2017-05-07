@@ -284,7 +284,14 @@ div.dots
 /*CREATE NEW BOARD FORM*/
 div.create_board,
 div.list_actions_menu,
-#rename_board_form
+#rename_board_form,
+#dueDateForm
+  .btn,
+  .submit
+    width: 121px
+    height: 36px
+    margin-top 10px
+
   width: 304px
   height: 253px
   font-size: 14px
@@ -327,6 +334,7 @@ div.list_actions_menu,
         margin-top: 10px
     &.btn-submit
       greenButton()
+      
   
   span
     font-weight: lighter
@@ -436,6 +444,8 @@ select
   width:100%
   padding: 6px
 
+ul:empty
+  margin: 0
 
 .board_list, .add_list
   // max-height: 575px
@@ -501,7 +511,7 @@ select
 
 
 ul.cards 
-  margin: 15px 5px 0 5px
+  margin: 0px 5px 0 5px
   overflow: auto
   max-height: 575px
 
@@ -515,7 +525,7 @@ li
     position: relative
     background: #ffffff
     min-height: 32px
-    margin: 8px 4px
+    margin: 0px 4px
     border-radius: 3px
     a
       text-decoration: none
@@ -541,7 +551,16 @@ li
           left: 7px
           top: 5px
   &.card
+    & + .card,
+    & + .new_card
+      margin-top: 8px
     padding: 3px
+    ul
+      li
+        display: inline-block
+        margin: 2px 10px
+    small
+      color: #888 
     &:hover 
       background: #eeeeee
       span
@@ -551,6 +570,7 @@ li
           &:hover
             background-color: #ddd
   &.new_card
+    margin-bottom: 8px
     fieldset
       padding: 0
       background-color: #E2E4E6
@@ -591,38 +611,7 @@ li
 
 #new_list
   editForm()
-  // width: 100%
-  // height: 80px
-  // background-color: #E2E4E6
-  // z-index: 3
-  // position: absolute
-  // top: 0
-  // left: 0
-  // border-radius: inherit
-  // padding: 5px
-  // #add_list_name
-  //   width: 100%
-  //   outline: none
-  //   height: 35px
-  //   background-color: #D6D8DA
-  //   border-radius: 5px
-  //   border: 1px solid #bbb
-  //   box-shadow: inset 0 0 5px #aaa
-  //   padding: 0 5px
-  //   color: #333
-  //   &::placeholder
-  //     color: #888
-  // input[type="submit"]
-  //   display: block
-  //   width: 70px
-  //   margin: 5px 0
-  //   border: none
-  //   box-shadow: 0 1px 1px #222
-  //   font-weight: bold
-  //   font-size: 14px
-  // div.close
-  //   top: 39px
-  //   right: 165px
+
 
 /*CARD DETAIL MODAL*/
 .cover_modal
@@ -631,7 +620,7 @@ li
     &.close
       font-weight: normal
       color: white
-      z-index: 10
+      z-index: 3
       opacity: .75
       &:hover
         opacity: 1
@@ -671,7 +660,58 @@ li
         margin-bottom: 5px
         border-radius: 5px
         width: auto
-        
+  #dueDateForm
+    z-index: 20
+    font-weight: normal
+    font-size: 16px
+    color: #333
+    width: 302px
+    height: 395px
+    position: absolute
+    bottom: 0
+    right: 0
+    padding: 5px
+    td, th
+      text-align: center
+    div
+      &.date-col,
+      &.time-col
+        width: 130px
+        display: inline-block
+        input
+          width: 100%
+      &.time-col
+        float: right
+    .ui-datepicker-prev
+      float: left
+    .ui-datepicker-next
+      float: right
+    .ui-datepicker-title
+      position: absolute
+      top: 122px
+      right: 110px
+    .ui-datepicker-current-day
+      background-color: #bbb
+      a
+        color: white
+
+
+
+
+    .btn
+      &.submit
+        greenButton()
+      &.remove
+        background-color: #bbb
+        float: right
+        color: #B04632
+        &:hover
+          background-color: #B04632
+          color: white
+    #calendar
+      padding: 20px
+      table
+        width: 100%
 
 .card_detail
   color: #4D4D4D
@@ -681,8 +721,7 @@ li
   background: #EDEFF0
   margin: 40px auto 60px auto
   border-radius: 4px
-
-
+  z-index: 10
 
 div.close 
   position: absolute
@@ -708,7 +747,8 @@ div.content
 
 .content section 
   height: auto
-  margin: 10px 20px 20px 50px
+  margin: 10px 20px 20px 0
+  padding-left: 50px
   overflow: auto
 
 
@@ -726,15 +766,34 @@ div.content
   font-weight: bold
 
 
-.content section header p 
-  margin-left: 6px
-
+// .content section header p 
+//   margin-left: 6px
 
 .content section header p a 
   text-decoration: underline
   color: inherit
 
 #general
+  .clickable_due_date
+    &:hover
+      background-color: #DDDDDD
+    width: 163px
+    background-color: #E2E4E6
+    color: #A8A8A9
+    padding: 5px
+    border-radius: 2px
+    div.square
+      width: 20px
+      height: 20px
+      border: 1px solid white
+      border-radius: 4px
+      display: inline-block
+      margin-right: 2px
+      span
+        &.icon-check
+          color: #EBECEE
+        &:hover
+          color: #FDFFEE  
   overflow: auto
   & > div
     position: relative
@@ -742,7 +801,7 @@ div.content
     inPlaceEdit()
     background-color: inherit
     width: 600px
-    padding: 10px
+    padding: 10px 3px
   header
     .icon-lg
       vertical-align: 10px
@@ -765,12 +824,19 @@ div.content
       background-color: #E6E8E8
       box-shadow: inset 0 0 1px #ddd
     background-color: #EDEFF0
-    
 
+#general .greenCheck
+  a
+    color: white
+    &:hover
+      color: white
+  background: #5AAC44
+  color: white
+  .square
+    background: #99E585
 
 #general a, #general p
   color: #8C8C8C
-
 
 #general a:hover 
   color: #444
@@ -943,11 +1009,12 @@ div.small_user_pic
       h1
         display: inline-block
   #board_types
-    h1
-      font-weight: normal  
     li
+      h1
+        font-weight: normal  
       padding: 5px
-      .icon-add
+      .icon-add,
+      .icon-remove
         &:before
           position: absolute
           top: 3px
@@ -961,6 +1028,13 @@ div.small_user_pic
         &:hover
           background-color: #ddd
           border-radius: 2px
+      ul
+        .board_type
+          li
+            div.tab
+              background: green
+              width: 20px
+              height: 20px
   #menu_actions
     li
       div

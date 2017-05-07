@@ -3,33 +3,36 @@
   <li>
     <span class="icon-sm icon-star"></span>
     <h1>Starred Boards</h1>
-    <span class="icon-sm icon-add"></span>
+    <span class="icon-sm icon-add" id="toggle_starred"></span>
+    <ul id="starred_list" class="board_type"></ul>
   </li>
   <li>
     <span class="icon-sm icon-clock"></span>
     <h1>Recent Boards</h1>
-    <span class="icon-sm icon-add"></span>
+    <span class="icon-sm icon-add" id="toggle_recent"></span>
+    <ul id="recent_list" class="board_type"></ul>
   </li>
   <li>
     <span class="icon-sm icon-board"></span>
     <h1>Personal Boards</h1>
-    <span class="icon-sm icon-add"></span>
+    <span class="icon-sm icon-add" id="toggle_personal"></span>
+    <ul id="personal_list" class="board_type"></ul>
   </li>
 </ul>
 <ul id="menu_actions">
   <li>
     <div>
-      <a href="#">Create new board...</a>
+      <a href="#" id="create_new_board">Create new board...</a>
     </div>
   </li>
   <li>
     <div>
-      <a href="#">Always keep this menu open.</a>
+      <a href="#" id="always_keep_open">Always keep this menu open.</a>
     </div>
   </li>
   <li>
     <div>
-      <a href="#">See closed boards.</a>
+      <a href="#" id="see_closed_boards">See closed boards.</a>
     </div>
   </li>
 </ul>

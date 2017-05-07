@@ -10,21 +10,22 @@ var CreateBoardFormView = BaseView.extend({
     e.preventDefault();
     var f = this.$("form").serializeArray();
     var obj = {};
+    var board;
 
     f.forEach(function(input) {
       obj[input.name] = input.value;
     });
 
-    $.ajax({
-      url: "/b",
-      type: "POST",
+    board = new Board();
+
+    board.save(obj, {
       context: this,
-      data: obj,
       success: function(json) {
         App.trigger('addBoard', json);
-        this.close();
+        this.close()
+        router.navigate("/b/" + json.id + "/" + uri(json.attributes.title), {trigger: true})
       }
-    });
+    })
   },
   close: function() {
     this.remove();

@@ -20,6 +20,7 @@ var App = {
     this.Board = this.Boards.get(+board_id);
     this.getListsAndPopulate();
     this.bind()
+    router.navigate("/b/" + this.Board.get("id") + "/" + uri(this.Board.get("title")));
   },
   boardsView: function() {
     this.headerView();
@@ -66,6 +67,7 @@ var App = {
     var listId = App.Card.get('list_id');
     var listName = App.Board.get('Lists').get(listId).get("name");
     new CardView({model: App.Card, listName: listName});
+    router.navigate("/c/" + this.Card.get("id") + "/" + uri(this.Card.get("name")));
   },
   cardOverlay: function(cardid) {
     var id = this.Board.get("id")
@@ -92,3 +94,18 @@ var App = {
 Handlebars.registerHelper('uri', function(text) {
   return encodeURI(text.replace(/\s/g,'-'));
 });
+
+Handlebars.registerHelper('smDate', function(date) {
+  return moment(date).format('MMM D')
+})
+
+Handlebars.registerHelper('lnDate', function(date) {
+  return moment(date).format('MMM D ') + 'at ' + moment(date).format('h:mm A')
+})
+Handlebars.registerHelper('smDate', function(date) {
+  return moment(date).format('MMM D'+ '')
+})
+
+function uri(text) {
+  return encodeURI(text.replace(/\s/g,'-'));
+}

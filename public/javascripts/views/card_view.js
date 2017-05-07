@@ -6,12 +6,20 @@ var CardView = BaseView.extend({
     "click div.close": "close",
     "click .card_detail": "stop",
     "blur .edit_title": "editTitle",
-    "click .edit-description": 'editDescription'
+    "click .edit-description": 'editDescription',
+    "click #archive-card": 'archiveCard',
+    "click #dueDate": "changeDueDate",
+    "click div.square": "colorize",
+    "click div.clickable_due_date a": "changeDueDate"
+  },
+  colorize: function(e) {
+    $(e.target).closest(".clickable_due_date").css('background', '#99E585')
+    $(e.target).closest(".clickable_due_date").addClass('greenCheck')
   },
   editDescription: function(e) {
     e.preventDefault();
 
-    this.$(".append_here")
+    this.$(".description")
       .append(new EditCardDescriptionView({
         model: this.model
       }).$el);
@@ -35,11 +43,13 @@ var CardView = BaseView.extend({
       model: this.model.toJSON(),
       listName: this.listName
     }));
+    
     $("body").append(this.$el);
   },
   initialize: function(options) {
     this.render(options);
     this.listenTo(this.model, 'destroy', this.remove);
-    this.listenTo(this.model, 'change', this.render)
+    this.listenTo(this.model, 'change', this.render);
+    this.listenTo(App, 'renderCardView', this.render);
   }
 });

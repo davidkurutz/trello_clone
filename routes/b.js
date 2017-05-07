@@ -16,10 +16,4 @@ module.exports = function(router) {
       lists: Lists.getByBoardId(board_id)
     });
   });
-
-  router.post('/b', function(req, res) {
-    var data = req.body;
-    var board = Boards.addBoard(data);
-    res.json(board);
-  });
 };

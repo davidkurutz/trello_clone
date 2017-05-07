@@ -22,7 +22,9 @@ module.exports = function(router) {
 
   router.put('/cards/:card_id', function(req, res) {
     var cardId = +req.params.card_id;
+
     var data = req.body;
+
     var newCard = Cards.update(cardId, data);
     res.json(newCard);
   })
