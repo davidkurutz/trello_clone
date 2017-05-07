@@ -2,8 +2,14 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var Lists = require(path.resolve(path.dirname(__dirname), 'local_modules/lists_module'));
+var Cards = require(path.resolve(path.dirname(__dirname), 'local_modules/cards_module'));
 
 module.exports = function(router) {
+  router.get('/lists/:list_id', function(req, res, next) {
+    var lists = Cards.getByListId(+req.params.list_id);
+    res.json(lists);
+  });
+
   router.post('/lists', function(req, res, next) {
     var data = req.body;
     var list = Lists.addList(data);
