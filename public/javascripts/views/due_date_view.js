@@ -14,13 +14,9 @@ var DueDateView = BaseView.extend({
     var id = model.get('id');
     model.unset('duedate');
 
-
-    $.ajax({
-      url: "/cards/" + id ,
+    model.save({}, {
       context: this,
-      type: "PUT",
-      data: {},
-      success: function(json) {
+      success: function() {
         this.remove();
       }
     })
