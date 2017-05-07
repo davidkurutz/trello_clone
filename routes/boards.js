@@ -3,23 +3,18 @@ var router = express.Router();
 var path = require('path');
 var _ = require('underscore');
 var Boards = require(path.resolve(path.dirname(__dirname), 'local_modules/boards_module'));
+var Lists = require(path.resolve(path.dirname(__dirname), 'local_modules/lists_module'));
 
 module.exports = function(router) {
-  router.get('/', function(req, res, next) {
-    var boards = Boards.get();
-    var starred = _.where(boards, {starred: true});
-
-    res.render('boards', {
-      title: "Boards | Trello",
-      boards: boards,
-      starred: starred
-    });
-  });
-
   router.post('/boards', function(req, res) {
     var data = req.body;
     var board = Boards.addBoard(data);
     res.json(board);
+  });
+
+  router.get('/boards/:board_id', function(req, res, next) {
+    var lists = Lists.getByBoardId(+req.params.board_id);
+    res.json(lists);
   });
 
   router.put('/boards/:board_id', function(req, res) {
