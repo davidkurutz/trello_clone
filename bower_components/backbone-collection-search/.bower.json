@@ -1,0 +1,14 @@
+{
+  "name": "backbone-collection-search",
+  "homepage": "https://github.com/davidkurutz/backbone-collection-search",
+  "_release": "18e786adba",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "18e786adbae129615ba6f4feff7f55702c31988e"
+  },
+  "_source": "https://github.com/davidkurutz/backbone-collection-search.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/davidkurutz/backbone-collection-search.git",
+  "_direct": true
+}

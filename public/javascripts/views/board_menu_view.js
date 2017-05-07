@@ -9,12 +9,42 @@ var BoardMenuView = BaseView.extend({
     'click #create_new_board': "createNewBoard",
     'click #always_keep_open': "toggleKeepOpen",
     'click #see_closed_boards': "seeClosedBoards",
-    'keypress #search': 'search'
+    'keypress #search': "search",
+    'keyup #search' : 'captureDelete'
   },
-  search: function(e) {
+  captureDelete: function(e) {
+    if (e.which === 8) {
+      this.search(e, true)
+      console.log('captured')
+    }
+    if (!this.$("#search").val()) {
+      $(".board_type").show();
+      $(".menu_action").show();
+      $("#search_list").hide();
+    }
+  },
+  search: function(e, backspace) {
     var previous = $("#search").val();
-    var current = String.fromCharCode(event.which);
-    alert(previous + current)
+    var current;
+    
+    if (!backspace) {
+      current = String.fromCharCode(event.which);
+    } else {
+      current = ''
+    }
+
+    var searchTerm = previous + current;
+    var results = App.Boards.search(searchTerm, ['title']);
+    $(".board_type").hide();
+    $(".menu_action").hide();
+
+    this.$("#search_list").empty().show();
+
+    results.forEach((function(board) {
+      this.$("#search_list").append(new BoardMenuItemView({
+        model: board
+      }).$el);
+    }).bind(this));
   },
   toggleIcon: function(e) {
     $(e.target).toggleClass('icon-add').toggleClass('icon-remove');

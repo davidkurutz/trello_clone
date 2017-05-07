@@ -7,7 +7,8 @@
         dependencies: {
           "underscore": "jquery",
           "jquery-ui": "jquery",
-          "backbone": "underscore"
+          "backbone": "underscore",
+          "backbone-collection-search": "backbone"
         }
       }
     },

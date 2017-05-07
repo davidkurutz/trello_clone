@@ -1,18 +1,21 @@
 <input type="text" placeholder="Find boards by name..." id="search">
 <ul id="board_types">
   <li>
+    <ul id="search_list"></ul>
+  </li>
+  <li class="board_type">
     <span class="icon-sm icon-star"></span>
     <h1>Starred Boards</h1>
     <span class="icon-sm icon-add" id="toggle_starred"></span>
     <ul id="starred_list" class="board_type"></ul>
   </li>
-  <li>
+  <li class="board_type">
     <span class="icon-sm icon-clock"></span>
     <h1>Recent Boards</h1>
     <span class="icon-sm icon-add" id="toggle_recent"></span>
     <ul id="recent_list" class="board_type"></ul>
   </li>
-  <li>
+  <li class="board_type">
     <span class="icon-sm icon-board"></span>
     <h1>Personal Boards</h1>
     <span class="icon-sm icon-add" id="toggle_personal"></span>
@@ -20,17 +23,17 @@
   </li>
 </ul>
 <ul id="menu_actions">
-  <li>
+  <li class="menu_action">
     <div>
       <a href="#" id="create_new_board">Create new board...</a>
     </div>
   </li>
-  <li>
+  <li class="menu_action">
     <div>
       <a href="#" id="always_keep_open">Always keep this menu open.</a>
     </div>
   </li>
-  <li>
+  <li class="menu_action">
     <div>
       <a href="#" id="see_closed_boards">See closed boards.</a>
     </div>
