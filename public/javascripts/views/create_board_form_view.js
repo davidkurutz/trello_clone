@@ -30,11 +30,15 @@ var CreateBoardFormView = BaseView.extend({
   close: function() {
     this.remove();
   },
-  render: function() {
+  render: function(options) {
     this.$el.html(this.template());
+    if (options) {
+      console.log(options)
+      this.$el.css(options)
+    }
   },
-  initialize: function() {
-    this.render();
+  initialize: function(options) {
+    this.render(options);
     this.listenTo(App, 'closePopup', this.remove);
   }
 });
