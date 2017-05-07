@@ -36,34 +36,23 @@ var BoardView = Backbone.View.extend({
     'click .add_list': 'addList',
     'click .board_name': 'toggleBoardRename',
     'click div.star' : 'toggleStar'
-    // 'dblclick .board_list_container': 'positionedList'
-  },
-  positionedList: function(e) {
-    e.stopPropagation();
-    alert('position')
   },
   toggleStar: function(e) {
     e.preventDefault();
     e.stopPropagation();
-
-    var board = this.model;
-    var starred = !board.get("starred");
-
-    board.save({"starred": starred}, {
-      context: this,
-      success: function(json) {
-        $(e.target).toggleClass('gold', starred)
+    var starred = !this.model.get('starred');
+    this.model.set('starred', !this.model.get('starred'));
+    this.model.save(null, {
+      success: function() {
+        $(e.currentTarget).find("span").toggleClass('gold', starred)
       }
-    });
+    })
   },
   toggleBoardRename: function(e) {
     e.stopPropagation();
     if (this.renameBoardView) {
-      console.log(true, this.renameBoardView)
       this.removeRenameForm();
-
     } else {
-      console.log(false)
       this.renameBoardView = new RenameBoardView({model: this.model});
       this.$el.append(this.renameBoardView.$el);
       this.$("#new_name").focus().select();
