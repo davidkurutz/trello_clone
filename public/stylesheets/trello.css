@@ -1304,6 +1304,60 @@ div.small_user_pic {
 #boardMenu > ul li h1 {
   display: inline-block;
 }
+#boardMenu #board_types #starred_list,
+#boardMenu #board_types #recent_list,
+#boardMenu #board_types #personal_list {
+  display: none;
+}
+#boardMenu #board_types #starred_list li,
+#boardMenu #board_types #recent_list li,
+#boardMenu #board_types #personal_list li {
+  position: relative;
+  height: 35px;
+  padding: 0;
+  margin: 10px 0;
+  background-color: #e0eff7;
+  border-radius: 5px;
+}
+#boardMenu #board_types #starred_list li:hover,
+#boardMenu #board_types #recent_list li:hover,
+#boardMenu #board_types #personal_list li:hover {
+  background-color: #a2d0e8;
+}
+#boardMenu #board_types #starred_list li:hover div.tab,
+#boardMenu #board_types #recent_list li:hover div.tab,
+#boardMenu #board_types #personal_list li:hover div.tab {
+  background-color: #2d95d3;
+}
+#boardMenu #board_types #starred_list li div.tab,
+#boardMenu #board_types #recent_list li div.tab,
+#boardMenu #board_types #personal_list li div.tab {
+  vertical-align: top;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  background-color: #449cd0;
+  width: 35px;
+  height: 100%;
+  display: inline-block;
+}
+#boardMenu #board_types #starred_list li h1,
+#boardMenu #board_types #recent_list li h1,
+#boardMenu #board_types #personal_list li h1 {
+  display: inline-block;
+  width: 180px;
+  height: 100%;
+  margin: 0;
+  padding: 10px;
+  font-weight: bold;
+  color: #333;
+}
+#boardMenu #board_types #starred_list li span.icon-sm:before,
+#boardMenu #board_types #recent_list li span.icon-sm:before,
+#boardMenu #board_types #personal_list li span.icon-sm:before {
+  position: absolute;
+  top: 8px;
+  right: 5px;
+}
 #boardMenu #board_types li {
   padding: 5px;
 }
@@ -1329,11 +1383,6 @@ div.small_user_pic {
 #boardMenu #board_types li .icon-remove:hover {
   background-color: #ddd;
   border-radius: 2px;
-}
-#boardMenu #board_types li ul .board_type li div.tab {
-  background: #008000;
-  width: 20px;
-  height: 20px;
 }
 #boardMenu #menu_actions li div {
   padding: 10px;

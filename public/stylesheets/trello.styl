@@ -21,14 +21,11 @@ body
     color: white
     padding: 3px
 
-
 .left_header, .left 
   float: left
 
-
 .right_header, .right 
   float: right
-
 
 nav 
   & > div 
@@ -66,12 +63,10 @@ div.boards
     position: absolute
     left: 30px
 
-
 div.search 
   width: 170px
   span:before 
     left: 150px
-
 
 div.header_logo 
   display: inline-block
@@ -85,7 +80,6 @@ div.header_logo
   opacity: .5
   &:hover
     opacity: .75
-
 
 div.user 
   width: 140px
@@ -1009,6 +1003,43 @@ div.small_user_pic
       h1
         display: inline-block
   #board_types
+    #starred_list, #recent_list, #personal_list
+      display: none
+      li
+        position: relative
+        height: 35px
+        padding: 0
+        margin: 10px 0
+        background-color: #E0EFF7
+        border-radius: 5px
+        &:hover
+          background-color: #A2D0E8
+          div
+            &.tab
+              background-color: #2D95D3
+        div
+          &.tab
+            vertical-align: top
+            border-top-left-radius: 4px
+            border-bottom-left-radius: 4px
+            background-color: #449CD0
+            width: 35px
+            height: 100%
+            display: inline-block
+        h1
+          display: inline-block
+          width: 180px
+          height: 100%
+          margin: 0
+          padding: 10px
+          font-weight: bold
+          color: #333
+        span
+          &.icon-sm
+            &:before
+              position: absolute
+              top: 8px
+              right: 5px
     li
       h1
         font-weight: normal  
@@ -1028,13 +1059,6 @@ div.small_user_pic
         &:hover
           background-color: #ddd
           border-radius: 2px
-      ul
-        .board_type
-          li
-            div.tab
-              background: green
-              width: 20px
-              height: 20px
   #menu_actions
     li
       div
@@ -1047,6 +1071,7 @@ div.small_user_pic
       a
         color: #888
         text-decoration: underline
+
 
 /*MEDIA QUERIES*/
 
