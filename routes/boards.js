@@ -12,6 +12,26 @@ module.exports = function(router) {
     res.json(board);
   });
 
+  router.post('/boards/:board_id/list_order', function(req, res) {
+    var data = req.body;
+    var list;
+    var ids = data['list[]'].map(function(order) {
+      return +order;
+    });
+
+    var lists = Lists.getByBoardId(+req.params.board_id);
+
+    ids.forEach(function(id) {
+      list = _.findWhere(lists, {id: id});
+      list.sort_order = ids.indexOf(id);
+    });
+
+    Lists.set({
+      "data": lists
+    })
+    res.status(200).end()
+  });
+
   router.get('/boards/:board_id', function(req, res, next) {
     var lists = Lists.getByBoardId(+req.params.board_id);
     res.json(lists);
@@ -23,13 +43,13 @@ module.exports = function(router) {
     data.starred = data.starred === true;
   
     if (data.starred) {
-      data.starredOrder = Boards.getCurrentStarredOrder() + 1
+      data.starredOrder = Boards.getCurrentStarredOrder() + 1;
     } else {
       delete data.starredOrder;
     }
 
     delete data.Lists;
     var newBoard = Boards.update(boardId, data);
-    res.json(newBoard)
-  })
+    res.json(newBoard);
+  });
 };

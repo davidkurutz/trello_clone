@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var Cards = require(path.resolve(path.dirname(__dirname), 'local_modules/cards_module'));
+var Comments = require(path.resolve(path.dirname(__dirname), 'local_modules/comments_module'));
 
 module.exports = function(router) {
   router.delete('/cards/:cardId', function(req, res) {
@@ -21,4 +22,6 @@ module.exports = function(router) {
     var newCard = Cards.update(cardId, data);
     res.json(newCard);
   })
+
+  // router.get('/cards/:card_id/comments', function())
 };
