@@ -83,6 +83,7 @@ var BoardView = Backbone.View.extend({
   },
   renderList: function(list) {
     this.$("#listlist li.add_list").before(new ListView({ model: list}).$el);
+    this.sortableCards();
   },
   toggleStar: function(e) {
     e.preventDefault();
