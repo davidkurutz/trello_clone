@@ -649,6 +649,7 @@ ul.cards {
   margin: 0px 5px 0 5px;
   overflow: auto;
   max-height: 575px;
+  min-height: 4px;
 }
 .green-btn {
   background-color: #5fb74b;
