@@ -9,6 +9,7 @@ var BoardMenuItemView = Backbone.View.extend({
     e.stopPropagation()
     this.model.set('starred', !this.model.get("starred"));
     this.model.save();
+    App.trigger('toggleStarred', this.model);
   },
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));

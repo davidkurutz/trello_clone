@@ -13,9 +13,8 @@ var BaseView = Backbone.View.extend({
     this.model.destroy();
     this.close();
   },
-  changeDueDate(e) {
+  changeDueDate: function(e) {
     var offset = $(e.target).closest(".corner").offset();
-    console.log(offset)
     var duedate = this.model.get("duedate");
     var datetime;
     var date;

@@ -87,9 +87,7 @@ var App = {
     this.on('cardView', this.cardView);
     this.on('toggleStarred', this.toggleStarred);
     this.on('addBoard', this.addBoard);
-    this.on('toggleBoardMenu', this.toggleBoardMenu);
-    // this.on('removeBoardMenu', this.removeBoardMenu);
-    // this.$el.on('click', this.removeBoardMenu.bind(this));
+    this.on('toggleBoardMenu', this.toggleBoardMenu);;
     this.$el.on('click', this.closePopup.bind(this))
   }
 };

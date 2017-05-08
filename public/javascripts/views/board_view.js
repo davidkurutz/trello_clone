@@ -92,9 +92,12 @@ var BoardView = Backbone.View.extend({
     this.model.set('starred', !this.model.get('starred'));
     this.model.save(null, {
       success: function() {
-        $(e.currentTarget).find("span").toggleClass('gold', starred);
+        this.updateStar()
       }
     });
+  },
+  updateStar: function() {
+    this.$("div.star").find("span").toggleClass("gold");
   },
   toggleBoardRename: function(e) {
     e.stopPropagation();
@@ -133,5 +136,6 @@ var BoardView = Backbone.View.extend({
     this.listenTo(App, 'toggleRenameBoard', this.removeRenameForm);
     this.listenTo(this.model, "change:title", this.changeTitle);
     this.listenTo(App, 'sortableCards', this.sortableCards)
+    this.listenTo(this.model, "change:starred", this.updateStar)
   }
 });
