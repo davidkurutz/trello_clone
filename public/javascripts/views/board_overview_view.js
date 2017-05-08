@@ -1,6 +1,9 @@
 var BoardOverviewView = Backbone.View.extend({
   template: App.templates.board_overview,
   tagName: "li",
+  id: function() {
+    return "board_" + this.model.get("id");
+  },
   events: {
     "click .icon-star": "toggleStar",
     "click a": 'board'

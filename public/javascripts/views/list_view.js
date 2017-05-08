@@ -2,11 +2,14 @@ var ListView = BaseView.extend({
   template: App.templates.list,
   tagName: "li",
   className: "board_list",
+  id: function() {
+    return 'list-' + this.model.get('id');
+  },
   attributes: function() {
     var id = +this.model.get('id');
     return {
       "data-list-id": id
-    }
+    };
   },
   events: {
     'click': 'stop',
@@ -21,12 +24,12 @@ var ListView = BaseView.extend({
   },
   keypress: function(e) {
     if(e.keyCode === 13) {
-      e.preventDefault()
+      e.preventDefault();
       this.$(".edit_title").blur();
     }
   },
   editTitle: function(e) {
-    var title = $(e.target).text()
+    var title = $(e.target).text();
     this.model.set('name', title);
     this.model.save();
   },
@@ -34,19 +37,19 @@ var ListView = BaseView.extend({
     e.preventDefault();
     e.stopPropagation();
 
-    this.stopListening(App)
+    this.stopListening(App);
     this.newCardView = new NewCardView({ model: this.model });
     this.$(".cards").append(this.newCardView.$el);
     this.$("footer").hide();
     this.$("textarea").focus();
-    this.listenTo(App, 'appendCard', this.appendCard)
-    this.listenTo(this.newCardView, 'showFooter', this.showFooter)
+    this.listenTo(App, 'appendCard', this.appendCard);
+    this.listenTo(this.newCardView, 'showFooter', this.showFooter);
   },
   newCardTop: function(e) {
-    this.stopListening(App)
+    this.stopListening(App);
 
     if (this.newCardView) {
-      this.newCardView.remove()
+      this.newCardView.remove();
       delete this.newCardView;
     }
 
@@ -55,8 +58,8 @@ var ListView = BaseView.extend({
     this.$(".cards").prepend(ncv.$el);
     this.$("footer").hide();
     this.$("textarea").focus();
-    this.listenTo(App, 'appendCard', this.prependCard)
-    this.listenTo(ncv, 'showFooter', this.showFooter)
+    this.listenTo(App, 'appendCard', this.prependCard);
+    this.listenTo(ncv, 'showFooter', this.showFooter);
   },
   showFooter: function() {
     this.$("footer").show();
@@ -66,7 +69,7 @@ var ListView = BaseView.extend({
     var id;
 
     if (this.$(".list_actions_menu")[0]) {
-      App.trigger('remove_list_actions_menu')
+      App.trigger('remove_list_actions_menu');
     } else {
       id = this.model.get('id');
       this.$el.append(new ListActionsView({
@@ -90,14 +93,13 @@ var ListView = BaseView.extend({
   },
   render: function() {
     var cards = this.model.get('Cards');
-    // console.log(cards)
     this.$el.html(this.template(this.model.toJSON()));
 
     var list = this.$("ul.cards");
     
     cards.forEach(function(card) {
-      list.append(new CardOverviewView({ model: card}).$el)
-    })
+      list.append(new CardOverviewView({ model: card}).$el);
+    });
   },
   initialize: function() {
     this.render();

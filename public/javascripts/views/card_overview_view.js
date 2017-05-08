@@ -2,6 +2,9 @@ var CardOverviewView = Backbone.View.extend({
   template: App.templates.card_overview,
   tagName: 'li',
   className: 'card',
+  id: function() {
+    return 'card-' + this.model.get('id');
+  },
   events: {
     'click a': 'showDetail',
     'click span': 'quickEdit'
@@ -36,6 +39,7 @@ var CardOverviewView = Backbone.View.extend({
   },
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
+    App.trigger('sortableCards');
   },
   initialize: function() {
     this.render();
