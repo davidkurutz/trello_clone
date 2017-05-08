@@ -1,5 +1,6 @@
 var Lists = Backbone.Collection.extend({
   model: List,
+  comparator: 'sort_order',
   getCards: function(callback1) {
     var count = 0;
     var increment = (function() {
