@@ -34,11 +34,14 @@ var CardView = BaseView.extend({
       success: function(json) {
         this.addComment(json);
         this.$("#comment_text").val('');
+        App.trigger('renderCardOverview');
       }
     });
   },
   addComment: function(json) {
     var comment = new Comment(json)
+    this.model.get('Comments').push(comment);
+    console.log('in cardview', this.model)
     this.$("#activity_feed").append(new CommentView({ model: comment }).$el);
   },
   colorize: function(e) {
@@ -66,7 +69,7 @@ var CardView = BaseView.extend({
     router.navigate("/b/" + App.Board.get("id"));
   },
   render: function(options) {
-    var comments = this.model.get("Comments");
+    var comments = this.model.get("Comments") || []
     
     this.listName = this.listName || options.listName;
     
@@ -88,6 +91,5 @@ var CardView = BaseView.extend({
     this.render(options);
     this.listenTo(this.model, 'destroy', this.remove);
     this.listenTo(this.model, 'change', this.render);
-    this.listenTo(App, 'renderCardView', this.render);
   }
 });

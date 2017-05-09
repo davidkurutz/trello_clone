@@ -1,3 +1,6 @@
 var Card = Backbone.Model.extend({
-  urlRoot: "/cards"
+  urlRoot: "/cards",
+  defaults: {
+    Comments: []
+  }
 });

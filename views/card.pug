@@ -3,3 +3,4 @@ extends board
 block append scripts
   script(type="text/javascript").
     App.Card = new Card(!{JSON.stringify(card)});
+    App.cardId = !{cardId}

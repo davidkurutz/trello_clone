@@ -20,7 +20,8 @@ module.exports = function(router) {
       boards: Boards.get(),
       board_id: boardId,
       lists: Lists.getByBoardId(boardId),
-      card: card
+      card: card,
+      cardId: cardId
     });
   });
 };

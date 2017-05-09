@@ -34,7 +34,6 @@ var ListActionsView = Backbone.View.extend({
     _.invoke(cards.toArray(), 'save');
     this.remove();
     App.getListsAndPopulate();
-    // App.bind();
   },
   moveAllToAnother: function(e) {
     e.stopPropagation();

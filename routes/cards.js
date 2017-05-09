@@ -44,5 +44,4 @@ module.exports = function(router) {
     res.json(newCard);
   })
 
-  // router.get('/cards/:card_id/comments', function())
 };

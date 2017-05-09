@@ -45,6 +45,9 @@ var App = {
       delete this.BoardView;
     }
     this.BoardView = this.BoardView || new BoardView({ model: this.Board });
+    if (App.cardId) {
+      App.BoardView.$el.find("#card-" + App.cardId + " a").trigger('click')
+    }
   },
   headerView: function() {
     this.HeaderView = this.HeaderView || new HeaderView();
@@ -76,8 +79,7 @@ var App = {
   },
   cardOverlay: function(cardid) {
     var id = this.Board.get("id");
-    this.boardView(id);
-    this.cardView(cardid);
+    this.boardView(id,);
   },  
   bind: function() {
     _.extend(this, Backbone.Events);
