@@ -5,8 +5,8 @@ var BoardMenuItemView = Backbone.View.extend({
     'click a div.icon-sm': 'toggleStarred'
   },
   toggleStarred: function(e) {
-    e.preventDefault()
-    e.stopPropagation()
+    e.preventDefault();
+    e.stopPropagation();
     this.model.set('starred', !this.model.get("starred"));
     this.model.save();
     App.trigger('toggleStarred', this.model);

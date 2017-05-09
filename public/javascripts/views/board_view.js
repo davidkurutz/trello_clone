@@ -73,7 +73,7 @@ var BoardView = Backbone.View.extend({
         var destId = destList.replace(/cards-/g, '');
         var sourceData;
         self.ajax(destId, destData);
-        if (!(sourceList === destList)) {
+        if (sourceList !== destList) {
           sourceData = $("#" + sourceList).sortable('serialize');
           sourceId = sourceList.replace(/cards-/g, '');
           self.ajax(sourceId, sourceData);
@@ -92,7 +92,7 @@ var BoardView = Backbone.View.extend({
     this.model.set('starred', !this.model.get('starred'));
     this.model.save(null, {
       success: function() {
-        this.updateStar()
+        this.updateStar();
       }
     });
   },
@@ -135,7 +135,7 @@ var BoardView = Backbone.View.extend({
     this.on('newList', this.renderList);
     this.listenTo(App, 'toggleRenameBoard', this.removeRenameForm);
     this.listenTo(this.model, "change:title", this.changeTitle);
-    this.listenTo(App, 'sortableCards', this.sortableCards)
-    this.listenTo(this.model, "change:starred", this.updateStar)
+    this.listenTo(App, 'sortableCards', this.sortableCards);
+    this.listenTo(this.model, "change:starred", this.updateStar);
   }
 });

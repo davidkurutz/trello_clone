@@ -9,7 +9,7 @@ var BoardsView = BaseView.extend({
   },
   render: function() {
     var boards = this.collection;
-    var starredBoards = this.collection.where({ starred: true});
+    var starredBoards = nthis.collection.where({ starred: true});
     var sortedStarred;
 
     this.$el.removeClass().addClass('boards_view').html(this.template({}));
@@ -62,7 +62,7 @@ var BoardsView = BaseView.extend({
   },
   createBoard: function(e) {
     e.preventDefault();
-    e.stopPropagation()
+    e.stopPropagation();
     var li = $(e.target).closest("li");
     li.prepend(new CreateBoardFormView().$el);
     $(".create_board input#title").focus();

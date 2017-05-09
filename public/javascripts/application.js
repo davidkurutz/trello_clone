@@ -59,7 +59,7 @@ var App = {
     this.BoardsView.toggleStarred(model);
   },
   triggerStarred: function() {
-    this.trigger('toggleStarredX')
+    this.trigger('renderStarredMenu')
   },
   toggleBoardMenu: function() {
     this.boardMenu = this.boardMenu || new BoardMenuView();

@@ -14,8 +14,7 @@ var BoardMenuView = BaseView.extend({
   },
   captureDelete: function(e) {
     if (e.which === 8) {
-      this.search(e, true)
-      console.log('captured')
+      this.search(e, true);
     }
     if (!this.$("#search").val()) {
       $(".board_type").show();
@@ -30,7 +29,7 @@ var BoardMenuView = BaseView.extend({
     if (!backspace) {
       current = String.fromCharCode(event.which);
     } else {
-      current = ''
+      current = '';
     }
 
     var searchTerm = previous + current;
@@ -119,11 +118,11 @@ var BoardMenuView = BaseView.extend({
   },
   hide: function() {
     this.$el.hide();
-    this.removeCreateBoardForm()
+    this.removeCreateBoardForm();
   },
   initialize: function() {
     this.render();
     this.listenTo(App, 'closePopup', this.hide);
-    this.listenTo(App, 'toggleStarredX', this.renderStarred);
+    this.listenTo(App, 'renderStarredMenu', this.renderStarred);
   }
 });

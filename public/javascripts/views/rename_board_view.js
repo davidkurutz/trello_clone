@@ -13,12 +13,12 @@ var RenameBoardView = BaseView.extend({
 
     data.forEach(function(input) {
       obj[input.name] = input.value;
-    })
+    });
 
     this.model.save(obj, {
       context: this,
       success: function() {
-        this.close()
+        this.close();
       }
     });
   },

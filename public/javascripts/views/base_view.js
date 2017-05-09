@@ -9,23 +9,23 @@ var BaseView = Backbone.View.extend({
     e.stopPropagation();
   },
   archiveCard: function(e) {
-    e.stopPropagation();
+    this.stop(e);
     this.model.destroy();
     this.close();
   },
   changeDueDate: function(e) {
     var offset = $(e.target).closest(".corner").offset();
-    var duedate = this.model.get("duedate");
-    var datetime;
+    var dueDate = this.model.get("duedate");
+    var dateTime;
     var date;
     var time;
     
-    if (this.model.get("duedate")) {
-      datetime = moment(duedate).format("MM-DD-YYYY hh:mmA");
-      date = datetime.split(' ')[0];
-      time = datetime.split(' ')[1];
+    if (dueDate) {
+      dateTime = moment(dueDate).format("MM-DD-YYYY hh:mmA");
+      date = dateTime.split(" ")[0];
+      time = dateTime.split(" ")[1];
     } else {
-      date = moment().add(1,'days').format('L');
+      date = moment().add(1,"days").format("L");
       time = "12:00 AM";
     }
 
