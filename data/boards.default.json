@@ -1,16 +1,1 @@
-{
-  "data": [
-    {
-      "id": 10,
-      "createdBy": 1,
-      "createdOn": "2017-05-05T02:22:04.964Z",
-      "starred": false,
-      "open": true,
-      "archived": false,
-      "title": "my shitty board",
-      "team": "none"
-    }
-  ],
-  "currentId": 11,
-  "currentStarredOrder": 7
-}
+{"data":[{"id":30,"createdBy":1,"createdOn":"2017-05-07T02:46:41.800Z","starred":false,"open":true,"archived":false,"title":"bork","team":"none","sort_order":1},{"id":31,"createdBy":1,"createdOn":"2017-05-07T05:30:54.985Z","starred":false,"open":true,"archived":false,"title":"asdfsadf","team":"none","sort_order":3},{"id":32,"createdBy":1,"createdOn":"2017-05-07T15:01:44.127Z","starred":false,"open":true,"archived":false,"title":"not starred","team":"none","sort_order":1},{"id":34,"createdBy":1,"createdOn":"2017-05-07T19:06:15.453Z","starred":false,"open":true,"archived":false,"title":"another board","team":"none","sort_order":0},{"id":35,"createdBy":1,"createdOn":"2017-05-07T19:06:24.773Z","starred":false,"open":true,"archived":false,"title":"tobias funke","team":"none","sort_order":0}],"currentId":36}

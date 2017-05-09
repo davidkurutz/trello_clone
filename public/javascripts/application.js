@@ -7,10 +7,10 @@ var App = {
   },
   addList: function(model) {
     var Lists = this.Board.get("Lists");
-    var list = Lists.add(model)
+    var list = Lists.add(model);
     list.getCards((function() { 
-      this.BoardView.trigger('newList', list)
-    }).bind(this))
+      this.BoardView.trigger('newList', list);
+    }).bind(this));
   },
   getListsAndPopulate: function() {
     this.Board.getLists(this.populateLists.bind(this));
@@ -19,7 +19,7 @@ var App = {
     this.headerView();
     this.Board = this.Boards.get(+board_id);
     this.getListsAndPopulate();
-    this.bind()
+    this.bind();
     router.navigate("/b/" + this.Board.get("id") + "/" + uri(this.Board.get("title")));
   },
   boardsView: function() {
@@ -53,18 +53,20 @@ var App = {
     this.Board.get("Lists").getCards((this.createBoardView).bind(this));
   },
   closePopup: function() {
-    this.trigger('closePopup')
+    this.trigger('closePopup');
   },
   toggleStarred: function(model) {
-    this.BoardsView.toggleStarred(model);
+    if (this.BoardsView) {
+      this.BoardsView.toggleStarred(model);
+    }
   },
   triggerStarred: function() {
-    this.trigger('renderStarredMenu')
+    this.trigger('renderStarredMenu');
   },
   toggleBoardMenu: function() {
     this.boardMenu = this.boardMenu || new BoardMenuView();
-    this.$el.append(this.boardMenu.$el)
-    this.boardMenu.$el.toggle()
+    this.$el.append(this.boardMenu.$el);
+    this.boardMenu.$el.toggle();
   },
   cardView: function() {
     var listId = App.Card.get('list_id');
@@ -73,8 +75,8 @@ var App = {
     router.navigate("/c/" + this.Card.get("id") + "/" + uri(this.Card.get("name")));
   },
   cardOverlay: function(cardid) {
-    var id = this.Board.get("id")
-    this.boardView(id)
+    var id = this.Board.get("id");
+    this.boardView(id);
     this.cardView(cardid);
   },  
   bind: function() {
@@ -87,8 +89,8 @@ var App = {
     this.on('cardView', this.cardView);
     this.on('toggleStarred', this.toggleStarred);
     this.on('addBoard', this.addBoard);
-    this.on('toggleBoardMenu', this.toggleBoardMenu);;
-    this.$el.on('click', this.closePopup.bind(this))
+    this.on('toggleBoardMenu', this.toggleBoardMenu);
+    this.$el.on('click', this.closePopup.bind(this));
   }
 };
 
@@ -97,15 +99,25 @@ Handlebars.registerHelper('uri', function(text) {
 });
 
 Handlebars.registerHelper('smDate', function(date) {
-  return moment(date).format('MMM D')
-})
+  return moment(date).format('MMM D');
+});
 
 Handlebars.registerHelper('lnDate', function(date) {
-  return moment(date).format('MMM D ') + 'at ' + moment(date).format('h:mm A')
-})
+  return moment(date).format('MMM D ') + 'at ' + moment(date).format('h:mm A');
+});
 Handlebars.registerHelper('smDate', function(date) {
-  return moment(date).format('MMM D'+ '')
-})
+  return moment(date).format('MMM D'+ '');
+});
+
+Handlebars.registerHelper('length', function(array) {
+  return array.length;
+});
+
+Handlebars.registerHelper('lgto', function(array) {
+  return array.length > 0;
+});
+
+
 
 function uri(text) {
   return encodeURI(text.replace(/\s/g,'-'));

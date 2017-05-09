@@ -1,6 +1,9 @@
 var BoardMenuItemView = Backbone.View.extend({
   template: App.templates.board_menu_item,
   tagName: 'li',
+  id: function() {
+    return "board_" + this.model.get("id");
+  },
   events: {
     'click a div.icon-sm': 'toggleStarred'
   },

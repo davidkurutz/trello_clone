@@ -14,24 +14,36 @@ var CardView = BaseView.extend({
     "submit #comment_form": "sendComment"
   },
   sendComment: function(e) {
-    // e.preventDefault();
-    // e.stopPropagation();
-    // var $f = this.$("#comment_form").serializeArray();
-    // var obj = {};
+    e.preventDefault();
+    e.stopPropagation();
+    var $f = this.$("#comment_form").serializeArray();
+    var obj = {};
+    var id = this.model.get("id");
 
-    // $f.forEach(function(input) {
-    //   obj[input.name] = input.val();
-    // })
+    $f.forEach(function(input) {
+      obj[input.name] = input.value;
+    });
 
-    // obj.card_id = this.model.get("id");
+    obj.card_id = this.model.get("id");
 
-    
-
-
+    $.ajax({
+      url: "/cards/" + id + "/comments",
+      type: 'POST',
+      context: this,
+      data: obj,
+      success: function(json) {
+        this.addComment(json);
+        this.$("#comment_text").val('');
+      }
+    });
+  },
+  addComment: function(json) {
+    var comment = new Comment(json)
+    this.$("#activity_feed").append(new CommentView({ model: comment }).$el);
   },
   colorize: function(e) {
-    $(e.target).closest(".clickable_due_date").css('background', '#99E585')
-    $(e.target).closest(".clickable_due_date").addClass('greenCheck')
+    $(e.target).closest(".clickable_due_date").css('background', '#99E585');
+    $(e.target).closest(".clickable_due_date").addClass('greenCheck');
   },
   editDescription: function(e) {
     e.preventDefault();
@@ -54,14 +66,23 @@ var CardView = BaseView.extend({
     router.navigate("/b/" + App.Board.get("id"));
   },
   render: function(options) {
+    var comments = this.model.get("Comments");
+    
     this.listName = this.listName || options.listName;
-
+    
     this.$el.html(this.template({
       model: this.model.toJSON(),
       listName: this.listName
     }));
-    
+
     $("body").append(this.$el);
+
+    comments.forEach(function(comment) {
+      var c = new Comment(comment)
+      $("#activity_feed").append(new CommentView({
+        model: c
+      }).$el)
+    })
   },
   initialize: function(options) {
     this.render(options);

@@ -41,13 +41,6 @@ module.exports = function(router) {
     var boardId = +req.params.board_id;
     var data = req.body;
     data.starred = data.starred === true;
-  
-    if (data.starred) {
-      data.starredOrder = Boards.getCurrentStarredOrder() + 1;
-    } else {
-      delete data.starredOrder;
-    }
-
     delete data.Lists;
     var newBoard = Boards.update(boardId, data);
     res.json(newBoard);

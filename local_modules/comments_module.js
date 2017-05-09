@@ -34,8 +34,8 @@ module.exports = {
 
     this.write(json);
   },
-  addCard: function(comment) {
-    var comments = this.getData();
+  addComment: function(comment) {
+    // var comments = this.getData();
     var id = this.getCurrentId();
     var obj = {
       id: id,
@@ -44,9 +44,9 @@ module.exports = {
     };
 
     _.extend(obj, comment);
-    obj.list_id = +obj.list_id;
-    comments.push(obj);
-    this.set({"data": comments, 'currentId': id + 1});
+    obj.card_id = +obj.card_id;
+    // comments.push(obj);
+    // this.set({"data": comments, 'currentId': id + 1});
     return obj;
   },
   remove: function(id) {

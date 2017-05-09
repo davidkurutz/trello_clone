@@ -22,9 +22,6 @@ module.exports = {
   getCurrentId: function() {
     return this.getJSON().currentId;
   },
-  getCurrentStarredOrder: function() {
-    return this.getJSON().currentStarredOrder
-  },
   write: function(data) {
     fs.writeFileSync(file_path, JSON.stringify(data), "utf8");
   },

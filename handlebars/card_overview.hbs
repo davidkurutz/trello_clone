@@ -9,7 +9,14 @@
     </li>
     {{/if}}
     {{#if description}}
+    <li>
       <span class="icon-sm icon-description"></small>
+    </li>
+    {{/if}}
+    {{#if Comments}}
+      <li>
+        {{length Comments}}<span class="icon-sm icon-comment"></span>
+      </li>
     {{/if}}
     </ul>
 </header>

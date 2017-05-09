@@ -17,10 +17,16 @@ var BoardOverviewView = Backbone.View.extend({
   toggleStar: function(e) {
     e.preventDefault();
     e.stopPropagation();
+    App
 
     var board = this.model;
-
     var starred = !board.get("starred");
+
+    if (starred) {
+      board.set('sort_order', +App.Boards.where({"starred": true}).length + 1)
+    } else {
+      board.unset('sort_order');
+    }
 
     board.save({"starred": starred}, {
       context: this,

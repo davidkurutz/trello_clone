@@ -9,18 +9,18 @@ var BoardsView = BaseView.extend({
   },
   render: function() {
     var boards = this.collection;
-    var starredBoards = nthis.collection.where({ starred: true});
-    var sortedStarred;
+    var SortedBoards = Boards.extend({
+      comparator: 'sort_order'
+    })
+
+    var starredBoards = this.collection.where({ starred: true});
+    var sortedStarred = new SortedBoards(starredBoards);
 
     this.$el.removeClass().addClass('boards_view').html(this.template({}));
 
     if (!starredBoards[0]) {
       this.$(".starred").hide();
     }
-
-    sortedStarred = starredBoards.sort(function(a,b) {
-      return a.get("starredOrder") > b.get("starredOrder");
-    });
 
     sortedStarred.forEach(function(board) {
       this.$(".starred ul").append(new BoardOverviewView({model: board}).$el);
@@ -30,14 +30,23 @@ var BoardsView = BaseView.extend({
       this.$(".personal ul li:last-child").before(new BoardOverviewView({model: board}).$el);
     });
 
+    this.sortableStarredBoards();
+  },
+  sortableStarredBoards: function() {
     $("#starred_boards").sortable({
-      helper: "clone",
-      opacity: 0.75,
-      scroll: false,
-      update: function(event, ui) {
-        var data = $("#starred_boards").sortable('serialize');
-      }
-    });
+        helper: "clone",
+        opacity: 0.75,
+        scroll: false,
+        update: function(event, ui) {
+          var data = $("#starred_boards").sortable('serialize');
+          $.ajax({
+            url: "/starred_board_order",
+            type: "post",
+            data: data,
+            success: function() {}
+          });
+        }
+      });
   },
   toggleStarred: function(model) {
     var id = model.get("id");
@@ -66,5 +75,8 @@ var BoardsView = BaseView.extend({
     var li = $(e.target).closest("li");
     li.prepend(new CreateBoardFormView().$el);
     $(".create_board input#title").focus();
+  },
+  initialize: function() {
+    this.render()
   }
 });

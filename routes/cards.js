@@ -11,9 +11,22 @@ module.exports = function(router) {
     res.status(200).end();
   })
 
+  router.delete('/cards/:card_id/comments/:comment_id', function(req, res) {
+    var commentId = +req.params.comment_id;
+    var cardId = +req.params.card_id;
+    Cards.removeComment(cardId, commentId);
+    res.status(200).end();
+  })
+
   router.post('/cards', function(req, res) {
     var card = Cards.addCard(req.body)
     res.json(card)
+  }),
+
+  router.post('/cards/:card_id/comments', function(req, res) {
+    var body = req.body
+    var comment = Cards.addComment(body);
+    res.json(comment)
   }),
 
   router.put('/cards/:card_id', function(req, res) {

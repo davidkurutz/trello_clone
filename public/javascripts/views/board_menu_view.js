@@ -51,6 +51,7 @@ var BoardMenuView = BaseView.extend({
   toggleStarred: function(e) {
     this.toggleIcon(e);
     this.$("#starred_list").toggle();
+    this.sortableStarredBoards();
   },
   toggleRecent: function(e) {
     this.toggleIcon(e);
@@ -94,7 +95,12 @@ var BoardMenuView = BaseView.extend({
     e.preventDefault();
   },
   renderStarred: function() {
+    var SortedBoards = Boards.extend({
+      comparator: 'sort_order'
+    })
+    
     var starred = App.Boards.where({starred: true});
+    var sortedStarred = new SortedBoards(starred);
     
     this.$("#starred_list").empty();
     starred.forEach((function(board) {
@@ -102,6 +108,23 @@ var BoardMenuView = BaseView.extend({
         model: board
       }).$el);
     }).bind(this));
+  },
+  sortableStarredBoards: function() {
+    $("#starred_list").sortable({
+      helper: "clone",
+      opacity: 0.75,
+      scroll: false,
+      update: function(event, ui) {
+        var data = $("#starred_list").sortable('serialize');
+        $.ajax({
+          url: "/starred_board_order",
+          type: "post",
+          data: data,
+          success: function() {
+          }
+        });
+      }
+    });
   },
   renderPersonal: function() {
     var personal = App.Boards.models;

@@ -11,6 +11,12 @@ var Board = Backbone.Model.extend({
       }
     });
   },
+  removeSortOrder: function() {
+    if (!this.get('starred')) {
+      this.unset('sort_order');
+      this.save();
+    }
+  },
   initialize: function() {
     this.on('change:starred', App.triggerStarred.bind(App))
   }

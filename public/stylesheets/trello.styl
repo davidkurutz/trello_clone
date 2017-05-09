@@ -611,7 +611,7 @@ li
   editForm()
 
 
-/*CARD DETAIL MODAL*/
+/*CARD DETAIL AND MODAL*/
 .cover_modal
   overflow: scroll
   & > div
@@ -720,6 +720,13 @@ li
   margin: 40px auto 60px auto
   border-radius: 4px
   z-index: 10
+  div.comment
+    background-color: white
+    box-shadow: -1px 1px 1px #aaa
+    padding: 10px
+    display: inline-block
+    border-radius: 3px
+    margin: 10px 0
 
 div.close 
   position: absolute
@@ -896,6 +903,14 @@ div.content
 #activity_feed 
   display: block
 
+#send_comment
+  outline: 0
+  margin: 3px 0
+
+.comment_options
+  display: block
+  small
+    text-decoration: none
 
 #activity_feed
   li 
@@ -908,6 +923,9 @@ div.content
     &:hover
       color: #444
       text-decoration: underline
+    a
+      padding: 0 5px
+
 
 
 div.small_user_pic 
@@ -931,14 +949,15 @@ div.small_user_pic
 
 
 #activity
-  h1 
-    float: left
   a
-    float: right
     color: #8C8C8C
     text-decoration: underline
     &:hover
       color: #444
+  header
+    a
+      float: right
+
 
 
 .sidebar 

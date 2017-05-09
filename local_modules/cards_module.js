@@ -12,6 +12,9 @@ module.exports = {
       return cards;
     }
   },
+  getCurrentCommentId: function() {
+    return this.getJSON().currentCommentId
+  },
   getByListId: function(list_id) {
     var cards = this.getData();
     return _.where(cards, {list_id: list_id});
@@ -48,6 +51,35 @@ module.exports = {
     cards.push(obj);
     this.set({"data": cards, 'currentId': id + 1});
     return obj;
+  },
+  addComment: function(comment) {
+    var cards = this.getData();
+    var cardId = +comment.card_id;
+
+    var card = _.findWhere(cards, {id: cardId});
+    var comments = card.Comments;
+
+    var commentId = this.getCurrentCommentId();
+    var obj = {
+      id: commentId,
+      created_by: 1,
+      created_on: new Date(),
+    };
+
+    _.extend(obj, comment);
+    comments.push(obj);
+    this.set({"data": cards, 'currentCommentId': commentId + 1});
+    
+    return obj;
+  },
+  removeComment: function(cardId, commentId) {
+    var cards = this.getData();
+    var card = _.findWhere(cards, {id: cardId});
+    var comments = card.Comments;
+    comments = _.reject(comments, {id: commentId});
+
+    card.Comments = comments
+    this.set({"data": cards})
   },
   remove: function(id) {
     var cards = this.getData();

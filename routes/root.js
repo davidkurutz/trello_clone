@@ -15,4 +15,28 @@ module.exports = function(router) {
       starred: starred
     });
   });
+
+  router.post('/starred_board_order', function(req, res) {
+    var body = req.body;
+    var data = body['board[]']
+    console.log(data)
+    var ids = data.map(function(order) {
+      return +order;
+    });
+
+    var board;
+
+    var boards = Boards.getData();
+
+    ids.forEach(function(id) {
+      board = _.findWhere(boards, {id: id});
+      board.sort_order = ids.indexOf(id);
+    });
+
+    Boards.set({
+      "data": boards
+    })
+
+    res.status(200).end()
+  })
 }

@@ -7,7 +7,7 @@ var CardOverviewView = Backbone.View.extend({
   },
   events: {
     'click a': 'showDetail',
-    'click span': 'quickEdit'
+    'click span.edit': 'quickEdit'
   },
   quickEdit: function(e) {
     e.preventDefault();

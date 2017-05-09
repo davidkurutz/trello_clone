@@ -810,7 +810,7 @@ li.new_card + footer {
   top: 39px;
   right: 165px;
 }
-/*CARD DETAIL MODAL*/
+/*CARD DETAIL AND MODAL*/
 .cover_modal {
   overflow: scroll;
   position: absolute;
@@ -951,6 +951,14 @@ li.new_card + footer {
   margin: 40px auto 60px auto;
   border-radius: 4px;
   z-index: 10;
+}
+.card_detail div.comment {
+  background-color: #fff;
+  box-shadow: -1px 1px 1px #aaa;
+  padding: 10px;
+  display: inline-block;
+  border-radius: 3px;
+  margin: 10px 0;
 }
 div.close {
   position: absolute;
@@ -1188,6 +1196,16 @@ div.content {
 #activity_feed {
   display: block;
 }
+#send_comment {
+  outline: 0;
+  margin: 3px 0;
+}
+.comment_options {
+  display: block;
+}
+.comment_options small {
+  text-decoration: none;
+}
 #activity_feed li {
   margin-left: 0 0 0 -30px;
   padding: 10px 0 10px 0;
@@ -1201,6 +1219,9 @@ div.content {
 #activity_feed small:hover {
   color: #444;
   text-decoration: underline;
+}
+#activity_feed small a {
+  padding: 0 5px;
 }
 div.small_user_pic {
   width: 20px;
@@ -1221,16 +1242,15 @@ div.small_user_pic {
   background-color: #ddd;
   border-radius: 3px;
 }
-#activity h1 {
-  float: left;
-}
 #activity a {
-  float: right;
   color: #8c8c8c;
   text-decoration: underline;
 }
 #activity a:hover {
   color: #444;
+}
+#activity header a {
+  float: right;
 }
 .sidebar {
   width: 25%;
