@@ -778,7 +778,9 @@ div.content
   text-decoration: underline
   color: inherit
 
+
 #general
+  overflow: auto
   .clickable_due_date
     &:hover
       background-color: #DDDDDD
@@ -799,7 +801,6 @@ div.content
           color: #EBECEE
         &:hover
           color: #FDFFEE  
-  overflow: auto
   & > div
     position: relative
   .edit_title
@@ -829,16 +830,18 @@ div.content
       background-color: #E6E8E8
       box-shadow: inset 0 0 1px #ddd
     background-color: #EDEFF0
-
-#general .greenCheck
-  a
-    color: white
+  .completed
+    background-color: #5AAC44
     &:hover
+      background-color: #3A8F24
+    color: white
+    .square
+      background: #99E585
+    a
       color: white
-  background: #5AAC44
-  color: white
-  .square
-    background: #99E585
+      &:hover
+        color: white
+
 
 #general a, #general p
   color: #8C8C8C

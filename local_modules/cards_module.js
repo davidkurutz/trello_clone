@@ -106,6 +106,7 @@ module.exports = {
 
     if (!newData.duedate) {
       delete card.duedate;
+      delete card.completed
     }
     this.set({ data: cards });
     return card

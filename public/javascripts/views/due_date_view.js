@@ -13,6 +13,7 @@ var DueDateView = BaseView.extend({
     var model = this.model;
     var id = model.get('id');
     model.unset('duedate');
+    model.unset('completed');
 
     model.save({}, {
       context: this,
@@ -32,6 +33,7 @@ var DueDateView = BaseView.extend({
     });
 
     data.duedate = moment(obj.duedate + ' ' + obj.time, "MM-DD-YYYY H:mmA").format()
+    data.completed = false
 
     this.model.save(data,{
       context: this,

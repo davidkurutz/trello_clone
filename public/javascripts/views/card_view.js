@@ -9,7 +9,7 @@ var CardView = BaseView.extend({
     "click .edit-description": 'editDescription',
     "click #archive-card": 'archiveCard',
     "click #dueDate": "changeDueDate",
-    "click div.square": "colorize",
+    "click div.square": "toggleCompleted",
     "click div.clickable_due_date a": "changeDueDate",
     "submit #comment_form": "sendComment"
   },
@@ -41,12 +41,19 @@ var CardView = BaseView.extend({
   addComment: function(json) {
     var comment = new Comment(json)
     this.model.get('Comments').push(comment);
-    console.log('in cardview', this.model)
     this.$("#activity_feed").append(new CommentView({ model: comment }).$el);
   },
-  colorize: function(e) {
-    $(e.target).closest(".clickable_due_date").css('background', '#99E585');
-    $(e.target).closest(".clickable_due_date").addClass('greenCheck');
+  toggleCompleted: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var completed = !(this.model.get('completed'));
+
+    this.model.save({ 'completed': completed}, {
+      context: this,
+      success: function(json) {
+        this.$(".clickable_due_date").toggleClass('completed')
+      }
+    })
   },
   editDescription: function(e) {
     e.preventDefault();
@@ -90,6 +97,6 @@ var CardView = BaseView.extend({
   initialize: function(options) {
     this.render(options);
     this.listenTo(this.model, 'destroy', this.remove);
-    this.listenTo(this.model, 'change', this.render);
+    this.listenTo(this.model, 'change:duedate change:name change:description', this.render);
   }
 });

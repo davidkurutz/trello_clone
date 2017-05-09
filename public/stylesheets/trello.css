@@ -1121,17 +1121,20 @@ div.content {
   box-shadow: inset 0 0 1px #ddd;
 }
 #general .greenCheck {
-  background: #5aac44;
+  background-color: #5aac44;
   color: #fff;
+}
+#general .greenCheck:hover {
+  background-color: #3a8f24;
+}
+#general .greenCheck .square {
+  background: #99e585;
 }
 #general .greenCheck a {
   color: #fff;
 }
 #general .greenCheck a:hover {
   color: #fff;
-}
-#general .greenCheck .square {
-  background: #99e585;
 }
 #general a,
 #general p {
