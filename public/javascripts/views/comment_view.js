@@ -5,7 +5,13 @@ var CommentView = Backbone.View.extend({
   events: {
     "click .delete_comment" : "deleteComment",
     "click .edit_comment" : "editComment",
-    'submit #comment_edit_form': "submitEdits"
+    'submit #comment_edit_form': "submitEdits",
+    "click #comment_edit_form div.close": "close"
+  },
+  close: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.$el.html(this.template(this.model.toJSON()));
   },
   submitEdits: function(e) {
     e.preventDefault();

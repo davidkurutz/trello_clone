@@ -119,7 +119,7 @@ this["JST"]["comment_form"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"ma
 
   return "<form id=\"comment_edit_form\" action=\"\"><fieldset><div class=\"comment_container\"><textarea name=\"comment_text\" id=\"comment_edit_text\" cols=\"65\" rows=\"2\" placeholder=\"Write a comment...\">"
     + container.escapeExpression(((helper = (helper = helpers.comment_text || (depth0 != null ? depth0.comment_text : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"comment_text","hash":{},"data":data}) : helper)))
-    + "</textarea><div class=\"comment_toolbar\"><div class=\"tools\"><span class=\"icon-sm icon-attachment\"></span><span class=\"icon-sm icon-mention\"></span><span class=\"icon-sm icon-emoji\"></span><span class=\"icon-sm icon-card\"></span></div></div></div><input type=\"submit\" id=\"send_comment\" class=\"btn btn-secondary\" value=\"Send\"></fieldset></form>";
+    + "</textarea><div class=\"comment_toolbar\"><div class=\"tools\"><span class=\"icon-sm icon-attachment\"></span><span class=\"icon-sm icon-mention\"></span><span class=\"icon-sm icon-emoji\"></span><span class=\"icon-sm icon-card\"></span></div></div></div><input type=\"submit\" id=\"send_comment\" class=\"btn btn-secondary\" value=\"Send\"><div class=\"close\"></div></fieldset></form>";
 },"useData":true});
 
 this["JST"]["comment"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
