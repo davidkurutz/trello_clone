@@ -29,6 +29,14 @@ module.exports = function(router) {
     res.json(comment)
   }),
 
+  router.put('/cards/:card_id/comments/:comment_id', function(req, res) {
+    var body = req.body
+    var cardId = +req.params.card_id;
+    var commentId = +req.params.comment_id;
+    var comment = Cards.updateComment(cardId, commentId, body);
+    res.json(comment)
+  }),
+
   router.put('/cards/:card_id', function(req, res) {
     var cardId = +req.params.card_id;
     var data = req.body;

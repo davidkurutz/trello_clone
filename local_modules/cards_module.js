@@ -77,9 +77,19 @@ module.exports = {
     var card = _.findWhere(cards, {id: cardId});
     var comments = card.Comments;
     comments = _.reject(comments, {id: commentId});
-
     card.Comments = comments
     this.set({"data": cards})
+  },
+  updateComment: function(cardId, commentId, data) {
+    var cards = this.getData();
+    var card = _.findWhere(cards, {id: cardId });
+    var comments = card.Comments;
+    var comment = _.findWhere(comments, {id: commentId});
+
+    _.extend(comment, data);
+    card.Comments = comments;
+    this.set({"data": cards});
+    return comment;
   },
   remove: function(id) {
     var cards = this.getData();

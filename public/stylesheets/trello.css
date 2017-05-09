@@ -1153,7 +1153,8 @@ div.content {
 #general a.edit-description:hover {
   background-color: #ddd;
 }
-#comment form textarea {
+#comment form textarea,
+#activity form textarea {
   resize: none;
   border: none;
   padding: 10px;
@@ -1163,13 +1164,15 @@ div.content {
   border-radius: 3px;
   outline: 0;
 }
-#comment form button {
+#comment form button,
+#activity form button {
   margin: 10px 0;
   background-color: #ddd;
   padding-left: 20px;
   padding-right: 20px;
 }
-#comment form div.user_pic {
+#comment form div.user_pic,
+#activity form div.user_pic {
   width: 30px;
   height: 30px;
   background: url("../images/david.png") no-repeat center;
@@ -1179,17 +1182,20 @@ div.content {
   left: 10px;
   border-radius: 3px;
 }
-#comment .comment_toolbar {
+#comment .comment_toolbar,
+#activity .comment_toolbar {
   height: 35px;
   background: #fff;
 }
-#comment .comment_container {
+#comment .comment_container,
+#activity .comment_container {
   margin-bottom: 10px;
   display: inline-block;
   font-size: 0;
   box-shadow: -1px 1px 1px #aaa;
 }
-#comment .tools {
+#comment .tools,
+#activity .tools {
   float: right;
   margin: 0 5px 5px 5px;
 }
