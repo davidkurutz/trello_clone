@@ -12,14 +12,14 @@ module.exports = function(router) {
     res.json(board);
   });
 
-  router.post('/boards/:board_id/list_order', function(req, res) {
+  router.post('/boards/:boardId/list_order', function(req, res) {
     var data = req.body;
     var list;
     var ids = data['list[]'].map(function(order) {
       return +order;
     });
 
-    var lists = Lists.getByBoardId(+req.params.board_id);
+    var lists = Lists.getByBoardId(+req.params.boardId);
 
     ids.forEach(function(id) {
       list = _.findWhere(lists, {id: id});
@@ -32,13 +32,13 @@ module.exports = function(router) {
     res.status(200).end();
   });
 
-  router.get('/boards/:board_id', function(req, res, next) {
-    var lists = Lists.getByBoardId(+req.params.board_id);
+  router.get('/boards/:boardId', function(req, res, next) {
+    var lists = Lists.getByBoardId(+req.params.boardId);
     res.json(lists);
   });
 
-  router.put('/boards/:board_id', function(req, res) {
-    var boardId = +req.params.board_id;
+  router.put('/boards/:boardId', function(req, res) {
+    var boardId = +req.params.boardId;
     var data = req.body;
     data.starred = data.starred === true;
     delete data.Lists;

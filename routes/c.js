@@ -7,8 +7,8 @@ var Lists = require(path.resolve(path.dirname(__dirname), 'local_modules/lists_m
 var Boards = require(path.resolve(path.dirname(__dirname), 'local_modules/boards_module'));
 
 module.exports = function(router) {
-  router.get('/c/:card_id*?', function(req, res) {
-    var cardId = +req.params.card_id;
+  router.get('/c/:cardId*?', function(req, res) {
+    var cardId = +req.params.cardId;
     var card = Cards.get(cardId);
     var listId = card.list_id;
     var list = Lists.get(listId);
@@ -16,7 +16,7 @@ module.exports = function(router) {
     var board = Boards.get(boardId);
 
     res.render('card', {
-      title: "Boards | Trello",
+      title: 'Boards | Trello',
       boards: Boards.get(),
       board_id: boardId,
       lists: Lists.getByBoardId(boardId),

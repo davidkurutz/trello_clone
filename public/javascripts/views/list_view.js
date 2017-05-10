@@ -1,14 +1,14 @@
 var ListView = BaseView.extend({
   template: App.templates.list,
-  tagName: "li",
-  className: "board_list",
+  tagName: 'li',
+  className: 'board_list',
   id: function() {
     return 'list-' + this.model.get('id');
   },
   attributes: function() {
     var id = +this.model.get('id');
     return {
-      "data-list-id": id
+      'data-list-id': id
     };
   },
   events: {
@@ -20,12 +20,12 @@ var ListView = BaseView.extend({
     'blur .edit_title': 'editTitle',
   },
   focus: function(e) {
-    this.$(".edit_title").focus().select();
+    this.$('.edit_title').focus().select();
   },
   keypress: function(e) {
     if(e.keyCode === 13) {
       e.preventDefault();
-      this.$(".edit_title").blur();
+      this.$('.edit_title').blur();
     }
   },
   editTitle: function(e) {
@@ -39,9 +39,9 @@ var ListView = BaseView.extend({
 
     this.stopListening(App);
     this.newCardView = new NewCardView({ model: this.model });
-    this.$(".cards").append(this.newCardView.$el);
-    this.$("footer").hide();
-    this.$("textarea").focus();
+    this.$('.cards').append(this.newCardView.$el);
+    this.$('footer').hide();
+    this.$('textarea').focus();
     this.listenTo(App, 'appendCard', this.appendCard);
     this.listenTo(this.newCardView, 'showFooter', this.showFooter);
   },
@@ -55,20 +55,20 @@ var ListView = BaseView.extend({
 
     var ncv = new NewCardView({ model: this.model });
 
-    this.$(".cards").prepend(ncv.$el);
-    this.$("footer").hide();
-    this.$("textarea").focus();
+    this.$('.cards').prepend(ncv.$el);
+    this.$('footer').hide();
+    this.$('textarea').focus();
     this.listenTo(App, 'appendCard', this.prependCard);
     this.listenTo(ncv, 'showFooter', this.showFooter);
   },
   showFooter: function() {
-    this.$("footer").show();
+    this.$('footer').show();
   },
   toggleListActions: function(e) {
     e.stopPropagation();
     var id;
 
-    if (this.$(".list_actions_menu")[0]) {
+    if (this.$('.list_actions_menu')[0]) {
       App.trigger('remove_list_actions_menu');
     } else {
       id = this.model.get('id');
@@ -79,14 +79,14 @@ var ListView = BaseView.extend({
     }
   },
   prependCard: function(card) {
-    if (+card.get("list_id") === this.model.get("id")) {
+    if (+card.get('list_id') === this.model.get('id')) {
       var form = this.$("ul.cards li.new_card");
       form.before(new CardOverviewView({ model: card}).$el);
     }
   },
   appendCard: function(card) {
-    if (+card.get("list_id") === this.model.get("id")) {
-      var last = this.$("ul.cards li:last-child");
+    if (+card.get('list_id') === this.model.get('id')) {
+      var last = this.$('ul.cards li:last-child');
       last.before(new CardOverviewView({ model: card}).$el);
     }
 
@@ -95,7 +95,7 @@ var ListView = BaseView.extend({
     var cards = this.model.get('Cards');
     this.$el.html(this.template(this.model.toJSON()));
 
-    var list = this.$("ul.cards");
+    var list = this.$('ul.cards');
     
     cards.forEach(function(card) {
       list.append(new CardOverviewView({ model: card}).$el);

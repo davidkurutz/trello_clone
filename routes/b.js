@@ -6,14 +6,14 @@ var Boards = require(path.resolve(path.dirname(__dirname), 'local_modules/boards
 var Lists = require(path.resolve(path.dirname(__dirname), 'local_modules/lists_module'));
 
 module.exports = function(router) {
-  router.get('/b/:board_id*?', function(req, res, next) {
-    var board_id = +req.params.board_id;
+  router.get('/b/:boardId*?', function(req, res, next) {
+    var boardId = +req.params.boardId;
 
     res.render('board', {
-      title: "Boards | Trello",
+      title: 'Boards | Trello',
       boards: Boards.get(),
-      board_id: board_id,
-      lists: Lists.getByBoardId(board_id)
+      board_id: boardId,
+      lists: Lists.getByBoardId(boardId)
     });
   });
 };

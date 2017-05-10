@@ -1,47 +1,47 @@
 var CardView = BaseView.extend({
   template: App.templates.card,
-  className: "cover_modal",
+  className: 'cover_modal',
   events: {
-    "click": "close",
-    "click div.close": "close",
-    "click .card_detail": "stop",
-    "blur .edit_title": "editTitle",
-    "click .edit-description": 'editDescription',
-    "click #archive-card": 'archiveCard',
-    "click #dueDate": "changeDueDate",
-    "click div.square": "toggleCompleted",
-    "click div.clickable_due_date a": "changeDueDate",
-    "submit #comment_form": "sendComment"
+    'click': 'close',
+    'click div.close': 'close',
+    'click .card_detail': 'stop',
+    'blur .edit_title': 'editTitle',
+    'click .edit-description': 'editDescription',
+    'click #archive-card': 'archiveCard',
+    'click #dueDate': 'changeDueDate',
+    'click div.square': 'toggleCompleted',
+    'click div.clickable_due_date a': 'changeDueDate',
+    'submit #comment_form': 'sendComment'
   },
   sendComment: function(e) {
     e.preventDefault();
     e.stopPropagation();
-    var $f = this.$("#comment_form").serializeArray();
+    var $f = this.$('#comment_form').serializeArray();
     var obj = {};
-    var id = this.model.get("id");
+    var id = this.model.get('id');
 
     $f.forEach(function(input) {
       obj[input.name] = input.value;
     });
 
-    obj.card_id = this.model.get("id");
+    obj.card_id = this.model.get('id');
 
     $.ajax({
-      url: "/cards/" + id + "/comments",
+      url: '/cards/' + id + '/comments',
       type: 'POST',
       context: this,
       data: obj,
       success: function(json) {
         this.addComment(json);
-        this.$("#comment_text").val('');
+        this.$('#comment_text').val('');
         App.trigger('renderCardOverview');
       }
     });
   },
   addComment: function(json) {
-    var comment = new Comment(json)
+    var comment = new Comment(json);
     this.model.get('Comments').push(comment);
-    this.$("#activity_feed").append(new CommentView({ model: comment }).$el);
+    this.$('#activity_feed').append(new CommentView({ model: comment }).$el);
   },
   toggleCompleted: function(e) {
     e.preventDefault();
@@ -51,20 +51,20 @@ var CardView = BaseView.extend({
     this.model.save({ 'completed': completed}, {
       context: this,
       success: function(json) {
-        this.$(".clickable_due_date").toggleClass('completed')
+        this.$('.clickable_due_date').toggleClass('completed');
       }
-    })
+    });
   },
   editDescription: function(e) {
     e.preventDefault();
 
-    this.$(".description")
+    this.$('.description')
       .append(new EditCardDescriptionView({
         model: this.model
       }).$el);
 
-    this.$(".go_away").hide();
-    this.$("#description").focus().select();
+    this.$('.go_away').hide();
+    this.$('#description').focus().select();
   },
   editTitle: function(e) {
     var title = $(e.target).text();
@@ -73,10 +73,10 @@ var CardView = BaseView.extend({
   },
   close: function(e) {
     this.remove();
-    router.navigate("/b/" + App.Board.get("id"));
+    router.navigate('/b/' + App.Board.get('id'));
   },
   render: function(options) {
-    var comments = this.model.get("Comments") || []
+    var comments = this.model.get('Comments') || [];
     
     this.listName = this.listName || options.listName;
     
@@ -85,14 +85,14 @@ var CardView = BaseView.extend({
       listName: this.listName
     }));
 
-    $("body").append(this.$el);
+    $('body').append(this.$el);
 
     comments.forEach(function(comment) {
-      var c = new Comment(comment)
-      $("#activity_feed").append(new CommentView({
+      var c = new Comment(comment);
+      $('#activity_feed').append(new CommentView({
         model: c
-      }).$el)
-    })
+      }).$el);
+    });
   },
   initialize: function(options) {
     this.render(options);

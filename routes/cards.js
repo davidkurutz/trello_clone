@@ -10,11 +10,11 @@ module.exports = function(router) {
     res.status(200).end();
   });
 
-  router.delete('/cards/:card_id/comments/:comment_id', function(req, res) {
-    var commentId = +req.params.comment_id;
-    var cardId = +req.params.card_id;
+  router.delete('/cards/:cardId/comments/:commentId', function(req, res) {
+    var commentId = +req.params.commentId;
+    var cardId = +req.params.cardId;
     Cards.removeComment(cardId, commentId);
-    res.status(200).end()
+    res.status(200).end();
   });
 
   router.post('/cards', function(req, res) {
@@ -22,22 +22,22 @@ module.exports = function(router) {
     res.json(card);
   });
 
-  router.post('/cards/:card_id/comments', function(req, res) {
+  router.post('/cards/:cardId/comments', function(req, res) {
     var body = req.body;
     var comment = Cards.addComment(body);
     res.json(comment);
   });
 
-  router.put('/cards/:card_id/comments/:comment_id', function(req, res) {
+  router.put('/cards/:cardId/comments/:commentId', function(req, res) {
     var body = req.body;
-    var cardId = +req.params.card_id;
-    var commentId = +req.params.comment_id;
+    var cardId = +req.params.cardId;
+    var commentId = +req.params.commentId;
     var comment = Cards.updateComment(cardId, commentId, body);
     res.json(comment);
   });
 
-  router.put('/cards/:card_id', function(req, res) {
-    var cardId = +req.params.card_id;
+  router.put('/cards/:cardId', function(req, res) {
+    var cardId = +req.params.cardId;
     var data = req.body;
     var newCard = Cards.update(cardId, data);
     res.json(newCard);

@@ -1,6 +1,6 @@
 var NewCardView = BaseView.extend({
   template: App.templates.new_card,
-  tagName: "li",
+  tagName: 'li',
   className: "new_card",
   events: {
     'click div.close': 'close',
@@ -22,9 +22,9 @@ var NewCardView = BaseView.extend({
 
     c.save(obj, {
       success: function(json) {
-        model.get("Cards").add(json);
-        App.trigger('appendCard', c)
-        this.$("#card_name").val('').focus();
+        model.get('Cards').add(json);
+        App.trigger('appendCard', c);
+        this.$('#card_name').val('').focus();
       }
     });
   },

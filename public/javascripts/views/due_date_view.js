@@ -9,7 +9,7 @@ var DueDateView = BaseView.extend({
   },
   removeDueDate: function(e) {
     e.preventDefault();
-    e.stopPropagation()
+    e.stopPropagation();
     var model = this.model;
     var id = model.get('id');
     model.unset('duedate');
@@ -20,42 +20,42 @@ var DueDateView = BaseView.extend({
       success: function() {
         this.remove();
       }
-    })
+    });
   },
   submit: function(e) {
     e.preventDefault();
-    var f = this.$("form").serializeArray();
+    var f = this.$('form').serializeArray();
     var obj = {};
-    var data = {}
+    var data = {};
 
     f.forEach(function(input) {
       obj[input.name] = input.value;
     });
 
-    data.duedate = moment(obj.duedate + ' ' + obj.time, "MM-DD-YYYY H:mmA").format()
-    data.completed = false
+    data.duedate = moment(obj.duedate + ' ' + obj.time, 'MM-DD-YYYY H:mmA').format();
+    data.completed = false;
 
     this.model.save(data,{
       context: this,
       success: function(json) {
-        this.close()
+        this.close();
       }
-    })
+    });
   },
   close: function(e) {
     this.remove();
   },
   render: function(options) {
     this.$el.html(this.template(this.model.toJSON()));
-    this.$el.css(options.offset)
+    this.$el.css(options.offset);
     
-    this.$("#calendar").datepicker({
-      altField: "#duedate-field",
+    this.$('#calendar').datepicker({
+      altField: '#duedate-field',
       dateFormat: 'mm/dd/yy',
       defaultDate: moment(this.model.get('duedate')).format('L')
-    })
+    });
   },
   initialize: function(options) {
-    this.render(options)
+    this.render(options);
   }
-})
+});

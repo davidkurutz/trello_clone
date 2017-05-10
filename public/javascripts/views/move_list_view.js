@@ -6,4 +6,4 @@ var MoveListView = BaseView.extend({
   initialize: function() {
     this.render();
   }
-})
+});

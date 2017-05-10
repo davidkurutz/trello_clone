@@ -8,12 +8,12 @@ var NewListButtonView = BaseView.extend({
   },
   submit: function(e) {
     e.preventDefault();
-    var data = this.$("form").serializeArray();
+    var data = this.$('form').serializeArray();
     var obj = {};
     var newList;
 
     data.forEach(function(input) {
-      obj[input.name] = input.value
+      obj[input.name] = input.value;
     });
 
     newList = new List();
@@ -21,10 +21,10 @@ var NewListButtonView = BaseView.extend({
     newList.save(obj, {
       context: this,
       success: function(json) {
-        App.trigger('addList', json)
-        this.$("#add_list_name").val('');
+        App.trigger('addList', json);
+        this.$('#add_list_name').val('');
       }
-    })
+    });
   },
   close: function() {
     this.remove();
@@ -34,6 +34,6 @@ var NewListButtonView = BaseView.extend({
   },
   initialize: function() {
     this.render();
-    this.listenTo(App, 'closePopup', this.remove)
+    this.listenTo(App, 'closePopup', this.remove);
   }
 });

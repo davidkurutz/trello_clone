@@ -10,7 +10,7 @@ module.exports = function(router) {
     var starred = _.where(boards, {starred: true});
 
     res.render('boards', {
-      title: "Boards | Trello",
+      title: 'Boards | Trello',
       boards: boards,
       starred: starred
     });
@@ -19,14 +19,11 @@ module.exports = function(router) {
   router.post('/starred_board_order', function(req, res) {
     var body = req.body;
     var data = body['board[]'];
-    console.log(data);
+    var boards = Boards.getData();
+    var board;
     var ids = data.map(function(order) {
       return +order;
     });
-
-    var board;
-
-    var boards = Boards.getData();
 
     ids.forEach(function(id) {
       board = _.findWhere(boards, {id: id});

@@ -3,10 +3,10 @@ var CommentView = Backbone.View.extend({
   commentFormTemplate: App.templates.comment_form,
   tagName: 'li',
   events: {
-    "click .delete_comment" : "deleteComment",
-    "click .edit_comment" : "editComment",
-    'submit #comment_edit_form': "submitEdits",
-    "click #comment_edit_form div.close": "close"
+    'click .delete_comment' : 'deleteComment',
+    'click .edit_comment' : 'editComment',
+    'submit #comment_edit_form': 'submitEdits',
+    'click #comment_edit_form div.close': 'close'
   },
   close: function(e) {
     e.preventDefault();
@@ -17,10 +17,10 @@ var CommentView = Backbone.View.extend({
     e.preventDefault();
     e.stopPropagation();
     var $f = $(e.target).serializeArray();
-    var obj = {}
+    var obj = {};
 
     $f.forEach(function(input) {
-      obj[input.name] = input.value
+      obj[input.name] = input.value;
     });
 
     this.model.save(obj, {
@@ -28,7 +28,7 @@ var CommentView = Backbone.View.extend({
       success: function(json) {
         this.$el.html(this.template(this.model.toJSON()));
       }
-    })
+    });
   },
   editComment: function(e) {
     e.preventDefault();
@@ -38,8 +38,8 @@ var CommentView = Backbone.View.extend({
   deleteComment: function(e) {
     e.preventDefault();
     e.stopPropagation();
-    var cardId = +this.model.get("card_id");
-    var id = +this.model.get("id");
+    var cardId = +this.model.get('card_id');
+    var id = +this.model.get('id');
 
     this.model.destroy({
       success: function(json) {

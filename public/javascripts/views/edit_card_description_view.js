@@ -7,23 +7,23 @@ var EditCardDescriptionView = Backbone.View.extend({
   },
   close: function(e) {
     e.stopPropagation();
-    App.trigger('renderCardView')
+    App.trigger('renderCardView');
   },
   submit: function(e) {
     e.preventDefault();
-    var data = this.$("form").serializeArray();
+    var data = this.$('form').serializeArray();
     var obj = {};
 
     data.forEach(function(input) {
-      obj[input.name] = input.value
+      obj[input.name] = input.value;
     });
 
     this.model.save(obj, {
       context: this,
       success: function(json) {
-        this.remove()
+        this.remove();
       }
-    })
+    });
   },
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));

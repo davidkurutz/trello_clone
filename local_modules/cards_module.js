@@ -68,7 +68,7 @@ module.exports = {
 
     _.extend(obj, comment);
 
-    obj.card_id = +obj.card_id
+    obj.card_id = +obj.card_id;
     comments.push(obj);
     this.set({"data": cards, 'currentCommentId': commentId + 1});
     

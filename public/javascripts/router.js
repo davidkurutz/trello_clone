@@ -1,8 +1,8 @@
 var router = new (Backbone.Router.extend({
   routes: {
-    "": "boards",
-    "b/:id(/:name)": "board",
-    "c/:id(/:name)": "card"
+    '': 'boards',
+    'b/:id(/:name)': 'board',
+    'c/:id(/:name)': 'card'
   },
   card: function(id) {
     App.cardOverlay(id);
@@ -19,7 +19,7 @@ Backbone.history.start({
   pushState: true,
 });
 
-$(document).on("click", "a[href^='/']", function(e) {
+$(document).on('click', "a[href^='/']", function(e) {
   e.preventDefault();
-  router.navigate($(e.currentTarget).attr("href").replace(/^\//, ''), { trigger: true });
+  router.navigate($(e.currentTarget).attr('href').replace(/^\//, ''), { trigger: true });
 });

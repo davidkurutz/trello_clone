@@ -1,6 +1,6 @@
 var App = {
   templates: JST,
-  $el: $("body"),
+  $el: $('body'),
   addBoard: function(model) {
     var board = this.Boards.add(model);
     if (this.BoardsView) {
@@ -8,7 +8,7 @@ var App = {
     }
   },
   addList: function(model) {
-    var Lists = this.Board.get("Lists");
+    var Lists = this.Board.get('Lists');
     var list = Lists.add(model);
     list.getCards((function() { 
       this.BoardView.trigger('newList', list);
@@ -22,7 +22,7 @@ var App = {
     this.Board = this.Boards.get(+board_id);
     this.getListsAndPopulate();
     this.bind();
-    router.navigate("/b/" + this.Board.get("id") + "/" + uri(this.Board.get("title")));
+    router.navigate('/b/' + this.Board.get('id') + '/' + uri(this.Board.get('title')));
   },
   boardsView: function() {
     this.headerView();
@@ -48,23 +48,23 @@ var App = {
     }
     this.BoardView = this.BoardView || new BoardView({ model: this.Board });
     if (App.cardId) {
-      App.BoardView.$el.find("#card-" + App.cardId + " a").trigger('click');
+      App.BoardView.$el.find('#card-' + App.cardId + ' a').trigger('click');
     }
   },
   headerView: function() {
     this.HeaderView = this.HeaderView || new HeaderView();
   },
   populateLists: function() {
-    this.Board.get("Lists").getCards((this.createBoardView).bind(this));
+    this.Board.get('Lists').getCards((this.createBoardView).bind(this));
   },
   cardView: function() {
     var listId = App.Card.get('list_id');
-    var listName = App.Board.get('Lists').get(listId).get("name");
+    var listName = App.Board.get('Lists').get(listId).get('name');
     new CardView({model: App.Card, listName: listName});
-    router.navigate("/c/" + this.Card.get("id") + "/" + uri(this.Card.get("name")));
+    router.navigate('/c/' + this.Card.get('id') + '/' + uri(this.Card.get('name')));
   },
   cardOverlay: function(cardid) {
-    var id = this.Board.get("id");
+    var id = this.Board.get('id');
     this.boardView(id);
   }, 
   closePopup: function() {

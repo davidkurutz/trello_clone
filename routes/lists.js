@@ -6,8 +6,8 @@ var Lists = require(path.resolve(path.dirname(__dirname), 'local_modules/lists_m
 var Cards = require(path.resolve(path.dirname(__dirname), 'local_modules/cards_module'));
 
 module.exports = function(router) {
-  router.get('/lists/:list_id', function(req, res, next) {
-    var lists = Cards.getByListId(+req.params.list_id);
+  router.get('/lists/:listId', function(req, res, next) {
+    var lists = Cards.getByListId(+req.params.listId);
     res.json(lists);
   });
 
@@ -17,10 +17,10 @@ module.exports = function(router) {
     res.json(list);
   });
 
-  router.post('/lists/:list_id/card_order', function(req, res) {
+  router.post('/lists/:listId/card_order', function(req, res) {
     var body = req.body;
     var data = body['card[]'];
-    var list_id = +req.params.list_id;
+    var listId = +req.params.listId;
     var card;
     var ids;
 
@@ -36,7 +36,7 @@ module.exports = function(router) {
     ids.forEach(function(id) {
       card = _.findWhere(cards, {id: id});
       card.sort_order = ids.indexOf(id);
-      card.list_id = list_id;
+      card.list_id = listId;
     });
 
     Cards.set({
@@ -45,14 +45,14 @@ module.exports = function(router) {
     res.status(200).end();
   });
 
-  router.delete('/lists/:list_id', function(req, res, next) {
-    var listId = +req.params.list_id;
+  router.delete('/lists/:listId', function(req, res, next) {
+    var listId = +req.params.listId;
     Lists.remove(listId);
     res.status(200).end();
   });
 
-  router.put("/lists/:list_id", function(req, res) {
-    var listId = +req.params.list_id;
+  router.put('/lists/:listId', function(req, res) {
+    var listId = +req.params.listId;
     var data = req.body;
     delete data.Cards;
     var newList = Lists.update(listId, data);

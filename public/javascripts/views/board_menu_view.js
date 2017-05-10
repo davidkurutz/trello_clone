@@ -1,29 +1,29 @@
 var BoardMenuView = BaseView.extend({
   template: App.templates.board_menu,
-  id: "boardMenu",
+  id: 'boardMenu',
   events: {
     'click': 'stop',
-    'click #toggle_starred': "toggleStarred",
-    'click #toggle_recent': "toggleRecent",
-    'click #toggle_personal': "togglePersonal",
-    'click #create_new_board': "createNewBoard",
-    'click #always_keep_open': "toggleKeepOpen",
-    'click #see_closed_boards': "seeClosedBoards",
-    'keypress #search': "search",
+    'click #toggle_starred': 'toggleStarred',
+    'click #toggle_recent': 'toggleRecent',
+    'click #toggle_personal': 'togglePersonal',
+    'click #create_new_board': 'createNewBoard',
+    'click #always_keep_open': 'toggleKeepOpen',
+    'click #see_closed_boards': 'seeClosedBoards',
+    'keypress #search': 'search',
     'keyup #search' : 'captureDelete'
   },
   captureDelete: function(e) {
     if (e.which === 8) {
       this.search(e, true);
     }
-    if (!this.$("#search").val()) {
-      $(".board_type").show();
-      $(".menu_action").show();
-      $("#search_list").hide();
+    if (!this.$('#search').val()) {
+      $('.board_type').show();
+      $('.menu_action').show();
+      $('#search_list').hide();
     }
   },
   search: function(e, backspace) {
-    var previous = $("#search").val();
+    var previous = $('#search').val();
     var current;
     
     if (!backspace) {
@@ -34,13 +34,13 @@ var BoardMenuView = BaseView.extend({
 
     var searchTerm = previous + current;
     var results = App.Boards.search(searchTerm, ['title']);
-    $(".board_type").hide();
-    $(".menu_action").hide();
+    $('.board_type').hide();
+    $('.menu_action').hide();
 
-    this.$("#search_list").empty().show();
+    this.$('#search_list').empty().show();
 
     results.forEach((function(board) {
-      this.$("#search_list").append(new BoardMenuItemView({
+      this.$('#search_list').append(new BoardMenuItemView({
         model: board
       }).$el);
     }).bind(this));
@@ -50,16 +50,16 @@ var BoardMenuView = BaseView.extend({
   },
   toggleStarred: function(e) {
     this.toggleIcon(e);
-    this.$("#starred_list").toggle();
+    this.$('#starred_list').toggle();
     this.sortableStarredBoards();
   },
   toggleRecent: function(e) {
     this.toggleIcon(e);
-    this.$("#recent_list").toggle();
+    this.$('#recent_list').toggle();
   },
   togglePersonal: function(e) {
     this.toggleIcon(e);
-    this.$("#personal_list").toggle();
+    this.$('#personal_list').toggle();
   },
   removeCreateBoardForm: function() {
     if (this.createBoardForm) {
@@ -77,19 +77,18 @@ var BoardMenuView = BaseView.extend({
       delete this.createBoardForm;
     } else {
       options = {
-        "bottom": 5,
-        "left": 5,
-        "position": 'fixed'
+        'bottom': 5,
+        'left': 5,
+        'position': 'fixed'
       };
 
       this.createBoardForm = new CreateBoardFormView(options);
       this.$el.append(this.createBoardForm.$el);
-      $(".create_board input#title").focus();
+      $('.create_board input#title').focus();
     }
   },
   toggleKeepOpen: function(e) {
     e.preventDefault();
-    alert('keep open');
   },
   seeClosedBoards: function(e) {
     e.preventDefault();
@@ -97,28 +96,28 @@ var BoardMenuView = BaseView.extend({
   renderStarred: function() {
     var SortedBoards = Boards.extend({
       comparator: 'sort_order'
-    })
+    });
     
     var starred = App.Boards.where({starred: true});
     var sortedStarred = new SortedBoards(starred);
     
-    this.$("#starred_list").empty();
+    this.$('#starred_list').empty();
     starred.forEach((function(board) {
-      this.$("#starred_list").append(new BoardMenuItemView({
+      this.$('#starred_list').append(new BoardMenuItemView({
         model: board
       }).$el);
     }).bind(this));
   },
   sortableStarredBoards: function() {
-    $("#starred_list").sortable({
-      helper: "clone",
+    $('#starred_list').sortable({
+      helper: 'clone',
       opacity: 0.75,
       scroll: false,
       update: function(event, ui) {
-        var data = $("#starred_list").sortable('serialize');
+        var data = $('#starred_list').sortable('serialize');
         $.ajax({
-          url: "/starred_board_order",
-          type: "post",
+          url: '/starred_board_order',
+          type: 'post',
           data: data,
           success: function() {
           }
@@ -129,7 +128,7 @@ var BoardMenuView = BaseView.extend({
   renderPersonal: function() {
     var personal = App.Boards.models;
     personal.forEach((function(board) {
-      this.$("#personal_list").append(new BoardMenuItemView({
+      this.$('#personal_list').append(new BoardMenuItemView({
         model: board
       }).$el);
     }).bind(this));

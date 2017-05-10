@@ -11,7 +11,7 @@ var CreateMenuView = Backbone.View.extend({
   },
   submit: function(e) {
     e.preventDefault();
-    var f = this.$("form").serializeArray();
+    var f = this.$('form').serializeArray();
     var obj = {};
     var board;
 
@@ -27,18 +27,18 @@ var CreateMenuView = Backbone.View.extend({
         App.trigger('addBoard', json);
         this.back();
         this.toggle();
-        router.navigate("/b/" + json.id + "/" + uri(json.attributes.title), {trigger: true})
+        router.navigate('/b/' + json.id + '/' + uri(json.attributes.title), {trigger: true});
       }
-    })
+    });
   },
   back: function(e) {
     this.render();
   },
   stop: function(e) {
-    e.stopPropagation()
+    e.stopPropagation();
   },
   createBoard: function(e) {
-    this.$el.html(this.createBoardTemplate())
+    this.$el.html(this.createBoardTemplate());
   },
   toggle: function() {
     this.$el.toggle();
@@ -51,6 +51,6 @@ var CreateMenuView = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
-    this.listenTo(App, 'closePopup', this.toggleFalse)
+    this.listenTo(App, 'closePopup', this.toggleFalse);
   }
 });

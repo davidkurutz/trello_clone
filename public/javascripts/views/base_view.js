@@ -14,19 +14,19 @@ var BaseView = Backbone.View.extend({
     this.close();
   },
   changeDueDate: function(e) {
-    var offset = $(e.target).closest(".corner").offset();
+    var offset = $(e.target).closest('.corner').offset();
     var dueDate = this.model.get("duedate");
     var dateTime;
     var date;
     var time;
     
     if (dueDate) {
-      dateTime = moment(dueDate).format("MM-DD-YYYY hh:mmA");
-      date = dateTime.split(" ")[0];
-      time = dateTime.split(" ")[1];
+      dateTime = moment(dueDate).format('MM-DD-YYYY hh:mmA');
+      date = dateTime.split(' ')[0];
+      time = dateTime.split(' ')[1];
     } else {
-      date = moment().add(1,"days").format("L");
-      time = "12:00 AM";
+      date = moment().add(1,'days').format('L');
+      time = '12:00 AM';
     }
 
     offset.left += 20;
@@ -38,7 +38,7 @@ var BaseView = Backbone.View.extend({
       offset: offset
     }).$el);
 
-    $("input#time-field").val(time);
-    $("input#duedate-field").val(date).focus();
+    $('input#time-field').val(time);
+    $('input#duedate-field').val(date).focus();
   },
 });

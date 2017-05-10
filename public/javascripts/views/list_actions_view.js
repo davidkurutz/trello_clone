@@ -2,35 +2,35 @@ var ListActionsView = Backbone.View.extend({
   template: App.templates.list_actions,
   archiveTemplate: App.templates.archive_all_cards,
   moveAllTemplate: App.templates.move_all,
-  className: "list_actions_menu",
+  className: 'list_actions_menu',
   events: {
-    "click .close": "remove",
-    "click #archive_list": "archiveList",
-    "click #add_card": "addCard",
-    "click #archive_all_cards": "archiveAllCards",
-    "click #move_list": "moveList",
-    "click span.icon-back": "back",
-    "click #move_all_to_another": 'moveAllToAnother',
-    "click #nuke_it": "nukeIt",
-    "click .move_target": "moveCards",
-    "click #copy_list": 'copyList',
-    "submit form": "remove"
+    'click .close': 'remove',
+    'click #archive_list': 'archiveList',
+    'click #add_card': 'addCard',
+    'click #archive_all_cards': 'archiveAllCards',
+    'click #move_list': 'moveList',
+    'click span.icon-back': 'back',
+    'click #move_all_to_another': 'moveAllToAnother',
+    'click #nuke_it': 'nukeIt',
+    'click .move_target': 'moveCards',
+    'click #copy_list': 'copyList',
+    'submit form': 'remove'
   },
   moveList: function(e) {
     this.$el.html(new MoveListView({
       model: this.model
-    }))
+    }));
   },
   copyList: function(e) {
     this.$el.html(new CopyListView({
       model: this.model
-    }).$el)
+    }).$el);
  
-    this.$("textarea").focus().select()
+    this.$('textarea').focus().select();
   },
   moveCards: function(e) {
-    var targetId = +$(e.target).attr("data-id");
-    var cards = this.model.get("Cards");
+    var targetId = +$(e.target).attr('data-id');
+    var cards = this.model.get('Cards');
     _.invoke(cards.toArray(), 'set', {'list_id': targetId});
     _.invoke(cards.toArray(), 'save');
     this.remove();
@@ -47,7 +47,7 @@ var ListActionsView = Backbone.View.extend({
   },
   nukeIt: function(e) {
     e.stopPropagation();
-    var cards = this.model.get("Cards");
+    var cards = this.model.get('Cards');
     _.invoke(cards.toArray(), 'destroy');
     this.remove();
   },
@@ -66,7 +66,7 @@ var ListActionsView = Backbone.View.extend({
   },
   archiveList: function(e) {
     e.stopPropagation();
-    var cards = this.model.get("Cards");
+    var cards = this.model.get('Cards');
     _.invoke(cards.toArray(), 'destroy');
     this.model.destroy();
   },

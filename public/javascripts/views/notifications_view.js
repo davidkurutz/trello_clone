@@ -6,7 +6,7 @@ var NotificationsView = Backbone.View.extend({
     'click div.close': 'toggle'
   },
   stop: function(e) {
-    e.stopPropagation()
+    e.stopPropagation();
   },
   toggle: function() {
     this.$el.toggle();
@@ -19,6 +19,6 @@ var NotificationsView = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
-    this.listenTo(App, 'closePopup', this.close)
+    this.listenTo(App, 'closePopup', this.close);
   }
 });
