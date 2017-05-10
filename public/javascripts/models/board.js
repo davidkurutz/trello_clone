@@ -18,6 +18,6 @@ var Board = Backbone.Model.extend({
     }
   },
   initialize: function() {
-    this.on('change:starred', App.triggerStarred.bind(App))
+    this.on('change:starred', App.triggerStarred.bind(App));
   }
 });

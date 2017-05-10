@@ -28,8 +28,8 @@ module.exports = function(router) {
 
     Lists.set({
       "data": lists
-    })
-    res.status(200).end()
+    });
+    res.status(200).end();
   });
 
   router.get('/boards/:board_id', function(req, res, next) {

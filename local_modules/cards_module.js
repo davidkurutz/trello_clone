@@ -13,7 +13,7 @@ module.exports = {
     }
   },
   getCurrentCommentId: function() {
-    return this.getJSON().currentCommentId
+    return this.getJSON().currentCommentId;
   },
   getByListId: function(list_id) {
     var cards = this.getData();
@@ -67,6 +67,8 @@ module.exports = {
     };
 
     _.extend(obj, comment);
+
+    obj.card_id = +obj.card_id
     comments.push(obj);
     this.set({"data": cards, 'currentCommentId': commentId + 1});
     
@@ -77,8 +79,8 @@ module.exports = {
     var card = _.findWhere(cards, {id: cardId});
     var comments = card.Comments;
     comments = _.reject(comments, {id: commentId});
-    card.Comments = comments
-    this.set({"data": cards})
+    card.Comments = comments;
+    this.set({"data": cards});
   },
   updateComment: function(cardId, commentId, data) {
     var cards = this.getData();
@@ -106,9 +108,9 @@ module.exports = {
 
     if (!newData.duedate) {
       delete card.duedate;
-      delete card.completed
+      delete card.completed;
     }
     this.set({ data: cards });
-    return card
+    return card;
   },
 };

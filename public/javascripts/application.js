@@ -3,7 +3,9 @@ var App = {
   $el: $("body"),
   addBoard: function(model) {
     var board = this.Boards.add(model);
-    this.BoardsView.appendBoard(board);
+    if (this.BoardsView) {
+      this.BoardsView.appendBoard(board);
+    }
   },
   addList: function(model) {
     var Lists = this.Board.get("Lists");
@@ -46,7 +48,7 @@ var App = {
     }
     this.BoardView = this.BoardView || new BoardView({ model: this.Board });
     if (App.cardId) {
-      App.BoardView.$el.find("#card-" + App.cardId + " a").trigger('click')
+      App.BoardView.$el.find("#card-" + App.cardId + " a").trigger('click');
     }
   },
   headerView: function() {
@@ -55,6 +57,16 @@ var App = {
   populateLists: function() {
     this.Board.get("Lists").getCards((this.createBoardView).bind(this));
   },
+  cardView: function() {
+    var listId = App.Card.get('list_id');
+    var listName = App.Board.get('Lists').get(listId).get("name");
+    new CardView({model: App.Card, listName: listName});
+    router.navigate("/c/" + this.Card.get("id") + "/" + uri(this.Card.get("name")));
+  },
+  cardOverlay: function(cardid) {
+    var id = this.Board.get("id");
+    this.boardView(id);
+  }, 
   closePopup: function() {
     this.trigger('closePopup');
   },
@@ -71,16 +83,16 @@ var App = {
     this.$el.append(this.boardMenu.$el);
     this.boardMenu.$el.toggle();
   },
-  cardView: function() {
-    var listId = App.Card.get('list_id');
-    var listName = App.Board.get('Lists').get(listId).get("name");
-    new CardView({model: App.Card, listName: listName});
-    router.navigate("/c/" + this.Card.get("id") + "/" + uri(this.Card.get("name")));
+  toggleCreateMenu: function() {
+    this.createMenu = this.createMenu || new CreateMenuView();
+    this.$el.append(this.createMenu.$el);
+    this.createMenu.$el.toggle();
   },
-  cardOverlay: function(cardid) {
-    var id = this.Board.get("id");
-    this.boardView(id,);
-  },  
+  toggleNotifications: function() {
+    this.notifications = this.notifications || new NotificationsView();
+    this.$el.append(this.notifications.$el);
+    this.notifications.$el.toggle();
+  },
   bind: function() {
     _.extend(this, Backbone.Events);
     this.off();
@@ -92,6 +104,8 @@ var App = {
     this.on('toggleStarred', this.toggleStarred);
     this.on('addBoard', this.addBoard);
     this.on('toggleBoardMenu', this.toggleBoardMenu);
+    this.on('toggleCreateMenu', this.toggleCreateMenu);
+    this.on('toggleNotifications', this.toggleNotifications);
     this.$el.on('click', this.closePopup.bind(this));
   }
 };
@@ -107,19 +121,10 @@ Handlebars.registerHelper('smDate', function(date) {
 Handlebars.registerHelper('lnDate', function(date) {
   return moment(date).format('MMM D ') + 'at ' + moment(date).format('h:mm A');
 });
-Handlebars.registerHelper('smDate', function(date) {
-  return moment(date).format('MMM D'+ '');
-});
 
 Handlebars.registerHelper('length', function(array) {
   return array.length;
 });
-
-Handlebars.registerHelper('lgto', function(array) {
-  return array.length > 0;
-});
-
-
 
 function uri(text) {
   return encodeURI(text.replace(/\s/g,'-'));

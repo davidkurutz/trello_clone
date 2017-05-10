@@ -33,7 +33,6 @@ var CreateBoardFormView = BaseView.extend({
   render: function(options) {
     this.$el.html(this.template());
     if (options) {
-      console.log(options)
       this.$el.css(options)
     }
   },

@@ -56,14 +56,14 @@ module.exports = {
     var list = _.findWhere(lists, {id: listId});
     _.extend(list, newData);
     this.set({ data: lists });
-    return list
+    return list;
   },
   remove: function(id) {
     var lists = this.getData();
     var existing_l = _.findWhere(lists, {id: id});
 
-    lists = _.without(lists, existing_l)
+    lists = _.without(lists, existing_l);
 
-    this.set({"data": lists})
+    this.set({"data": lists});
   }
 };

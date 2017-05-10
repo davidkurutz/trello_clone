@@ -19,7 +19,7 @@ module.exports = function(router) {
 
   router.post('/lists/:list_id/card_order', function(req, res) {
     var body = req.body;
-    var data = body['card[]']
+    var data = body['card[]'];
     var list_id = +req.params.list_id;
     var card;
     var ids;
@@ -29,19 +29,19 @@ module.exports = function(router) {
     } else if (typeof data === 'undefined') {
       ids = [];
     } else if (typeof data === 'string') {
-      ids = [+data]
+      ids = [+data];
     }
     var cards = Cards.getData();
 
     ids.forEach(function(id) {
       card = _.findWhere(cards, {id: id});
       card.sort_order = ids.indexOf(id);
-      card.list_id = list_id
+      card.list_id = list_id;
     });
 
     Cards.set({
       "data": cards
-    })
+    });
     res.status(200).end();
   });
 

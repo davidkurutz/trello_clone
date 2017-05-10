@@ -27,7 +27,7 @@ module.exports = {
   },
   set: function(attributes) {
     var json = this.getJSON();
-    _.extend(json, attributes)
+    _.extend(json, attributes);
 
     this.write(json);
   },
@@ -62,6 +62,6 @@ module.exports = {
     var board = _.findWhere(boards, {id: +boardId});
     _.extend(board, newData);
     this.set({ data: boards });
-    return board
+    return board;
   },
 };

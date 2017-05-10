@@ -142,8 +142,16 @@ this["JST"]["copy_list"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main"
     + "><input type=\"submit\" class=\"btn green-btn\"></fieldset></form></section>";
 },"useData":true});
 
+this["JST"]["create_board_form_sub"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<header><span class=\"icon-sm icon-back\"></span><h1>Create Board</h1><div class=\"close small\"></div></header><form action=\"#\"><fieldset><dl><dt><label for=\"title\">Title</label></dt><dd><input type=\"text\" autofocus placeholder='Like \"Reading Collection\" for example' name=\"title\" id=\"title\"></dd><dt><label for=\"team\">Team<span class=\"icon-sm icon-information\"></span></label></dt><dd><select name=\"team\" id=\"team\"><option value=\"none\">(none)</option></select></dd></dl><span><span class=\"icon-sm icon-private\"></span>This board will be <strong>Private</strong>. <a href=\"#\">Change.</a></span><input type=\"submit\" class=\"btn btn-submit\" value=\"Create\"></fieldset></form>";
+},"useData":true});
+
 this["JST"]["create_board_form"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<header><h1>Create Board</h1><div class=\"close small\"></div></header><form action=\"#\"><fieldset><dl><dt><label for=\"title\">Title</label></dt><dd><input type=\"text\" autofocus placeholder='Like \"Reading Collection\" for example' name=\"title\" id=\"title\"></dd><dt><label for=\"team\">Team<span class=\"icon-sm icon-information\"></span></label></dt><dd><select name=\"team\" id=\"team\"><option value=\"none\">(none)</option></select></dd></dl><span><span class=\"icon-sm icon-private\"></span>This board will be <strong>Private</strong>. <a href=\"#\">Change.</a></span><input type=\"submit\" class=\"btn btn-submit\" value=\"Create\"></fieldset></form>";
+},"useData":true});
+
+this["JST"]["create_menu"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<header><h1>Create</h1><div class=\"close small\"></div></header><ul class=\"create_options\"><li id=\"create_board\"><h1>Create Board...</h1><p>A board is a collection of cards ordered in a list of lists. Use it to manage a project, track a collection, or organize anything.</p></li><li id=\"create_personal_team\"><h1>Create Personal Team...</h1><p>A board is a collection of cards ordered in a list of lists. Use it to manage a project, track a collection, or organize anything.</p></li><li id=\"create_business_team\"><h1>Create Business Team</h1><p>With Business Class, your team has more security, administrative controls and superpowers.</p></li></ul>";
 },"useData":true});
 
 this["JST"]["due_date"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -199,6 +207,10 @@ this["JST"]["move_all"] = Handlebars.template({"1":function(container,depth0,hel
     + "</ul>";
 },"useData":true});
 
+this["JST"]["move_list"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<header><span class=\"icon-sm icon-back\"></span><h1>Move List</h1><div class=\"close small\"></div></header><div id=\"select_board\"></div><div class=\"select_list_position\"></div><input type=\"submit\" value=\"Move\">";
+},"useData":true});
+
 this["JST"]["new_card"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper;
 
@@ -213,6 +225,10 @@ this["JST"]["new_list_button"] = Handlebars.template({"compiler":[7,">= 4.0.0"],
   return "<form action=\"#\"><fieldset><input type=\"text\" id=\"add_list_name\" name=\"name\" placeholder=\"Add a list...\"><input type=\"hidden\" name=\"board_id\" value="
     + container.escapeExpression(((helper = (helper = helpers.board_id || (depth0 != null ? depth0.board_id : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"board_id","hash":{},"data":data}) : helper)))
     + "><input type=\"submit\" value=\"Save\" class=\"btn-sm btn-success\"></fieldset></form><div class=\"close\"></div>";
+},"useData":true});
+
+this["JST"]["notifications"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<h1>Notifications</h1><div class=\"close small\"></div><div id=\"notifications_wrapper\"><ul id=\"notifications_list\"></ul></div>";
 },"useData":true});
 
 this["JST"]["quick_edit"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {

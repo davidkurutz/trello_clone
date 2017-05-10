@@ -18,8 +18,8 @@ module.exports = function(router) {
 
   router.post('/starred_board_order', function(req, res) {
     var body = req.body;
-    var data = body['board[]']
-    console.log(data)
+    var data = body['board[]'];
+    console.log(data);
     var ids = data.map(function(order) {
       return +order;
     });
@@ -35,8 +35,8 @@ module.exports = function(router) {
 
     Boards.set({
       "data": boards
-    })
+    });
 
-    res.status(200).end()
-  })
-}
+    res.status(200).end();
+  });
+};

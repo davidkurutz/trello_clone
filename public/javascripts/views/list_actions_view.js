@@ -2,7 +2,6 @@ var ListActionsView = Backbone.View.extend({
   template: App.templates.list_actions,
   archiveTemplate: App.templates.archive_all_cards,
   moveAllTemplate: App.templates.move_all,
-  copyTemplate: App.templates.copy_list,
   className: "list_actions_menu",
   events: {
     "click .close": "remove",
@@ -18,7 +17,9 @@ var ListActionsView = Backbone.View.extend({
     "submit form": "remove"
   },
   moveList: function(e) {
-    alert('moved')
+    this.$el.html(new MoveListView({
+      model: this.model
+    }))
   },
   copyList: function(e) {
     this.$el.html(new CopyListView({

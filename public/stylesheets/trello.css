@@ -119,6 +119,32 @@ div.margin_wrapper {
   bottom: 0;
   right: 0;
 }
+#notifications {
+  width: 410px;
+  height: auto;
+  position: absolute;
+  top: 40px;
+  right: 5px;
+  background-color: #edeff0;
+  color: #939393;
+  box-shadow: 0px 0px 1px #888;
+  display: none;
+  padding: 10px;
+  overflow: auto;
+  font-size: 14px;
+}
+#notifications h1 {
+  text-align: center;
+  font-weight: normal;
+  padding: 5px 0;
+  border-bottom: 1px solid #b3b3b3;
+}
+#notifications #notifications_wrapper {
+  margin: 5px 0 0 0;
+  background-color: #e2e4e6;
+  border: 1px dashed #d3d3d3;
+  min-height: 65px;
+}
 /*BOARDS VIEW*/
 main.boards_view {
   overflow: auto;
@@ -310,6 +336,7 @@ div.dots {
 /*CREATE NEW BOARD FORM*/
 div.create_board,
 div.list_actions_menu,
+div#create_menu,
 #rename_board_form,
 #dueDateForm {
   width: 304px;
@@ -325,10 +352,12 @@ div.list_actions_menu,
 }
 div.create_board .btn,
 div.list_actions_menu .btn,
+div#create_menu .btn,
 #rename_board_form .btn,
 #dueDateForm .btn,
 div.create_board .submit,
 div.list_actions_menu .submit,
+div#create_menu .submit,
 #rename_board_form .submit,
 #dueDateForm .submit {
   width: 121px;
@@ -337,6 +366,7 @@ div.list_actions_menu .submit,
 }
 div.create_board header,
 div.list_actions_menu header,
+div#create_menu header,
 #rename_board_form header,
 #dueDateForm header {
   margin: 0;
@@ -344,6 +374,7 @@ div.list_actions_menu header,
 }
 div.create_board header h1,
 div.list_actions_menu header h1,
+div#create_menu header h1,
 #rename_board_form header h1,
 #dueDateForm header h1 {
   padding: 10px;
@@ -353,12 +384,14 @@ div.list_actions_menu header h1,
 }
 div.create_board form,
 div.list_actions_menu form,
+div#create_menu form,
 #rename_board_form form,
 #dueDateForm form {
   padding: 5px;
 }
 div.create_board form textarea,
 div.list_actions_menu form textarea,
+div#create_menu form textarea,
 #rename_board_form form textarea,
 #dueDateForm form textarea {
   display: block;
@@ -369,38 +402,43 @@ div.list_actions_menu form textarea,
 }
 div.create_board form dl,
 div.list_actions_menu form dl,
+div#create_menu form dl,
 #rename_board_form form dl,
 #dueDateForm form dl {
   margin-bottom: 10px;
 }
 div.create_board form dt label,
 div.list_actions_menu form dt label,
+div#create_menu form dt label,
 #rename_board_form form dt label,
 #dueDateForm form dt label {
   color: #555;
 }
 div.create_board form dd input#title,
 div.list_actions_menu form dd input#title,
+div#create_menu form dd input#title,
 #rename_board_form form dd input#title,
 #dueDateForm form dd input#title,
 div.create_board form dd select,
 div.list_actions_menu form dd select,
+div#create_menu form dd select,
 #rename_board_form form dd select,
 #dueDateForm form dd select {
   width: 100%;
   padding: 5px;
   border-radius: 5px;
   border: 1px solid #bbb;
-  font-weight: lighter;
 }
 div.create_board form dd + dt,
 div.list_actions_menu form dd + dt,
+div#create_menu form dd + dt,
 #rename_board_form form dd + dt,
 #dueDateForm form dd + dt {
   margin-top: 10px;
 }
 div.create_board form.btn-submit,
 div.list_actions_menu form.btn-submit,
+div#create_menu form.btn-submit,
 #rename_board_form form.btn-submit,
 #dueDateForm form.btn-submit {
   background-color: #5fb74b;
@@ -411,24 +449,28 @@ div.list_actions_menu form.btn-submit,
 }
 div.create_board form.btn-submit:hover,
 div.list_actions_menu form.btn-submit:hover,
+div#create_menu form.btn-submit:hover,
 #rename_board_form form.btn-submit:hover,
 #dueDateForm form.btn-submit:hover {
   background-color: #4ea63a;
 }
 div.create_board span,
 div.list_actions_menu span,
+div#create_menu span,
 #rename_board_form span,
 #dueDateForm span {
   font-weight: lighter;
 }
 div.create_board span.icon-private:before,
 div.list_actions_menu span.icon-private:before,
+div#create_menu span.icon-private:before,
 #rename_board_form span.icon-private:before,
 #dueDateForm span.icon-private:before {
   color: #f00;
 }
 div.create_board span a,
 div.list_actions_menu span a,
+div#create_menu span a,
 #rename_board_form span a,
 #dueDateForm span a {
   color: #888;
@@ -436,18 +478,21 @@ div.list_actions_menu span a,
 }
 div.create_board span a:hover,
 div.list_actions_menu span a:hover,
+div#create_menu span a:hover,
 #rename_board_form span a:hover,
 #dueDateForm span a:hover {
   color: #333;
 }
 div.create_board span.icon-information:hover,
 div.list_actions_menu span.icon-information:hover,
+div#create_menu span.icon-information:hover,
 #rename_board_form span.icon-information:hover,
 #dueDateForm span.icon-information:hover {
   color: #333;
 }
 div.create_board span.icon-back,
 div.list_actions_menu span.icon-back,
+div#create_menu span.icon-back,
 #rename_board_form span.icon-back,
 #dueDateForm span.icon-back {
   position: absolute;
@@ -457,9 +502,57 @@ div.list_actions_menu span.icon-back,
 }
 div.create_board span.icon-back:hover,
 div.list_actions_menu span.icon-back:hover,
+div#create_menu span.icon-back:hover,
 #rename_board_form span.icon-back:hover,
 #dueDateForm span.icon-back:hover {
   color: #888;
+}
+div#create_menu {
+  box-shadow: 0 2px 2px #888;
+  padding: 0;
+  width: 275px;
+  font-size: 12px;
+  display: none;
+  top: 40px;
+  right: 5px;
+  height: auto;
+  border-radius: 3px;
+}
+div#create_menu div.close.small {
+  top: 3px;
+  right: 20px;
+}
+div#create_menu span.icon-back {
+  top: 10px;
+}
+div#create_menu header h1 {
+  font-weight: normal;
+}
+div#create_menu ul {
+  margin: 5px 0;
+}
+div#create_menu ul li {
+  padding: 5px 10px;
+}
+div#create_menu ul li:hover {
+  background: #4993bd;
+  color: #fff;
+}
+div#create_menu ul li:hover h1 {
+  color: #fff;
+}
+div#create_menu ul li h1 {
+  color: #333;
+  font-weight: bold;
+  margin: 5px 0;
+}
+div#create_menu ul li p {
+  font-size: 12px;
+  line-height: 14px;
+}
+div#create_menu input#title,
+div#create_menu select {
+  font: #008000;
 }
 div.create_board {
   font-weight: bold;
@@ -646,7 +739,7 @@ ul:empty {
   color: #666;
 }
 ul.cards {
-  margin: 0px 5px 0 5px;
+  margin: 0px 5px 5px 5px;
   overflow: auto;
   max-height: 575px;
   min-height: 4px;
@@ -1120,20 +1213,20 @@ div.content {
   background-color: #e6e8e8;
   box-shadow: inset 0 0 1px #ddd;
 }
-#general .greenCheck {
+#general .completed {
   background-color: #5aac44;
   color: #fff;
 }
-#general .greenCheck:hover {
+#general .completed:hover {
   background-color: #3a8f24;
 }
-#general .greenCheck .square {
+#general .completed .square {
   background: #99e585;
 }
-#general .greenCheck a {
+#general .completed a {
   color: #fff;
 }
-#general .greenCheck a:hover {
+#general .completed a:hover {
   color: #fff;
 }
 #general a,

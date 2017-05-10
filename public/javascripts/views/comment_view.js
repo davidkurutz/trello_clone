@@ -38,7 +38,18 @@ var CommentView = Backbone.View.extend({
   deleteComment: function(e) {
     e.preventDefault();
     e.stopPropagation();
-    this.model.destroy();
+    var cardId = +this.model.get("card_id");
+    var id = +this.model.get("id");
+
+    this.model.destroy({
+      success: function(json) {
+        var comments = App.Card.get('Comments');
+        comments = _.reject(comments, {id: id});
+        App.Card.set('Comments', comments);
+        App.trigger('renderCardOverview');
+      }
+    });
+
   },
   id: function() {
     return 'comment_' + this.model.get('id');

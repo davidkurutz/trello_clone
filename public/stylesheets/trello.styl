@@ -117,6 +117,31 @@ div.margin_wrapper
   bottom: 0
   right: 0
 
+#notifications
+  width: 410px
+  height: auto
+  position: absolute
+  top: 40px
+  right: 5px
+  background-color: #EDEFF0
+  color: #939393
+  box-shadow: 0px 0px 1px #888888
+  display: none
+  padding: 10px
+  overflow: auto
+  font-size: 14px
+  h1
+    text-align: center
+    font-weight: normal
+    padding: 5px 0
+    border-bottom: 1px solid #b3b3b3
+  #notifications_wrapper
+    margin: 5px 0 0 0
+    background-color: #E2E4E6
+    border: 1px dashed #d3d3d3
+    min-height: 65px
+    
+  
 
 /*BOARDS VIEW*/
 main.boards_view 
@@ -279,6 +304,7 @@ div.dots
 /*CREATE NEW BOARD FORM*/
 div.create_board,
 div.list_actions_menu,
+div#create_menu,
 #rename_board_form,
 #dueDateForm
   .btn,
@@ -324,7 +350,6 @@ div.list_actions_menu,
         padding: 5px
         border-radius: 5px
         border: 1px solid #bbb
-        font-weight: lighter
       & + dt 
         margin-top: 10px
     &.btn-submit
@@ -351,6 +376,44 @@ div.list_actions_menu,
       color: #bbb
       &:hover
         color: #888
+        
+div#create_menu
+  box-shadow: 0 2px 2px #888
+  padding: 0
+  width: 275px
+  font-size: 12px
+  display: none
+  top: 40px
+  right: 5px
+  height: auto
+  border-radius: 3px
+  div.close.small
+    top: 3px
+    right: 20px
+  span.icon-back
+    top: 10px
+  header
+    h1
+      font-weight: normal
+  ul
+    margin: 5px 0
+    li
+      padding: 5px 10px
+      &:hover
+        background: #4993BD
+        color: white
+        h1
+          color: white
+      h1
+        color: #333
+        font-weight: bold
+        margin: 5px 0
+      p
+        font-size: 12px
+        line-height: 14px
+  input#title, select
+    font: green
+    
  
 div.create_board
   font-weight: bold
@@ -508,7 +571,7 @@ ul:empty
 
 
 ul.cards 
-  margin: 0px 5px 0 5px
+  margin: 0px 5px 5px 5px
   overflow: auto
   max-height: 575px
   min-height: 4px
@@ -769,10 +832,6 @@ div.content
   vertical-align: 10px
   font-size: 16px
   font-weight: bold
-
-
-// .content section header p 
-//   margin-left: 6px
 
 .content section header p a 
   text-decoration: underline
