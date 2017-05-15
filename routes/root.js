@@ -11,8 +11,7 @@ module.exports = function(router) {
 
     res.render('boards', {
       title: 'Boards | Trello',
-      boards: boards,
-      starred: starred
+      boards: boards
     });
   });
 
