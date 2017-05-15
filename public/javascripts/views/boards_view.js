@@ -75,8 +75,5 @@ var BoardsView = BaseView.extend({
     var li = $(e.target).closest('li');
     li.prepend(new CreateBoardFormView().$el);
     $('.create_board input#title').focus();
-  },
-  initialize: function() {
-    this.render();
   }
 });
