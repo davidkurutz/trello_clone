@@ -37,9 +37,9 @@ var BoardOverviewView = Backbone.View.extend({
   },
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
-    this.listenTo(this.model, 'change', this.render);
   },
   initialize: function() {
     this.render();
+    this.listenTo(this.model, 'change:starred', this.render);
   }
 });
