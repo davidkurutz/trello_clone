@@ -41,12 +41,15 @@ var App = {
     this.bind();
   },
   createBoardView: function() {
-    if (this.BoardView) {
-      this.BoardView.undelegateEvents();
-      this.BoardView.$el.empty();
-      delete this.BoardView;
-    }
-    this.BoardView = this.BoardView || new BoardView({ model: this.Board });
+    // if (this.BoardView) {
+    //   alert('createboardview')
+    //   this.BoardView.undelegateEvents();
+    //   this.BoardView.$el.empty();
+    //   delete this.BoardView;
+    // }
+
+    this.BoardView = new BoardView({ model: this.Board });
+
     if (App.cardId) {
       App.BoardView.$el.find('#card-' + App.cardId + ' a').trigger('click');
     }
@@ -99,7 +102,6 @@ var App = {
     this.$el.off();
     this.on('addList', this.addList);
     this.on('boardsView', this.boardsView);
-    this.on('boardView', this.boardView);
     this.on('cardView', this.cardView);
     this.on('toggleStarred', this.toggleStarred);
     this.on('addBoard', this.addBoard);
