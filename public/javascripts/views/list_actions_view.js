@@ -17,9 +17,9 @@ var ListActionsView = Backbone.View.extend({
     'submit form': 'remove'
   },
   moveList: function(e) {
-    this.$el.html(new MoveListView({
+    this.$el.html((new MoveListView({
       model: this.model
-    }));
+    })).$el);
   },
   copyList: function(e) {
     this.$el.html(new CopyListView({
