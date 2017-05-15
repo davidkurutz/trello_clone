@@ -38,7 +38,7 @@ var BaseView = Backbone.View.extend({
       offset: offset
     }).$el);
 
-    $('input#time-field').val(time);
-    $('input#duedate-field').val(date).focus();
+    this.$('input#time-field').val(time);
+    this.$('input#duedate-field').val(date).focus();
   },
 });
