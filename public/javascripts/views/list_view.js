@@ -16,13 +16,13 @@ var ListView = BaseView.extend({
     'click .list_actions': 'toggleListActions',
     'click footer' : 'newCard',
     'click .edit_title': 'focus',
-    'keypress .edit_title': 'keypress',
+    'keypress .edit_title': 'captureReturn',
     'blur .edit_title': 'editTitle',
   },
   focus: function(e) {
     this.$('.edit_title').focus().select();
   },
-  keypress: function(e) {
+  captureReturn: function(e) {
     if(e.keyCode === 13) {
       e.preventDefault();
       this.$('.edit_title').blur();
@@ -67,10 +67,15 @@ var ListView = BaseView.extend({
   toggleListActions: function(e) {
     e.stopPropagation();
     var id;
+    var state;
 
     if (this.$('.list_actions_menu')[0]) {
-      App.trigger('remove_list_actions_menu');
-    } else {
+      state = true;
+    } 
+      
+    App.trigger('closePopup');
+
+    if (!state) {
       id = this.model.get('id');
       this.$el.append(new ListActionsView({
         attributes: { 'data-list-id': id},
@@ -89,7 +94,6 @@ var ListView = BaseView.extend({
       var last = this.$('ul.cards li:last-child');
       last.before(new CardOverviewView({ model: card}).$el);
     }
-
   },
   render: function() {
     var cards = this.model.get('Cards');
