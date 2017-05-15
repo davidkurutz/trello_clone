@@ -88,7 +88,6 @@ var BoardView = Backbone.View.extend({
   toggleStar: function(e) {
     e.preventDefault();
     e.stopPropagation();
-    var self = this;
     var starred = !this.model.get('starred');
     this.model.set('starred', !this.model.get('starred'));
     this.model.save(null, {
@@ -96,7 +95,8 @@ var BoardView = Backbone.View.extend({
     });
   },
   updateStar: function() {
-    this.$('div.star').find('span').toggleClass('gold');
+    var starred = this.model.get('starred');
+    this.$('div.star').find('span').toggleClass('gold', starred);
   },
   toggleBoardRename: function(e) {
     e.stopPropagation();
