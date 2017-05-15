@@ -39,9 +39,7 @@ module.exports = {
       id: id,
       createdBy: 1,
       createdOn: new Date(),
-      starred: false,
-      open: true,
-      archived: false
+      starred: false
     };
 
     _.extend(obj, board);
