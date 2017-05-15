@@ -2,9 +2,9 @@ var CopyListView = BaseView.extend({
   template: App.templates.copy_list,
   events: {
     'submit form': 'submit',
-    'keypress': 'submitme'
+    'keypress': 'captureReturn'
   },
-  submitme: function(e) {
+  captureReturn: function(e) {
    if(e.keyCode === 13) {
       e.preventDefault();
       this.submit(e);
@@ -28,8 +28,10 @@ var CopyListView = BaseView.extend({
       context: this,
       success: function(json) {
         newListId = json.id;
-        App.trigger('addList', json);
         this.populateCards(newListId, cards);
+        App.trigger('addList', json);
+        App.trigger('closePopup');
+        this.remove();
       }
     });
   },
@@ -41,8 +43,6 @@ var CopyListView = BaseView.extend({
       model.set('list_id', +newListId);
       model.save();
     });
-    App.trigger('closePopup');
-    this.remove();
   },
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
