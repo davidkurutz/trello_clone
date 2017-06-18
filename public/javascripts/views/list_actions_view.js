@@ -4,6 +4,7 @@ var ListActionsView = Backbone.View.extend({
   moveAllTemplate: App.templates.move_all,
   className: 'list_actions_menu',
   events: {
+    'click': 'stop',
     'click .close': 'remove',
     'click #archive_list': 'archiveList',
     'click #add_card': 'addCard',
@@ -15,6 +16,9 @@ var ListActionsView = Backbone.View.extend({
     'click .move_target': 'moveCards',
     'click #copy_list': 'copyList',
     'submit form': 'remove'
+  },
+  stop: function(e) {
+    e.stopPropagation();
   },
   moveList: function(e) {
     this.$el.html((new MoveListView({
@@ -51,7 +55,8 @@ var ListActionsView = Backbone.View.extend({
     _.invoke(cards.toArray(), 'destroy');
     this.remove();
   },
-  back: function() {
+  back: function(e) {
+    e.stopPropagation();
     this.render();
   },
   archiveAllCards: function(e) {
