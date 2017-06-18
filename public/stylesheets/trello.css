@@ -345,7 +345,7 @@ div#create_menu,
   position: absolute;
   background-color: #fff;
   color: #888;
-  z-index: 2;
+  z-index: 5;
   box-shadow: 0px 0px 1px #888;
   padding: 8px;
   border-radius: 5px;
@@ -553,6 +553,63 @@ div#create_menu ul li p {
 div#create_menu input#title,
 div#create_menu select {
   font: #008000;
+}
+div#move_list #select_board,
+div#move_list #select_list_position {
+  position: relative;
+  height: 50px;
+  margin: 10px;
+  background: #fbfcfc;
+  border: 1px solid #e2e4e6;
+  border-radius: 3px;
+  padding: 5px;
+}
+div#move_list #select_board h2,
+div#move_list #select_list_position h2 {
+  font-size: 12px;
+  font-weight: bold;
+}
+div#move_list #select_board strong,
+div#move_list #select_list_position strong {
+  font-size: 18px;
+  color: #4d4d4d;
+  display: block;
+}
+div#move_list #select_board:hover,
+div#move_list #select_list_position:hover {
+  background-color: #298fca;
+  color: #fff;
+}
+div#move_list #select_board:hover strong,
+div#move_list #select_list_position:hover strong {
+  color: #fff;
+}
+div#move_list input {
+  background-color: #5fb74b;
+  color: #fff;
+  font-weight: bold;
+  width: 120px;
+  margin: 10px 0 0 0;
+  width: 88px;
+  height: 34px;
+  border-radius: 3px;
+  margin: 10px;
+}
+div#move_list input:hover {
+  background-color: #4ea63a;
+}
+div#move_list .hidden_select {
+  display: none;
+  width: 100%;
+  background-color: #fbfcfc;
+  opacity: 0.96;
+  color: #888;
+  outline: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: 0 10px;
 }
 div.create_board {
   font-weight: bold;
