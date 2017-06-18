@@ -207,8 +207,24 @@ this["JST"]["move_all"] = Handlebars.template({"1":function(container,depth0,hel
     + "</ul>";
 },"useData":true});
 
-this["JST"]["move_list"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<header><span class=\"icon-sm icon-back\"></span><h1>Move List</h1><div class=\"close small\"></div></header><div id=\"select_board\"></div><div class=\"select_list_position\"></div><input type=\"submit\" value=\"Move\">";
+this["JST"]["move_list"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<option value=\""
+    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
+    + "\">"
+    + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
+    + "</option>";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<header><span class=\"icon-sm icon-back\"></span><h1>Move List</h1><div class=\"close small\"></div></header><form action=\"#\"><div id=\"select_board\"><h2>Board</h2><strong>"
+    + alias4(((helper = (helper = helpers.board_name || (depth0 != null ? depth0.board_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"board_name","hash":{},"data":data}) : helper)))
+    + "</strong><select class=\"hidden_select\" name=\"destination_board\" id=\"destination_board\"><optgroup label=\"Boards\">"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.boards : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</optgroup></select></div><div id=\"select_list_position\"><h2>Position</h2><strong>"
+    + alias4(((helper = (helper = helpers.position || (depth0 != null ? depth0.position : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"position","hash":{},"data":data}) : helper)))
+    + "</strong><select class=\"hidden_select\" name=\"destination_position\" id=\"destination_position\"></select></div><input type=\"submit\" value=\"Move\"></form>";
 },"useData":true});
 
 this["JST"]["new_card"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
