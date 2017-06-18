@@ -3,6 +3,26 @@
   <h1>Move List</h1>
   <div class="close small"></div>
 </header>
-<div id="select_board"></div>
-<div class="select_list_position"></div>
-<input type="submit" value="Move">
+<form action="#">
+  <div id="select_board">
+    <h2>
+      Board
+    </h2>
+    <strong>{{board_name}}</strong>
+    <select class="hidden_select" name="destination_board" id="destination_board">
+      <optgroup label="Boards">
+        {{#each boards}}
+          <option value="{{id}}">{{title}}</option>
+        {{/each}}
+      </optgroup>
+    </select>
+  </div>
+  <div id="select_list_position">
+    <h2>
+      Position
+    </h2>
+    <strong>{{position}}</strong>
+    <select class="hidden_select" name="destination_position" id="destination_position"></select>
+  </div>
+  <input type="submit" value="Move">
+</form>
