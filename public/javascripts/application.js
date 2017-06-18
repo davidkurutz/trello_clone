@@ -41,13 +41,6 @@ var App = {
     this.bind();
   },
   createBoardView: function() {
-    // if (this.BoardView) {
-    //   alert('createboardview')
-    //   this.BoardView.undelegateEvents();
-    //   this.BoardView.$el.empty();
-    //   delete this.BoardView;
-    // }
-
     this.BoardView = new BoardView({ model: this.Board });
 
     if (App.cardId) {
@@ -101,8 +94,6 @@ var App = {
     this.off();
     this.$el.off();
     this.on('addList', this.addList);
-    this.on('boardsView', this.boardsView);
-    this.on('cardView', this.cardView);
     this.on('toggleStarred', this.toggleStarred);
     this.on('addBoard', this.addBoard);
     this.on('toggleBoardMenu', this.toggleBoardMenu);
