@@ -7,7 +7,6 @@ var Boards = require(path.resolve(path.dirname(__dirname), 'local_modules/boards
 module.exports = function(router) {
   router.get('/', function(req, res, next) {
     var boards = Boards.get();
-    var starred = _.where(boards, {starred: true});
 
     res.render('boards', {
       title: 'Boards | Trello',
