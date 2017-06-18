@@ -17,9 +17,6 @@ var HeaderView = Backbone.View.extend({
     e.stopPropagation();
     App.trigger('toggleNotifications');
   },
-  // boardsView: function() {
-  //   App.trigger('boardsView');
-  // },
   toggleBoardMenu: function(e) {
     e.stopPropagation();
     App.trigger('toggleBoardMenu');
